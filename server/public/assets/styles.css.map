@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///style.css"],"names":[],"mappings":"AAAA;EACE,gBAAgB;AAClB","file":"styles.css","sourcesContent":["nav{\n  background:green;\n}"],"sourceRoot":""}
