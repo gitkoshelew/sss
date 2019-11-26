@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import './style.css';
+import './style.less';
 
 const Header = ({ auth }) => {
   const authButton = auth ? (
@@ -14,7 +14,7 @@ const Header = ({ auth }) => {
     <nav>
       <div className="nav-wrapper">
         <Link to="/" className="brand-logo">
-          React SSrw
+          ReactJswesdlsldfk
         </Link>
         <ul className="right">
           <li>

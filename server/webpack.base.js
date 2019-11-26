@@ -6,11 +6,18 @@ var ExtractTextPlugin  = require('extract-text-webpack-plugin');
 const postcssNormalize = require('postcss-normalize');
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
-process.env.BABEL_ENV = 'process.env.NODE_ENV';
+process.env.BABEL_ENV = process.env.NODE_ENV;
 const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 var cssName = isEnvProduction ? 'styles.css' : 'styles.css';
 var publicPath  = './public/assets';
 const shouldUseRelativeAssetPaths = publicPath === './';
+
+function addHash(template, hash) {
+  return env.NODE_ENV == 'production' ?
+    // template : /* without hash for dev mode*/
+    template.replace(/\.[^.]+$/, `.[${hash}]$&`) :
+    `${template}?hash=[${hash}]`;
+}
 
 var plugins = [
   new webpack.DefinePlugin({
@@ -38,12 +45,14 @@ if (isEnvProduction) {
   plugins.push(new MiniCssExtractPlugin({
     // Options similar to the same options in webpackOptions.output
     // both options are optional
-    filename:  (getPath) => {
-      return getPath('css/[name].css').replace('css/js', 'css');
-    },
+    filename: addHash('[name].styles.css', 'hash:8'),
+    // filename:  (getPath) => {
+    //   return getPath('css/[name].css').replace('css/js', 'css');
+    // },
     allChunks: true
   }))
 }
+
 
 module.exports = {
   // Tell webpack to run babel on every file it runs through
@@ -64,7 +73,7 @@ module.exports = {
           ]
         }
       },
-      process.env.NODE_ENV !== 'production' ?
+      process.env.NODE_ENV == 'production' ?
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({
@@ -100,10 +109,7 @@ module.exports = {
         test: /\.css$/,
         loaders:[
           {
-            loader: require.resolve('style-loader'),
-            options: {
-              sourceMap: true
-            }
+            loader: require.resolve('style-loader')
           },
           {
             loader: require.resolve('css-loader'),
@@ -130,7 +136,7 @@ module.exports = {
           }
         ]
       },
-      process.env.NODE_ENV !== 'production' ?
+      process.env.NODE_ENV == 'production' ?
       {
         test: /\.less$/,
         use: ExtractTextPlugin.extract({
@@ -161,15 +167,12 @@ module.exports = {
             }
           ]
         })
-      }:
+      } : process.env.NODE_ENV == 'development' ?
       {
         test: /\.less$/,
-        loaders:[
+        use:[
           {
             loader: require.resolve('style-loader'),
-            options: {
-              sourceMap: true
-            }
           },
           {
             loader: require.resolve('css-loader'),
@@ -201,6 +204,12 @@ module.exports = {
             }
           }
         ]
+      } : {
+        test: /\.less$/,
+        use: 
+          {
+            loader: path.resolve('./src/loader'),
+          } 
       },
       { test: /\.gif$/, loader: 'url-loader?limit=10000&mimetype=image/gif' },
       { test: /\.jpg$/, loader: 'url-loader?limit=10000&mimetype=image/jpg' },
@@ -212,6 +221,18 @@ module.exports = {
   },
   devtool: process.env.NODE_ENV !== 'production' ? 'source-map' : null,
   devServer: {
-    headers: { 'Access-Control-Allow-Origin': '*' }
+    headers: { 'Access-Control-Allow-Origin': '*' },
+    watchOptions: {
+      ignored: /node_modules/
+    },
+    contentBase: path.resolve(__dirname, '../../src/app/static'),
+    proxy: {
+      '*': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        secure: false
+      }
+    },
+    hot: true
   }
 };
