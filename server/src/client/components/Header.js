@@ -14,7 +14,7 @@ const Header = ({ auth }) => {
     <nav>
       <div className="nav-wrapper">
         <Link to="/" className="brand-logo">
-          ReactJswesdlsldfk
+          Reacsdd
         </Link>
         <ul className="right">
           <li>
@@ -22,6 +22,9 @@ const Header = ({ auth }) => {
           </li>
           <li>
             <Link to="/admins">Admins</Link>
+          </li>
+          <li>
+            <Link to="/admins">Adsdfss</Link>
           </li>
           <li>{authButton}</li>
         </ul>
