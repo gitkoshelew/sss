@@ -18,9 +18,10 @@ app.use(
     }
   })
 );
-if (process.env.NODE_ENV === 'production'){
-  app.use(express.static('public'));
-}
+
+// if (process.env.NODE_ENV === 'production'){
+  app.use(express.static('build/public'));
+// }
 // else{
 //   app.use(express.static('http://localhost:8040/public'));
 // }

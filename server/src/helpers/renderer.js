@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
-const {js, css} = require('../../public/assets/assets.json').main;
+const {js, css} = require('../../build/public/assets/assets.json').main;
 import Routes from '../client/Routes';
 
 const assetsUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8040/assets/' : './assets/';
