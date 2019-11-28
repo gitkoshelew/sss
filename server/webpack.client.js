@@ -60,11 +60,11 @@ if (!isEnvDevelopment){
 
 const config = {
   plugins,
-  context: path.resolve(__dirname, './src'),
+  // context: path.resolve(__dirname, './src'),
   entry: [
     isEnvDevelopment &&
     require.resolve('react-dev-utils/webpackHotDevClient'),
-    './client/client.js'
+    './src/client/client.js'
   ].filter(Boolean),
   output: {
     path: `${__dirname}/build/public/assets/`,
@@ -184,7 +184,7 @@ const config = {
             test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
             loader: 'url-loader',
             options: {
-              limit: 3,
+              limit: isEnvDevelopment ? 3000 : 1000,
               name: '/media/[name].[ext]',
             }
           },
@@ -210,13 +210,13 @@ const config = {
       ignored: /node_modules/
     },
     contentBase: __dirname+'/build/',
-    // proxy: {
-    //   '*': {
-    //     target: 'http://localhost:3000',
-    //     changeOrigin: true,
-    //     secure: false
-    //   }
-    // },
+    proxy: {
+      '*': {
+        target: 'http://localhost:3000',
+        changeOrigin: true,
+        secure: false
+      }
+    },
     hot: true,
     quiet: true,
     watchOptions: {

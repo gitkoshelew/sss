@@ -13,7 +13,7 @@
     "start-server": "node build/server/bundle.js",
     "devserver": "npm-run-all --parallel dev:*",
     "start": "npm-run-all --serial prebuild-client prebuild-server start-server",
-    "webpack-devserver": "set NODE_ENV=development&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --debug --hot --devtool eval-source-map --output-pathinfo --colors --inline --port 8040 --host 0.0.0.0",
+    "webpack-devserver": "set NODE_ENV=development&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --debug --hot --devtool eval-source-map --colors --inline --port 8040 --host 0.0.0.0",
     "build": "npm-run-all --serial build:*"
   },
   "author": "",

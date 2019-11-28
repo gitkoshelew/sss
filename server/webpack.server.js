@@ -36,7 +36,7 @@ const config = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'build/server'),
-    publicPath:  './'
+    publicPath:  path.resolve(__dirname, 'build/public'),
   },
 
   externals: [webpackNodeExternals()],
@@ -58,16 +58,24 @@ const config = {
       //     } 
       // },
       {
-        loader: require.resolve('file-loader'),
-        // Exclude `js` files to keep "css" loader working as it injects
-        // its runtime that would otherwise be processed through "file" loader.
-        // Also exclude `html` and `json` extensions so they get processed
-        // by webpacks internal loaders.
-        exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+        test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
+        loader: 'url-loader',
         options: {
-          name: 'assets/media/[name].[ext]',
-        },
+          limit: 1000,
+          name: addHash('assets/media/[name].[ext]', 'hash:8'),
+        }
       },
+      // {
+      //   loader: require.resolve('file-loader'),
+      //   // Exclude `js` files to keep "css" loader working as it injects
+      //   // its runtime that would otherwise be processed through "file" loader.
+      //   // Also exclude `html` and `json` extensions so they get processed
+      //   // by webpacks internal loaders.
+      //   exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
+      //   options: {
+      //     name: addHash('assets/media/[name].[ext]', 'hash:8'),
+      //   },
+      // },
     ]
   }
 };
