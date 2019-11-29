@@ -3,13 +3,13 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import axios from 'axios';
-import Routes from './Routes';
-import reducers from './reducers';
+import Routes from './shared/Routes';
+import reducers from './shared/reducers';
 
 const axiosInstance = axios.create({
   baseURL: '/api'
@@ -20,6 +20,13 @@ const store = createStore(
   window.INITIAL_STATE,
   applyMiddleware(thunk.withExtraArgument(axiosInstance))
 );
+
+
+if (process.env.NODE_ENV === 'development' && module.hot) {
+  module.hot.accept('./shared/reducers', () =>
+    store.replaceReducer(require('./shared/reducers').default)
+  );
+}
 
 ReactDOM.hydrate(
   <Provider store={store}>

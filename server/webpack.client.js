@@ -1,17 +1,25 @@
 const path = require('path');
 const fs = require('fs');
 const url = require('url');
-const webpack            = require('webpack');
+const webpack = require('webpack');
 const merge = require('webpack-merge');
 const AssetsPlugin = require('assets-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const postcssNormalize = require('postcss-normalize');
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Uglify = require('uglifyjs-webpack-plugin');
 
 const paths = require('./config/paths');
+const addHash = require('./src/helpers/utils').addHash;
 
+const cssRegex = /\.css$/;
+const cssModuleRegex = /\.module\.css$/;
+const sassRegex = /\.(scss|sass)$/;
+const sassModuleRegex = /\.module\.(scss|sass)$/;
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
 
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
@@ -20,12 +28,54 @@ process.env.BABEL_ENV = process.env.NODE_ENV;
 const baseConfig = require('./webpack.base.js');
 const shouldUseSourceMap = isEnvDevelopment && process.env.GENERATE_SOURCEMAP !== 'false';
 
-function addHash(template, hash) {
-  if (process.env.PREBUILD === 'true'){
-    return template
+const getStyleLoaders = (cssOptions, preProcessor) => {
+  const loaders = [
+    isEnvDevelopment && require.resolve('style-loader'),
+    isEnvProduction && {
+      loader: MiniCssExtractPlugin.loader
+    },
+    {
+      loader: require.resolve('css-loader'),
+      options: cssOptions,
+    },
+    {
+      loader: require.resolve('postcss-loader'),
+      options: {
+        // Necessary for external CSS imports to work
+        // https://github.com/facebook/create-react-app/issues/2677
+        ident: 'postcss',
+        plugins: () => [
+          require('postcss-flexbugs-fixes'),
+          require('postcss-preset-env')({
+            autoprefixer: {
+              flexbox: 'no-2009',
+            },
+            stage: 3,
+          }),
+          postcssNormalize(),
+        ],
+        sourceMap: shouldUseSourceMap,
+      },
+    },
+  ].filter(Boolean);
+  if (preProcessor) {
+    loaders.push(
+      {
+        loader: require.resolve('resolve-url-loader'),
+        options: {
+          sourceMap: shouldUseSourceMap,
+        },
+      },
+      {
+        loader: require.resolve(preProcessor),
+        options: {
+          sourceMap: true,
+        },
+      }
+    );
   }
-  return isEnvProduction ? template.replace(/\.[^.]+$/, `.[${hash}]$&`) : `${template}?hash=[${hash}]`
-}
+  return loaders;
+};
 
 const plugins = [
   new webpack.DefinePlugin({
@@ -47,7 +97,7 @@ if (!isEnvDevelopment){
     })
   );
   plugins.push(new MiniCssExtractPlugin({
-    filename: addHash('[name].styles.css', 'hash:8'),
+    filename: addHash('[name].styles.css'),
     // filename:  (getPath) => {
     //   return getPath('[name].css').replace('css/js', 'css');
     // },
@@ -64,11 +114,11 @@ const config = {
   entry: [
     isEnvDevelopment &&
     require.resolve('react-dev-utils/webpackHotDevClient'),
-    './src/client/client.js'
+    './src/client.js'
   ].filter(Boolean),
   output: {
     path: `${__dirname}/build/public/assets/`,
-    filename: addHash('[name].bundle.js', 'hash:7'),
+    filename: addHash('[name].bundle.js'),
     publicPath: isEnvProduction ? '.' : 'http://localhost:8040/assets'
   },
   module: {
@@ -83,7 +133,6 @@ const config = {
               formatter: require.resolve('react-dev-utils/eslintFormatter'),
               eslintPath: require.resolve('eslint'),
               resolvePluginsRelativeTo: __dirname,
-              
             },
             loader: require.resolve('eslint-loader'),
           },
@@ -92,15 +141,6 @@ const config = {
       },
       {
         oneOf: [
-          {
-            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
-            loader: require.resolve('url-loader'),
-            options: {
-              limit: 10000,
-              name: 'build/public/media/[name].[hash:8].[ext]',
-              mimetype: 'image/[ext]'
-            },
-          },
           { 
             test: /\.(woff|woff2|ttf|eot)/,
             loader: require.resolve('url-loader'),
@@ -109,83 +149,78 @@ const config = {
             } 
           },
           {
-            test: /\.less$/,
-            use: [
-              isEnvDevelopment
-                ? 'style-loader'
-                : MiniCssExtractPlugin.loader,
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 1,
-                  sourceMap: shouldUseSourceMap
-                }
-              },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    require('postcss-preset-env')({
-                      autoprefixer: {
-                        flexbox: 'no-2009',
-                      },
-                      stage: 3,
-                    }),
-                    postcssNormalize(),
-                  ],
-                  sourceMap: shouldUseSourceMap
-                },
-              },
-              {
-                loader: require.resolve('less-loader'),
-                options: {
-                  sourceMap: shouldUseSourceMap
-                }
-              }
-            ]
+            test: cssRegex,
+            exclude: cssModuleRegex,
+            use: getStyleLoaders({
+              importLoaders: 1,
+              sourceMap: isEnvProduction && shouldUseSourceMap,
+            }),
+            // Don't consider CSS imports dead code even if the
+            // containing package claims to have no side effects.
+            // Remove this when webpack adds a warning or an error for this.
+            // See https://github.com/webpack/webpack/issues/6571
+            sideEffects: true,
+          },
+          // using the extension .module.css
+          {
+            test: cssModuleRegex,
+            use: getStyleLoaders({
+              importLoaders: 1,
+              sourceMap: isEnvProduction && shouldUseSourceMap,
+              modules: true,
+              getLocalIdent: getCSSModuleLocalIdent,
+            }),
           },
           {
-            test: /\.css$/,
-            use: [
-              isEnvDevelopment
-                ? 'style-loader'
-                : MiniCssExtractPlugin.loader,
+            test: sassRegex,
+            exclude: sassModuleRegex,
+            use: getStyleLoaders(
               {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 1,
-                  sourceMap: shouldUseSourceMap,
-                  minimize: true,
-                  colormin: false
-                }
+                importLoaders: 2,
+                sourceMap: shouldUseSourceMap,
               },
-              {
-                loader: require.resolve('postcss-loader'),
-                options: {
-                  ident: 'postcss',
-                  plugins: () => [
-                    require('postcss-flexbugs-fixes'),
-                    require('postcss-preset-env')({
-                      autoprefixer: {
-                        flexbox: 'no-2009',
-                      },
-                      stage: 3,
-                    }),
-                    postcssNormalize(),
-                  ],
-                  sourceMap: shouldUseSourceMap
-                },
-              }
-            ]
+              'sass-loader'
+            ),
+            // Don't consider CSS imports dead code even if the
+            // containing package claims to have no side effects.
+            // Remove this when webpack adds a warning or an error for this.
+            // See https://github.com/webpack/webpack/issues/6571
+            sideEffects: true,
           },
           {
-            test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
+            test: sassModuleRegex,
+            use: getStyleLoaders(
+              {
+                importLoaders: 2,
+                sourceMap: shouldUseSourceMap,
+                modules: true,
+                getLocalIdent: getCSSModuleLocalIdent,
+              },
+              'sass-loader'
+            ),
+          },
+          {
+            test: lessRegex,
+            exclude: lessModuleRegex,
+            use: getStyleLoaders(
+              {
+                importLoaders: 2,
+                sourceMap: shouldUseSourceMap,
+              },
+              'less-loader'
+            ),
+            // Don't consider CSS imports dead code even if the
+            // containing package claims to have no side effects.
+            // Remove this when webpack adds a warning or an error for this.
+            // See https://github.com/webpack/webpack/issues/6571
+            sideEffects: true,
+          },
+          {
+            test: /\.(png|jpe?g|gif|svg|bmp|ico)(\?.*)?$/,
             loader: 'url-loader',
             options: {
               limit: isEnvDevelopment ? 3000 : 1000,
-              name: '/media/[name].[ext]',
+              name: addHash('/media/[name].[ext]'),
             }
           },
           {
@@ -196,7 +231,7 @@ const config = {
             // by webpacks internal loaders.
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              name: '/media/[name].[ext]',
+              name: addHash('/media/[name].[ext]'),
             },
           },
         ]

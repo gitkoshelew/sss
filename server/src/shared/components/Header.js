@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import logo from '../../assets/images/logo.svg';
 import play from '../../assets/images/play-button.svg';
+import share from '../../assets/images/share.svg';
 import './style.less';
 
 const Header = ({ auth }) => {
@@ -16,10 +17,11 @@ const Header = ({ auth }) => {
     <nav>
       <div className="nav-wrapper">
         <Link to="/" className="brand-logo">
-          Reacsdd 
+          Reasdd
         </Link>
         <img src={logo} className="App-logo" alt="logo" />
         <img src={play} className="App-logo" alt="logo" />
+        <img src={share} className="App-logo" alt="logo" />
         <ul className="right">
           <li>
             <Link to="/users">Users</Link>
@@ -28,7 +30,7 @@ const Header = ({ auth }) => {
             <Link to="/admins">Admins</Link>
           </li>
           <li>
-            <Link to="/admins">Adddd</Link>
+            <Link to="/admins">As</Link>
           </li>
           <li>{authButton}</li>
         </ul>

@@ -25,6 +25,9 @@ const plugins = [
 module.exports = {
   plugins,
   mode: process.env.NODE_ENV,
+  watchOptions: {
+    ignored: ['build', 'node_modules']
+  },
   module: {
     rules: [
       {
