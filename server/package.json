@@ -15,7 +15,7 @@
     "webpack-devserver": "set NODE_ENV=development&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug --hot --devtool eval-source-map --colors --inline --open --port 8040 --host 0.0.0.0",
     "stop-server": "killall node",
     "start-devreload": "npm-run-all --parallel dev-reload:*",
-    "start-dev": "npm-run-all --serial dev:client dev:server --parallel run-server webpack-devserver",
+    "start": "npm-run-all --serial dev:client dev:server --parallel run-server webpack-devserver",
     "build": "npm-run-all --serial build:*"
   },
   "author": "",
