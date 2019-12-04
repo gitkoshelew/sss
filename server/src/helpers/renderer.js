@@ -6,7 +6,7 @@ import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
 const {js, css} = require('../../build/public/assets/assets.json').main;
-import Routes from '../shared/Routes';
+import Routes from '../components/Routes';
 
 const assetsUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8040/assets/' : './assets/';
 

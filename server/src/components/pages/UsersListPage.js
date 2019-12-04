@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchUsers } from '../actions';
+// import { fetchUsers } from '../../thunkStore/actions'; //use thunkStore
+import { fetchUsers } from '../../sagaStore/actions'; //use sagaStore
+import { fetchUsers as fetchUsersSaga } from '../../sagaStore/sagas'; //use sagaStore
 import { Helmet } from 'react-helmet';
 
 class UsersList extends Component {
@@ -38,11 +40,8 @@ function mapStateToProps(state) {
   return { users: state.users };
 }
 
-function loadData(store) {
-  return store.dispatch(fetchUsers());
-}
-
 export default {
-  loadData,
-  component: connect(mapStateToProps, { fetchUsers })(UsersList)
+  // loadData: (store) => store.dispatch(fetchUsers()) //use thunkStore
+  component: connect(mapStateToProps, { fetchUsers })(UsersList),
+  loadGeneratorData: fetchUsersSaga //use sagaStore
 };

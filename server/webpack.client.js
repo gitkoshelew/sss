@@ -23,6 +23,7 @@ const lessModuleRegex = /\.module\.less$/;
 
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
+const isRebiuldMode = process.env.REBUILD_MODE === 'true';
 process.env.BABEL_ENV = process.env.NODE_ENV;
 
 const baseConfig = require('./webpack.base.js');
@@ -105,6 +106,9 @@ if (!isEnvDevelopment){
     ignoreOrder: false,
     allChunks: true
   }));
+}
+
+if (isEnvProduction && !isRebiuldMode){
   plugins.push(new Uglify());
 }
 

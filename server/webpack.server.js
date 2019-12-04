@@ -17,7 +17,7 @@ plugins = [
   new CleanWebpackPlugin()
 ];
 
-if (isEnvProduction){
+if (isEnvProduction && !isRebiuldMode){
   plugins.push(new Uglify());
 }
 // if (isRebiuldMode){
