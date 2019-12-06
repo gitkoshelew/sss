@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // import { fetchUsers } from '../../thunkStore/actions'; //use thunkStore
-import { fetchUsers } from '../../sagaStore/actions'; //use sagaStore
+import { fetchUsers, fetchUsersSuccess } from '../../sagaStore/actions'; //use sagaStore
 import { fetchUsers as fetchUsersSaga } from '../../sagaStore/sagas'; //use sagaStore
 import { Helmet } from 'react-helmet';
 
 class UsersList extends Component {
   componentDidMount() {
     this.props.fetchUsers();
+  }
+
+  componentWillUnmount() {
+    this.props.fetchUsersSuccess([])
   }
 
   renderUsers() {
@@ -37,11 +41,11 @@ class UsersList extends Component {
 }
 
 function mapStateToProps(state) {
-  return { users: state.users };
+  return { users: state.users.data };
 }
 
 export default {
   // loadData: (store) => store.dispatch(fetchUsers()) //use thunkStore
-  component: connect(mapStateToProps, { fetchUsers })(UsersList),
+  component: connect(mapStateToProps, { fetchUsers, fetchUsersSuccess })(UsersList),
   loadGeneratorData: fetchUsersSaga //use sagaStore
 };

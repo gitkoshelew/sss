@@ -4,6 +4,8 @@ import { matchRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
 import Routes from './components/Routes';
 import renderer from './helpers/renderer';
+import paths from '../config/paths';
+import env from '../config/env';
 // import createStore from './thunkStore/createStoreServer'; // use thunkStore
 import createStore from './sagaStore/createStoreServer'; // use sagaStore
 
@@ -11,7 +13,7 @@ const app = express();
 
 app.use(
   '/api',
-  proxy('http://react-ssr-api.herokuapp.com', {
+  proxy(env.apiUrl, {
     proxyReqOptDecorator(opts) {
       opts.headers['x-forwarded-host'] = 'localhost:3000';
       return opts;

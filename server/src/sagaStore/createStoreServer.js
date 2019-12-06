@@ -1,7 +1,9 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 import axios from 'axios';
+import env from '../../config/env';
 import reducers from './reducers';
+
 // import effectMiddleware from './effectMiddleware';
 
 
@@ -9,12 +11,12 @@ import reducers from './reducers';
 
 export default req => {
   const axiosCookieInstance = axios.create({
-    baseURL: 'http://react-ssr-api.herokuapp.com',
+    baseURL: env.apiUrl,
     headers: { cookie: req.get('cookie') || '' }
   });
 
   const axiosInstance = axios.create({
-    baseURL: 'http://react-ssr-api.herokuapp.com',
+    baseURL: env.apiUrl,
   });
 
   const effectMiddleware = next => effect => {
@@ -31,7 +33,7 @@ export default req => {
 
   const effectMiddleware2 = next => effect => {
     if (effect.type === 'CALL'){
-      
+
     }
     
     return next(effect);

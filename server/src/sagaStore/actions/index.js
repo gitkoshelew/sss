@@ -36,6 +36,16 @@ export const fetchCurrentUserFail = payload => ({
   payload: payload
 });
 
+export const FETCH_LOG = 'fetch_log';
+export const fetchLog = payload => ({
+  type: FETCH_LOG,
+  payload: payload
+});
+
+export const FETCH_LOG_OUT = 'fetch_log_out';
+export const fetchLogOut = () => ({
+  type: FETCH_LOG_OUT
+});
 
 export const FETCH_ADMINS = 'fetch_admins';
 export const fetchAdmins = () => ({
@@ -54,3 +64,9 @@ export const fetchAdminsFail = payload => ({
   type: FETCH_ADMINS_FAIL,
   payload: payload
 });
+
+export const LOG_FORM_CHANGE = 'log_form_change';
+export const logFromChange = payload => ({
+  type: LOG_FORM_CHANGE,
+  payload
+})

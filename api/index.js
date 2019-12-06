@@ -1,31 +1,50 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const passport = require('passport');
-const bodyParser = require('body-parser');
 const cors = require('cors');
 const keys = require('./config/keys');
+const env = require('./config/env');
 require('./models/User');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(keys.mongoURI);
+// mongoose.connect(keys.mongoURI);
 
 const app = express();
 
 app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+// app.use(
+//   cookieSession({
+//     maxAge: 30 * 24 * 60 * 60 * 1000,
+//     keys: [keys.cookieKey]
+//   })
+// );
 app.use(
-  cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [keys.cookieKey]
+  session({
+    secret: env.key,
+    store: new FileStore(),
+    cookie: {
+      path: '/',
+      httpOnly: true, //server only
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    },
+    resave: false,
+    saveUninitialized: false
   })
-);
+)
+
 app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
+
+
 app.get('/', (req, res) => {
   let adminContent = `
     <div>

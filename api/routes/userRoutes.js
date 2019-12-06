@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const requireLogin = require('../middlewares/requireLogin');
 
 module.exports = app => {
-  app.get('/users', (req, res) => {
+  app.get('/users', requireLogin, (req, res) => {
     res.send(users);
   });
 
