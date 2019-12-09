@@ -12,9 +12,9 @@ import './style.less';
 
 const Header = ({ auth, fetchLogOut }) => {
   const authButton = auth ? (
-    <a href={env.apiLogoutUrl}>Logout</a>
+    <a href={env.apiLogoutGoogleUrl}>Logout</a>
   ) : (
-    <a href={env.apiLoginUrl}>Login</a>
+    <a href={env.apiLoginGoogleUrl}>Login</a>
   );
 
   const logButton = auth ? 

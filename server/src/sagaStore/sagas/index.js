@@ -8,11 +8,14 @@ import {
     FETCH_CURRENT_USER,
     FETCH_CURRENT_USER_SUCCESS,
     FETCH_CURRENT_USER_FAIL,
+    FETCH_AUTH_LOG_IN,
+    FETCH_AUTH_LOG_OUT,
+    FETCH_AUTH_FAIL,
+    FETCH_AUTH_SUCCESS,
     FETCH_ADMINS,
     FETCH_ADMINS_SUCCESS,
     FETCH_ADMINS_FAIL,
-    FETCH_LOG,
-    FETCH_LOG_OUT
+    FETCH_AUTH_REGISTER,
 } from '../actions';
 
 
@@ -132,25 +135,59 @@ export function* fetchCurrentUser() {
     }
 }
 
-export function* fetchLog() {
+export function* fetchRegister() {
     try {
         const logForm = yield select(state => state.logForm )
-        const user = yield call(postAxiosApi('/auth/local', logForm), 'api');
-        if (user.message && user.message === 'logout'){
+        const user = yield call(postAxiosApi('/auth/local/register', logForm), 'api');
+
+        if (user.error){
             yield put({
-                type: FETCH_CURRENT_USER_SUCCESS,
-                payload: false
+                type: FETCH_REGISTER_FAIL,
+                payload: user.error
             });
         } else {
+            yield put({
+                type: FETCH_AUTH_SUCCESS,
+                payload: true
+            });
+    
             yield put({
                 type: FETCH_CURRENT_USER_SUCCESS,
                 payload: user
             });
         }
+
     } catch (error) {
         yield put({
+            type: FETCH_REGISTER_FAIL,
+            payload: 'somethink went wrong, try again'
+        });
+    }
+}
+
+export function* fetchLogIn() {
+    try {
+        const logForm = yield select(state => state.logForm )
+        const user = yield call(postAxiosApi('/auth/local/login', logForm), 'api');
+
+        yield put({
+            type: FETCH_AUTH_SUCCESS,
+            payload: true
+        });
+
+        yield put({
             type: FETCH_CURRENT_USER_SUCCESS,
+            payload: user
+        });
+
+    } catch (error) {
+        yield put({
+            type: FETCH_AUTH_FAIL,
             payload: error
+        });
+
+        yield put({
+            type: FETCH_CURRENT_USER_FAIL
         });
     }
 }
@@ -158,16 +195,16 @@ export function* fetchLog() {
 export function* fetchLogOut() {
     try {
 
-        yield call(postAxiosApi('/auth/local', false), 'api');
+        yield call(postAxiosApi('/auth/local/logout', false), 'api');
 
         yield put({
-            type: FETCH_CURRENT_USER_SUCCESS,
-            payload: null
+            type: FETCH_AUTH_SUCCESS,
+            payload: false
         });
 
     } catch (error) {
         yield put({
-            type: FETCH_CURRENT_USER_ERROR,
+            type: FETCH_AUTH_FAIL,
             payload: error
         });
     }
@@ -185,12 +222,16 @@ export function* fetchAdminsSaga() {
     yield takeEvery(FETCH_ADMINS, fetchAdmins);
 }
 
-export function* fetchLogSaga() {
-    yield takeEvery(FETCH_LOG, fetchLog);
+export function* fetchLogInSaga() {
+    yield takeEvery(FETCH_AUTH_LOG_IN, fetchLogIn);
 }
 
 export function* fetchLogOutSaga() {
-    yield takeEvery(FETCH_LOG_OUT, fetchLogOut);
+    yield takeEvery(FETCH_AUTH_LOG_OUT, fetchLogOut);
+}
+
+export function* fetchRegisterSaga() {
+    yield takeEvery(FETCH_AUTH_REGISTER, fetchRegister);
 }
 
 export default function* rootSaga() {
@@ -198,7 +239,8 @@ export default function* rootSaga() {
         fetchUsersSaga(),
         fetchCurrentUserSaga(),
         fetchAdminsSaga(),
-        fetchLogSaga(),
+        fetchLogInSaga(),
         fetchLogOutSaga(),
+        fetchRegisterSaga()
     ]);
 }

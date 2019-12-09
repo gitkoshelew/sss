@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import requireAuth from '../hocs/requireAuth';
 // import { fetchLog } from '../../thunkStore/actions';  //use thunkStore
-import { fetchLog, logFromChange } from '../../sagaStore/actions'; //use sagaStore
+import { fetchLogIn, fetchAuthRegister, logFromChange } from '../../sagaStore/actions'; //use sagaStore
 
 class LogPage extends Component {
 
@@ -13,18 +13,24 @@ class LogPage extends Component {
     })
   }
 
-  onSubmit=(e)=>{
+  onLogin=(e)=>{
     e.preventDefault();
-    this.props.fetchLog(this.props.fetchLog);
+    this.props.fetchLogIn();
+  }
+
+  onRegister=(e)=>{
+    e.preventDefault();
+    this.props.fetchAuthRegister();
   }
 
   render() {
     const {email, password} = this.props;
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={e=>e.preventDefault}>
         <input type='text' name='email' value={email} onChange={this.onFieldChange}/>
         <input type='password' name='password' value={password} onChange={this.onFieldChange}/>
-        <button type='submit'>submit</button>
+        <button onClick={this.onLogin}>Login</button>
+        <button onClick={this.onRegister}>Register</button>
       </form>
     );
   }
@@ -38,5 +44,5 @@ function mapStateToProps(state) {
 }
 
 export default {
-  component: connect(mapStateToProps, { fetchLog, logFromChange })(LogPage)
+  component: connect(mapStateToProps, { fetchLogIn, fetchAuthRegister, logFromChange })(LogPage)
 };

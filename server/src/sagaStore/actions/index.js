@@ -36,15 +36,36 @@ export const fetchCurrentUserFail = payload => ({
   payload: payload
 });
 
-export const FETCH_LOG = 'fetch_log';
-export const fetchLog = payload => ({
-  type: FETCH_LOG,
+export const FETCH_AUTH_LOG_IN = 'fetch_auth_log_in';
+export const fetchLogIn = () => ({
+  type: FETCH_AUTH_LOG_IN
+});
+
+export const FETCH_AUTH_LOG_OUT = 'fetch_auth_log_out';
+export const fetchLogOut = () => ({
+  type: FETCH_AUTH_LOG_OUT
+});
+
+export const FETCH_AUTH_REGISTER = 'fetch_auth_register';
+export const fetchAuthRegister = () => ({
+  type: FETCH_AUTH_REGISTER
+});
+
+export const FETCH_AUTH_REGISTER_FAIL = 'fetch_auth_register_fail';
+export const fetchAuthRegisterFail = (payload) => ({
+  type: FETCH_AUTH_REGISTER_FAIL,
   payload: payload
 });
 
-export const FETCH_LOG_OUT = 'fetch_log_out';
-export const fetchLogOut = () => ({
-  type: FETCH_LOG_OUT
+export const FETCH_AUTH_SUCCESS = 'fetch_auth_success';
+export const fetchAuthSuccess = payload => ({
+  type: FETCH_AUTH_SUCCESS,
+  payload: payload
+});
+
+export const FETCH_AUTH_FAIL = 'fetch_auth_fail';
+export const fetchAuthFail = () => ({
+  type: FETCH_AUTH_FAIL
 });
 
 export const FETCH_ADMINS = 'fetch_admins';
