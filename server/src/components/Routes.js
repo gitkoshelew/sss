@@ -1,10 +1,9 @@
-import React from 'react';
 import App from './App';
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminsListPage from './pages/AdminsListPage';
-import LogPage from './pages/LogPage';
+import AuthPage from './pages/AuthPage';
 
 export default [
   {
@@ -24,7 +23,7 @@ export default [
         path: '/users'
       },
       {
-        ...LogPage,
+        ...AuthPage,
         path: '/log'
       },
       {

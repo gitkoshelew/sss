@@ -5,21 +5,24 @@ import logo from '../../assets/images/logo.svg';
 import play from '../../assets/images/play-button.svg';
 import share from '../../assets/images/share.svg';
 import env from '../../../config/env';
-import { fetchLogOut } from '../../sagaStore/actions'; //use sagaStore
-
+import { authFetchLogOut } from '../../sagaStore/actions';
 
 import './style.less';
 
-const Header = ({ auth, fetchLogOut }) => {
-  const authButton = auth ? (
+const Header = ({ auth: { data }, dispatchAuthFetchLogOut }) => {
+  const authButton = data ? (
     <a href={env.apiLogoutGoogleUrl}>Logout</a>
   ) : (
     <a href={env.apiLoginGoogleUrl}>Login</a>
   );
 
-  const logButton = auth ? 
-  <button onClick={fetchLogOut}>OUT</button> :
-    <Link to="/log">IN</Link> 
+  const logButton = data ? (
+    <button type="button" onClick={dispatchAuthFetchLogOut}>
+      OUT
+    </button>
+  ) : (
+    <Link to="/log">IN</Link>
+  );
 
   return (
     <nav>
@@ -49,4 +52,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, { fetchLogOut })(Header);
+export default connect(mapStateToProps, { dispatchAuthFetchLogOut: authFetchLogOut })(Header);

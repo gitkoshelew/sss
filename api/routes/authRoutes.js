@@ -35,25 +35,25 @@ module.exports = app => {
     })(req, res, next);
   });
 
-  app.post('/auth/local/register'), (req, res, next) => {
-
+  app.post('/auth/local/register', (req, res, next) => {
     try{
       const { email, password} = req.body;
-      const dbUser = passport.userDB.find(el => el.email === email);
-  
+      const { userDB } = passport;
+      const dbUser = userDB.find(el => el.email === email);
+      console.log(dbUser)
       if ( dbUser ){
-        res.send({error: 'user already exist'})
+        return res.send({error: 'user already exist'});
       }
-  
+      
       const newUser = {
-        id: passport.userDB[userDB.length-1].id + 1,
+        id: userDB[userDB.length-1].id + 1,
         email: email,
         password: password
       };
-  
-      passport.userDB.push(newUser);
 
-      req.logIn(user, function(err) {
+      userDB.push(newUser);
+
+      req.logIn(newUser, function(err) {
         return err
           ? next(err)
           : res.send({password, email})
@@ -62,7 +62,7 @@ module.exports = app => {
     }catch(err){
       next(err)
     }
-  }
+  });
 
   app.get('/logout', (req, res) => {
     req.logout();

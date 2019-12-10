@@ -1,11 +1,11 @@
-import { FETCH_ADMINS_SUCCESS, FETCH_ADMINS_FAIL } from '../actions';
+import { ADMINS_SUCCESS, ADMINS_FAIL } from '../actions/constants';
 
-export default (state = {data:[], errors: []}, action) => {
+export default (state = { data: [], errors: [] }, action) => {
   switch (action.type) {
-    case FETCH_ADMINS_SUCCESS:
-      return {errors:[], data:action.payload};
-    case FETCH_ADMINS_FAIL:
-      return {...state, errors:[...state.errors, action.payload]};
+    case ADMINS_SUCCESS:
+      return { errors: [], data: action.payload };
+    case ADMINS_FAIL:
+      return { ...state, errors: [...state.errors, action.payload] };
     default:
       return state;
   }

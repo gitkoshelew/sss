@@ -1,0 +1,8 @@
+/build/**
+/config/**
+/src/sagaStore/createStoreClient.js
+/src/sagaStore/createStoreServer.js
+/src/server.js
+/src/client.js
+test.js
+!.eslintrc.js

@@ -4,7 +4,7 @@ const url = require('url');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const AssetsPlugin = require('assets-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const postcssNormalize = require('postcss-normalize');
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
@@ -37,7 +37,7 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     },
     {
       loader: require.resolve('css-loader'),
-      options: cssOptions,
+      options: cssOptions
     },
     {
       loader: require.resolve('postcss-loader'),
@@ -49,29 +49,29 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
           require('postcss-flexbugs-fixes'),
           require('postcss-preset-env')({
             autoprefixer: {
-              flexbox: 'no-2009',
+              flexbox: 'no-2009'
             },
-            stage: 3,
+            stage: 3
           }),
-          postcssNormalize(),
+          postcssNormalize()
         ],
-        sourceMap: shouldUseSourceMap,
-      },
-    },
+        sourceMap: shouldUseSourceMap
+      }
+    }
   ].filter(Boolean);
   if (preProcessor) {
     loaders.push(
       {
         loader: require.resolve('resolve-url-loader'),
         options: {
-          sourceMap: shouldUseSourceMap,
-        },
+          sourceMap: shouldUseSourceMap
+        }
       },
       {
         loader: require.resolve(preProcessor),
         options: {
-          sourceMap: true,
-        },
+          sourceMap: true
+        }
       }
     );
   }
@@ -81,34 +81,34 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 const plugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      BROWSER:  JSON.stringify(true),
+      BROWSER: JSON.stringify(true),
       NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
     }
   })
 ];
 
-if (!isEnvDevelopment){
-  plugins.push(
-    new CleanWebpackPlugin()
-  );
+if (!isEnvDevelopment) {
+  plugins.push(new CleanWebpackPlugin());
   plugins.push(
     new AssetsPlugin({
       filename: 'assets.json',
       path: path.resolve(__dirname, './build/public/assets/')
     })
   );
-  plugins.push(new MiniCssExtractPlugin({
-    filename: addHash('[name].styles.css'),
-    // filename:  (getPath) => {
-    //   return getPath('[name].css').replace('css/js', 'css');
-    // },
-    chunkFilename: '[id].css',
-    ignoreOrder: false,
-    allChunks: true
-  }));
+  plugins.push(
+    new MiniCssExtractPlugin({
+      filename: addHash('[name].styles.css'),
+      // filename:  (getPath) => {
+      //   return getPath('[name].css').replace('css/js', 'css');
+      // },
+      chunkFilename: '[id].css',
+      ignoreOrder: false,
+      allChunks: true
+    })
+  );
 }
 
-if (isEnvProduction && !isRebiuldMode){
+if (isEnvProduction && !isRebiuldMode) {
   plugins.push(new Uglify());
 }
 
@@ -116,8 +116,7 @@ const config = {
   plugins,
   // context: path.resolve(__dirname, './src'),
   entry: [
-    isEnvDevelopment &&
-    require.resolve('react-dev-utils/webpackHotDevClient'),
+    isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),
     './src/client.js'
   ].filter(Boolean),
   output: {
@@ -134,36 +133,36 @@ const config = {
           {
             options: {
               cache: true,
-              formatter: require.resolve('react-dev-utils/eslintFormatter'),
-              eslintPath: require.resolve('eslint'),
-              resolvePluginsRelativeTo: __dirname,
+              eslintPath: require.resolve('eslint')
+              // formatter: require.resolve('react-dev-utils/eslintFormatter'),
+              // resolvePluginsRelativeTo: __dirname,
             },
-            loader: require.resolve('eslint-loader'),
-          },
-        ],
-        include: paths.appSrc,
+            loader: require.resolve('eslint-loader')
+          }
+        ]
+        // include: paths.appSrc
       },
       {
         oneOf: [
-          { 
+          {
             test: /\.(woff|woff2|ttf|eot)/,
             loader: require.resolve('url-loader'),
             options: {
               limit: 1
-            } 
+            }
           },
           {
             test: cssRegex,
             exclude: cssModuleRegex,
             use: getStyleLoaders({
               importLoaders: 1,
-              sourceMap: isEnvProduction && shouldUseSourceMap,
+              sourceMap: isEnvProduction && shouldUseSourceMap
             }),
             // Don't consider CSS imports dead code even if the
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
             // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true,
+            sideEffects: true
           },
           // using the extension .module.css
           {
@@ -172,8 +171,8 @@ const config = {
               importLoaders: 1,
               sourceMap: isEnvProduction && shouldUseSourceMap,
               modules: true,
-              getLocalIdent: getCSSModuleLocalIdent,
-            }),
+              getLocalIdent: getCSSModuleLocalIdent
+            })
           },
           {
             test: sassRegex,
@@ -181,7 +180,7 @@ const config = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-                sourceMap: shouldUseSourceMap,
+                sourceMap: shouldUseSourceMap
               },
               'sass-loader'
             ),
@@ -189,7 +188,7 @@ const config = {
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
             // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true,
+            sideEffects: true
           },
           {
             test: sassModuleRegex,
@@ -198,10 +197,10 @@ const config = {
                 importLoaders: 2,
                 sourceMap: shouldUseSourceMap,
                 modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
+                getLocalIdent: getCSSModuleLocalIdent
               },
               'sass-loader'
-            ),
+            )
           },
           {
             test: lessRegex,
@@ -209,7 +208,7 @@ const config = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-                sourceMap: shouldUseSourceMap,
+                sourceMap: shouldUseSourceMap
               },
               'less-loader'
             ),
@@ -217,14 +216,14 @@ const config = {
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
             // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true,
+            sideEffects: true
           },
           {
             test: /\.(png|jpe?g|gif|svg|bmp|ico)(\?.*)?$/,
             loader: 'url-loader',
             options: {
               limit: isEnvDevelopment ? 3000 : 1000,
-              name: addHash('/media/[name].[ext]'),
+              name: addHash('/media/[name].[ext]')
             }
           },
           {
@@ -235,20 +234,17 @@ const config = {
             // by webpacks internal loaders.
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              name: addHash('/media/[name].[ext]'),
-            },
-          },
+              name: addHash('/media/[name].[ext]')
+            }
+          }
         ]
-      },
+      }
     ]
   },
   devtool: isEnvDevelopment ? 'source-map' : false,
   devServer: {
     headers: { 'Access-Control-Allow-Origin': '*' },
-    watchOptions: {
-      ignored: /node_modules/
-    },
-    contentBase: __dirname+'/build/',
+    contentBase: __dirname + '/build/',
     proxy: {
       '*': {
         target: 'http://localhost:3000',
@@ -259,7 +255,7 @@ const config = {
     hot: true,
     quiet: true,
     watchOptions: {
-      ignored: ignoredFiles(paths.appSrcFolder),
+      ignored: ignoredFiles(paths.appSrcFolder)
     }
   }
 };

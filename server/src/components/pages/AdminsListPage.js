@@ -1,21 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import requireAuth from '../hocs/requireAuth';
-// import { fetchAdmins } from '../../thunkStore/actions';  //use thunkStore
-import { fetchAdmins } from '../../sagaStore/actions'; //use sagaStore
-import { fetchAdmins as fetchAdminsSaga } from '../../sagaStore/sagas'; //use sagaStore
+import { adminsFetch } from '../../sagaStore/actions';
+import { fetchAdmins as fetchAdminsSaga } from '../../sagaStore/sagas/admins';
 
 class AdminsListPage extends Component {
   componentDidMount() {
-    this.props.fetchAdmins();
+    const { dispatchAdminsFetch } = this.props;
+    dispatchAdminsFetch();
   }
 
   renderAdmins() {
-    const {data, errors} = this.props.admins;
-    if (errors.length){
-      return errors.map((error, idx)=> {
-        <li key={idx}>{error}</li>;
-      })
+    const {
+      admins: { data, errors }
+    } = this.props;
+
+    if (errors.length) {
+      return errors.map((error, idx) => <li key={idx}>{error}</li>);
     }
     return data.map(admin => {
       return <li key={admin.id}>{admin.name}</li>;
@@ -37,9 +38,8 @@ function mapStateToProps({ admins }) {
 }
 
 export default {
-  component: connect(mapStateToProps, { fetchAdmins })(
+  component: connect(mapStateToProps, { dispatchAdminsFetch: adminsFetch })(
     requireAuth(AdminsListPage)
   ),
-  // loadData: ({ dispatch }) => dispatch(fetchAdmins()), //use thunkStore
-  loadGeneratorData: fetchAdminsSaga, // use sagaStore
+  loadGeneratorData: fetchAdminsSaga
 };
