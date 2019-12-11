@@ -1,0 +1,272 @@
+[   
+    [
+        {
+            "text": "до 10 лет",
+            "valid": true,
+            "id": "small"
+        },
+        {
+            "text": "11-16 лет",
+            "valid": true,
+            "id": "junior"
+        },
+        {
+            "text": "16-24 лет",
+            "valid": true,
+            "id": "middle"
+        },
+        {
+            "text": "25-34 лет",
+            "valid": true,
+            "id": "big"
+        },
+        {
+            "text": "35+ лет",
+            "valid": true,
+            "id": "very-big"
+        }
+    ],
+    [
+        {
+            "text": "Орк",
+            "valid": true,
+            "id": "ork"
+        },
+        {
+            "text": "Эльф",
+            "valid": false,
+            "id": "elf"
+        },
+        {
+            "text": "Человек",
+            "valid": false,
+            "id": "human"
+        },
+        {
+            "text": "Гоблин",
+            "valid": false,
+            "id": "goblin"
+        },
+        {
+            "text": "Хоббит",
+            "valid": false,
+            "id": "hobbit"
+        },
+        {
+            "text": "Гном",
+            "valid": false,
+            "id": "gnome"
+        }
+    ],
+    [
+        {
+            "text": "Лучник",
+            "valid": false,
+            "id": "archer"
+        },
+        {
+            "text": "Пехотинец",
+            "valid": false,
+            "id": "footman"
+        },
+        {
+            "text": "Маг",
+            "valid": false,
+            "id": "mage"
+        },
+        {
+            "text": "Берсерк",
+            "valid": true,
+            "id": "berserk"
+        },
+        {
+            "text": "Шаман",
+            "valid": false,
+            "id": "shaman"
+        },
+        {
+            "text": "Я пацифист",
+            "valid": false,
+            "id": "pacifist"
+        }
+    ],
+    [
+        {
+            "text": "Саурон",
+            "valid": false,
+            "id": "sauron"
+        },
+        {
+            "text": "Саруман",
+            "valid": true,
+            "id": "saruman"
+        },
+        {
+            "text": "Сарумян",
+            "valid": false,
+            "id": "sarumyan"
+        },
+        {
+            "text": "Игорь",
+            "valid": false,
+            "id": "igor"
+        },
+        {
+            "text": "Фродо",
+            "valid": false,
+            "id": "frodo"
+        }
+    ],
+    [
+        {
+            "text": "Кот",
+            "valid": false,
+            "id": "cat"
+        },
+        {
+            "text": "Собака",
+            "valid": false,
+            "id": "dog"
+        },
+        {
+            "text": "Котопес",
+            "valid": true,
+            "id": "cat-dog"
+        }
+    ],
+    [
+        {
+            "text": "Футбол",
+            "valid": true,
+            "id": "football"
+        },
+        {
+            "text": "Хоккей",
+            "valid": true,
+            "id": "hockey"
+        },
+        {
+            "text": "Теннис",
+            "valid": true,
+            "id": "tennis"
+        },
+        {
+            "text": "Воллейбол",
+            "valid": true,
+            "id": "volleyball"
+        },
+        {
+            "text": "Киберспорт",
+            "valid": true,
+            "id": "cybersports"
+        },
+        {
+            "text": "Другой",
+            "valid": true,
+            "id": "others"
+        }
+    ],
+    [
+        {
+            "text": "Исильдур",
+            "valid": false,
+            "id": "isildur"
+        },
+        {
+            "text": "Зубочистка",
+            "valid": false,
+            "id": "toothpick"
+        },
+        {
+            "text": "Нарсил",
+            "valid": true,
+            "id": "narsil"
+        },
+        {
+            "text": "АК-47",
+            "valid": false,
+            "id": "ak"
+        }
+    ],
+    [
+        {
+            "text": "Изенгард",
+            "valid": false,
+            "id": "isengard"
+        },
+        {
+            "text": "Шир",
+            "valid": true,
+            "id": "sheer"
+        },
+        {
+            "text": "Гудабад",
+            "valid": false,
+            "id": "gudabad"
+        },
+        {
+            "text": "Минас-тирит",
+            "valid": false,
+            "id": "minas-tirit"
+        },
+        {
+            "text": "Ривендел",
+            "valid": false,
+            "id": "rivendell"
+        }
+    ],
+    [
+        {
+            "text": "1",
+            "valid": false,
+            "id": "one"
+        },
+        {
+            "text": "как у Ауди",
+            "valid": false,
+            "id": "four"
+        },
+        {
+            "text": "10",
+            "valid": false,
+            "id": "ten"
+        },
+        {
+            "text": "5",
+            "valid": false,
+            "id": "five"
+        },
+        {
+            "text": "20",
+            "valid": true,
+            "id": "twenty"
+        }
+    ],
+    [
+        {
+            "text": "Австралия",
+            "valid": false,
+            "id": "australia"
+        },
+        {
+            "text": "Мадагаскар",
+            "valid": false,
+            "id": "madagaskar"
+        },
+        {
+            "text": "Беларусь",
+            "valid": false,
+            "id": "belarus"
+        },
+        {
+            "text": "Канада",
+            "valid": false,
+            "id": "canada"
+        },
+        {
+            "text": "Новая Зеландия",
+            "valid": true,
+            "id": "newZealand"
+        }
+    ]
+]

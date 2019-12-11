@@ -1,0 +1,41 @@
+@import '../../@theme/index';
+
+.test-intro {
+    &__button-wrapper {
+        text-align: center;
+    }
+
+    &__heading {
+        margin-bottom: 50px;
+        font-size: $h3;
+        color: $testIntroText;
+
+        @media #{$md} {
+            font-size: $h3Tablet;
+        }
+
+        @media #{$lg} {
+            font-size: $subtitleBig;
+        }
+    }
+
+    &__text {
+        margin-bottom: 30px;
+        color: $testIntroText;
+        font-size: $font;
+
+        @media #{$lg} {
+            font-size: $title;
+        }
+    }
+
+    &__image {
+        @media #{$md} {
+            width: 300px;
+        }
+
+        @media #{$lg} {
+            width: 100%;
+        }
+    }
+}

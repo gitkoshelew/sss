@@ -1,0 +1,56 @@
+[
+    {
+        "heading": "Кольцо всевластия",
+        "price": 100,
+        "id": "main_ring",
+        "img": "MainRing",
+        "name": "Федор Сумкин",
+        "experience": "Полурослик без опыта",
+        "character": "Frodo"
+    },
+    {
+        "heading": "Кольцо людей",
+        "price": 40,
+        "id": "people_ring",
+        "img": "SecondRing",
+        "name": "Агроном сын Агропрома",
+        "experience": "Странник с 30-летним стажем",
+        "character": "Aragorn"
+    },
+    {
+        "heading": "Кольцо гномов",
+        "price": 50,
+        "id": "gnome_ring",
+        "img": "ThirdRing",
+        "name": "Гиви Зурабович",
+        "experience": "Старый бородатый карлик",
+        "character": "Gimli"
+    },
+    {
+        "heading": "Кольцо эльфов",
+        "price": 60,
+        "id": "elf_ring",
+        "img": "FourthRing",
+        "name": "Прибалтийский эльф Логовас",
+        "experience": "Эстонец с 60-летним стажем",
+        "character": "Legolas"
+    },
+    {
+        "heading": "Кольцо смелости",
+        "price": 20,
+        "id": "courage_ring",
+        "img": "FifthRing",
+        "name": "Сеня Ганджубас",
+        "experience": "Смелый полурослик",
+        "character": "Sam"
+    },
+    {
+        "heading": "Кольцо хитрости",
+        "price": 30,
+        "id": "cunning_ring",
+        "img": "SixthRing",
+        "name": "Пендальф",
+        "experience": "Батюшка с 40-летним стажем",
+        "character": "Gendalf"
+    }
+]

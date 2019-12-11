@@ -1,0 +1,86 @@
+/* src/assets/styles/utils/_mixins.scss  */
+
+@mixin isFlex($align: center, $justify: center, $direction: row, $wrap: wrap) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+}
+
+@mixin bgImg($url, $repeat: no-repeat, $position: center, $size: initial) {
+  background-image: url($url);
+  background-repeat: $repeat;
+  background-position: $position;
+  background-size: $size;
+}
+
+@mixin btn($bg, $bgHover, $color, $colorHover, $border, $borderHover) {
+  text-align: center;
+  background-color: $bg;
+  cursor: pointer;
+  color: $color;
+  display: inline-block;
+  border: 2px solid $border;
+  transition: $transition;
+  overflow: hidden;
+  @extend %after;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    color: $colorHover;
+    background: $bgHover;
+    border: 2px solid $borderHover;
+    a {
+      color: $colorHover;
+    }
+  }
+  &:active {
+    color: $btnColorActive;
+    background: $btnBgActive;
+    border: 2px solid $btnBorderActive;
+    a {
+      color: $btnColorActive;
+    }
+  }
+}
+
+@mixin round($size: 44px, $color: white, $bg: blue, $border: transparent) {
+  display: block;
+  cursor: pointer;
+  width: $size;
+  min-width: $size;
+  height: $size;
+  border-radius: 50%;
+  text-align: center;
+  background: $bg;
+  border: 2px solid $border;
+  color: $color;
+  font-size: 0;
+
+  @extend %after;
+
+  &:hover,
+  &:focus {
+    background-color: $themeColor;
+    border-color: $themeColor;
+    color: $themeLightColor;
+  }
+
+  &:active {
+    background-color: $themeDarkColor;
+    border-color: $themeDarkColor;
+  }
+}
+
+@mixin absolute {
+  content: '';
+  position: relative;
+  &:before, &:after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

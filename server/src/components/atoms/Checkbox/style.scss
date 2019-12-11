@@ -1,0 +1,122 @@
+@import '../../@theme/index';
+
+.test {
+    &__checkbox {
+        width: 30px;
+        height: 30px;
+
+        @media (min-width: 768px) {
+            width: 40px;
+            height: 40px;
+        }
+    }
+
+    &__label {
+        display: flex;
+        align-items: center;
+        font-size: $fontLess;
+        position: relative;
+        padding-left: 10px;
+        height: 24px;
+
+        @media #{$sm} {
+            height: 30px;
+        }
+
+        @media #{$lg} {
+            height: 38px;
+        }
+    }
+
+    &__label-text {
+        margin-left: 20px;
+
+        @media #{$lg} {
+            font-size: $fontLarge;
+        }
+    }
+}
+
+.checkbox {
+    position: absolute;
+    left: -9999px;
+}
+
+.checkbox:checked + div, 
+.checkbox:not(:checked) + div {
+    display: inline-block;
+    position: relative;
+    padding-left: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    @media #{$lg} {
+        padding-left: 40px;
+        line-height: 30px;
+    }
+}
+
+.checkbox:checked + div:before, 
+.checkbox:not(:checked) + div:before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 50%;
+
+    @media #{$sm} {
+        top: -13px;
+        width: 26px;
+        height: 26px;
+    }
+
+    @media #{$lg} {
+        top: -16px;
+        width: 34px;
+        height: 34px;
+    }
+}
+
+.checkbox:checked + div:after {
+    content: "";
+    position: absolute;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.checkbox:checked + div:after {
+    left: 4px;
+    top: -4px;
+    width: 10px;
+    height: 6px;
+    border-radius: 2px;
+    border-left: 3px solid#565656;
+    border-bottom: 3px solid #565656;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+
+    @media #{$sm} {
+        left: 6px;
+        width: 14px;
+        height: 7px;
+        border-left: 4px solid #565656;
+        border-bottom: 4px solid #565656;
+        border-radius: 5px;
+    }
+
+    @media #{$lg} {
+        left: 8px;
+        width: 18px;
+        height: 9px;
+        border-left: 5px solid #565656;
+        border-bottom: 5px solid #565656;
+        border-radius: 6px;
+    }
+}

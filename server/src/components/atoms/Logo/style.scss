@@ -1,0 +1,15 @@
+@import '../../@theme/index';
+
+.logo {
+    width: 102px;
+    height: 40px;
+    display: block;
+    @include bgImg('../assets/Logo.svg', $size: contain);
+
+    @media (min-width: 992px) {
+        width: 127px;
+        height: 50px;
+        display: block;
+        @include bgImg('../assets/Logo.svg', $size: contain);
+    }
+}

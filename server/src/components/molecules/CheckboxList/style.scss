@@ -1,0 +1,12 @@
+@import '../../@theme/index';
+
+.checklist {
+    margin-top: 15px;
+    &-item {
+        margin-bottom: 10px;
+
+        @media #{$lg} {
+            margin-bottom: 15px;
+        }
+    }
+}
