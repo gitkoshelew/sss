@@ -2,13 +2,39 @@
   "parser": "babel-eslint",
   "extends": ["airbnb", "prettier", "react-app"],
   "plugins": ["prettier", "react", "redux-saga"],
+  "env": {
+    "browser": true,
+    "node": true,
+    "mocha": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "destructuring": true,
+    "forOf": true,
+    "generators": false,
+    "prefer-destructuring": false,
+    "modules": true,
+    "objectLiteralComputedProperties": true,
+    "objectLiteralDuplicateProperties": false,
+    "objectLiteralShorthandMethods": true,
+    "objectLiteralShorthandProperties": true,
+    "restParams": true,
+    "spread": true,
+    "superInFunctions": true,
+    "templateStrings": true,
+    "jsx": true
+  },
   "rules": {
     "prettier/prettier": ["error"],
     "react/prop-types": 0,
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "import/no-named-as-default": 0,
-    "react/jsx-props-no-spreading": 0,
-    // "react/no-array-index-key": 0,
-    "react/button-has-type": 0
+    "comma-dangle": 0,
+    "import/no-named-as-default": "warn",
+    "react/jsx-props-no-spreading": "warn",
+    "react/no-array-index-key": "warn",
+    "react/button-has-type": "warn"
   }
 }

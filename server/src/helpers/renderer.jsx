@@ -5,32 +5,32 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import serialize from 'serialize-javascript';
 import { Helmet } from 'react-helmet';
-const {js, css} = require('../../build/public/assets/assets.json').main;
 import Routes from '../components/Routes';
 
-const assetsUrl = process.env.NODE_ENV === 'development' ? 'http://localhost:8040/assets/' : './assets/';
+const { js, css } = require('../../build/public/assets/assets.json').main;
 
-const parseAssets = (assets) => {
-  if (typeof assets === 'string'){
-    return [
-      assets.replace('./', assetsUrl)
-    ]
-  };
+const assetsUrl =
+  process.env.NODE_ENV === 'development' ? 'http://localhost:8040/assets/' : './assets/';
 
-  if (Array.isArray(assets)){
-    return assets.map(asset => typeof asset === 'string' ? asset.replace('./', assetsUrl) : '')
-  };
+const parseAssets = assets => {
+  if (typeof assets === 'string') {
+    return [assets.replace('./', assetsUrl)];
+  }
 
-  return []
-}
+  if (Array.isArray(assets)) {
+    return assets.map(asset => (typeof asset === 'string' ? asset.replace('./', assetsUrl) : ''));
+  }
+
+  return [];
+};
 
 const renderCssLinks = parseAssets(css).reduce((acc, cssUrl) => {
-  return acc + `<link rel="stylesheet" href="${cssUrl}">`
+  return `${acc}<link rel="stylesheet" href="${cssUrl}">`;
 }, '');
 
 const renderJsLinks = parseAssets(js).reduce((acc, jsUrl) => {
-  return acc + `<script type="application/javascript" src="${jsUrl}"></script>`
-}, '')
+  return `${acc}<script type="application/javascript" src="${jsUrl}"></script>`;
+}, '');
 
 export default (req, store, context) => {
   const content = renderToString(

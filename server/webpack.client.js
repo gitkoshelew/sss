@@ -117,7 +117,7 @@ const config = {
   // context: path.resolve(__dirname, './src'),
   entry: [
     isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),
-    './src/client.js'
+    './src/client.jsx'
   ].filter(Boolean),
   output: {
     path: `${__dirname}/build/public/assets/`,
@@ -132,15 +132,15 @@ const config = {
         use: [
           {
             options: {
-              cache: true,
-              eslintPath: require.resolve('eslint')
-              // formatter: require.resolve('react-dev-utils/eslintFormatter'),
-              // resolvePluginsRelativeTo: __dirname,
+              // cache: true,
+              eslintPath: require.resolve('eslint'),
+              formatter: require.resolve('react-dev-utils/eslintFormatter'),
+              resolvePluginsRelativeTo: __dirname
             },
             loader: require.resolve('eslint-loader')
           }
-        ]
-        // include: paths.appSrc
+        ],
+        include: paths.appSrc
       },
       {
         oneOf: [
@@ -259,7 +259,7 @@ const config = {
     }
   }
 };
-
+console.log(config.module.rules[0].use[0].options, __dirname);
 // const mergedmodule = merge(baseConfig, config);
 // console.log(mergedmodule)
 

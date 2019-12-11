@@ -3,6 +3,6 @@
 /src/sagaStore/createStoreClient.js
 /src/sagaStore/createStoreServer.js
 /src/server.js
-/src/client.js
+/src/helpers/utils.js
 test.js
 !.eslintrc.js

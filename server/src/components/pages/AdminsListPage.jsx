@@ -6,7 +6,7 @@ import { fetchAdmins as fetchAdminsSaga } from '../../sagaStore/sagas/admins';
 
 class AdminsListPage extends Component {
   componentDidMount() {
-    const { dispatchAdminsFetch } = this.props;
+    const dispatchAdminsFetch = this.props.dispatchAdminsFetch;
     dispatchAdminsFetch();
   }
 

@@ -44,10 +44,10 @@ app.get('*', (req, res) => {
       return res.redirect(301, context.url);
     }
     if (context.notFound) {
-      res.status(404);
+      return res.status(404);
     }
 
-    res.send(content);
+    return res.send(content);
   });
 
   store.close();
