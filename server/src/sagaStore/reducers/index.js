@@ -8,5 +8,5 @@ export default combineReducers({
   users: usersReducer,
   currentUser: currentUserReducer,
   auth: authReducer,
-  admins: adminsReducer
+  admins: adminsReducer,
 });

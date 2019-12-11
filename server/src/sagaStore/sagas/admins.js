@@ -10,18 +10,18 @@ export function* fetchAdmins() {
     if (admins.error) {
       yield put({
         type: ADMINS_FAIL,
-        payload: admins.error
+        payload: admins.error,
       });
     } else {
       yield put({
         type: ADMINS_SUCCESS,
-        payload: admins
+        payload: admins,
       });
     }
   } catch (error) {
     yield put({
       type: ADMINS_FAIL,
-      payload: error
+      payload: error,
     });
   }
 }

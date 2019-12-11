@@ -6,7 +6,7 @@ import sagas from './sagas';
 
 export default () => {
   const axiosInstance = axios.create({
-    baseURL: '/api'
+    baseURL: '/api',
   });
 
   const effectMiddleware = next => effect => {

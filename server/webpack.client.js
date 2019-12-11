@@ -33,11 +33,11 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
     isEnvDevelopment && require.resolve('style-loader'),
     isEnvProduction && {
-      loader: MiniCssExtractPlugin.loader
+      loader: MiniCssExtractPlugin.loader,
     },
     {
       loader: require.resolve('css-loader'),
-      options: cssOptions
+      options: cssOptions,
     },
     {
       loader: require.resolve('postcss-loader'),
@@ -49,29 +49,29 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
           require('postcss-flexbugs-fixes'),
           require('postcss-preset-env')({
             autoprefixer: {
-              flexbox: 'no-2009'
+              flexbox: 'no-2009',
             },
-            stage: 3
+            stage: 3,
           }),
-          postcssNormalize()
+          postcssNormalize(),
         ],
-        sourceMap: shouldUseSourceMap
-      }
-    }
+        sourceMap: shouldUseSourceMap,
+      },
+    },
   ].filter(Boolean);
   if (preProcessor) {
     loaders.push(
       {
         loader: require.resolve('resolve-url-loader'),
         options: {
-          sourceMap: shouldUseSourceMap
-        }
+          sourceMap: shouldUseSourceMap,
+        },
       },
       {
         loader: require.resolve(preProcessor),
         options: {
-          sourceMap: true
-        }
+          sourceMap: true,
+        },
       }
     );
   }
@@ -82,9 +82,9 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env': {
       BROWSER: JSON.stringify(true),
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-    }
-  })
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
+  }),
 ];
 
 if (!isEnvDevelopment) {
@@ -92,7 +92,7 @@ if (!isEnvDevelopment) {
   plugins.push(
     new AssetsPlugin({
       filename: 'assets.json',
-      path: path.resolve(__dirname, './build/public/assets/')
+      path: path.resolve(__dirname, './build/public/assets/'),
     })
   );
   plugins.push(
@@ -103,7 +103,7 @@ if (!isEnvDevelopment) {
       // },
       chunkFilename: '[id].css',
       ignoreOrder: false,
-      allChunks: true
+      allChunks: true,
     })
   );
 }
@@ -117,12 +117,12 @@ const config = {
   // context: path.resolve(__dirname, './src'),
   entry: [
     isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),
-    './src/client.jsx'
+    './src/client.jsx',
   ].filter(Boolean),
   output: {
     path: `${__dirname}/build/public/assets/`,
     filename: addHash('[name].bundle.js'),
-    publicPath: isEnvProduction ? '.' : 'http://localhost:8040/assets'
+    publicPath: isEnvProduction ? '.' : 'http://localhost:8040/assets',
   },
   module: {
     rules: [
@@ -135,12 +135,12 @@ const config = {
               // cache: true,
               eslintPath: require.resolve('eslint'),
               formatter: require.resolve('react-dev-utils/eslintFormatter'),
-              resolvePluginsRelativeTo: __dirname
+              resolvePluginsRelativeTo: __dirname,
             },
-            loader: require.resolve('eslint-loader')
-          }
+            loader: require.resolve('eslint-loader'),
+          },
         ],
-        include: paths.appSrc
+        include: paths.appSrc,
       },
       {
         oneOf: [
@@ -148,21 +148,21 @@ const config = {
             test: /\.(woff|woff2|ttf|eot)/,
             loader: require.resolve('url-loader'),
             options: {
-              limit: 1
-            }
+              limit: 1,
+            },
           },
           {
             test: cssRegex,
             exclude: cssModuleRegex,
             use: getStyleLoaders({
               importLoaders: 1,
-              sourceMap: isEnvProduction && shouldUseSourceMap
+              sourceMap: isEnvProduction && shouldUseSourceMap,
             }),
             // Don't consider CSS imports dead code even if the
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
             // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true
+            sideEffects: true,
           },
           // using the extension .module.css
           {
@@ -171,8 +171,8 @@ const config = {
               importLoaders: 1,
               sourceMap: isEnvProduction && shouldUseSourceMap,
               modules: true,
-              getLocalIdent: getCSSModuleLocalIdent
-            })
+              getLocalIdent: getCSSModuleLocalIdent,
+            }),
           },
           {
             test: sassRegex,
@@ -180,7 +180,7 @@ const config = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-                sourceMap: shouldUseSourceMap
+                sourceMap: shouldUseSourceMap,
               },
               'sass-loader'
             ),
@@ -188,7 +188,7 @@ const config = {
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
             // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true
+            sideEffects: true,
           },
           {
             test: sassModuleRegex,
@@ -197,10 +197,10 @@ const config = {
                 importLoaders: 2,
                 sourceMap: shouldUseSourceMap,
                 modules: true,
-                getLocalIdent: getCSSModuleLocalIdent
+                getLocalIdent: getCSSModuleLocalIdent,
               },
               'sass-loader'
-            )
+            ),
           },
           {
             test: lessRegex,
@@ -208,7 +208,7 @@ const config = {
             use: getStyleLoaders(
               {
                 importLoaders: 2,
-                sourceMap: shouldUseSourceMap
+                sourceMap: shouldUseSourceMap,
               },
               'less-loader'
             ),
@@ -216,15 +216,15 @@ const config = {
             // containing package claims to have no side effects.
             // Remove this when webpack adds a warning or an error for this.
             // See https://github.com/webpack/webpack/issues/6571
-            sideEffects: true
+            sideEffects: true,
           },
           {
             test: /\.(png|jpe?g|gif|svg|bmp|ico)(\?.*)?$/,
             loader: 'url-loader',
             options: {
               limit: isEnvDevelopment ? 3000 : 1000,
-              name: addHash('/media/[name].[ext]')
-            }
+              name: addHash('/media/[name].[ext]'),
+            },
           },
           {
             loader: require.resolve('file-loader'),
@@ -234,12 +234,12 @@ const config = {
             // by webpacks internal loaders.
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              name: addHash('/media/[name].[ext]')
-            }
-          }
-        ]
-      }
-    ]
+              name: addHash('/media/[name].[ext]'),
+            },
+          },
+        ],
+      },
+    ],
   },
   devtool: isEnvDevelopment ? 'source-map' : false,
   devServer: {
@@ -249,17 +249,17 @@ const config = {
       '*': {
         target: 'http://localhost:3000',
         changeOrigin: true,
-        secure: false
-      }
+        secure: false,
+      },
     },
     hot: true,
     quiet: true,
     watchOptions: {
-      ignored: ignoredFiles(paths.appSrcFolder)
-    }
-  }
+      ignored: ignoredFiles(paths.appSrcFolder),
+    },
+  },
 };
-console.log(config.module.rules[0].use[0].options, __dirname);
+
 // const mergedmodule = merge(baseConfig, config);
 // console.log(mergedmodule)
 

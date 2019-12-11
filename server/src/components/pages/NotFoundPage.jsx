@@ -6,5 +6,5 @@ const NotFoundPage = ({ staticContext = {} }) => {
 };
 
 export default {
-  component: NotFoundPage
+  component: NotFoundPage,
 };

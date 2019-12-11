@@ -10,7 +10,7 @@ import {
   AUTH_FAIL,
   AUTH_SUCCESS,
   AUTH_FETCH_REGISTER,
-  AUTH_REGISTER_FAIL
+  AUTH_REGISTER_FAIL,
 } from '../actions/constants';
 
 export function* fetchRegister() {
@@ -21,23 +21,23 @@ export function* fetchRegister() {
     if (user.error) {
       yield put({
         type: AUTH_REGISTER_FAIL,
-        payload: user.error
+        payload: user.error,
       });
     } else {
       yield put({
         type: AUTH_SUCCESS,
-        payload: true
+        payload: true,
       });
 
       yield put({
         type: CURRENT_USER_SUCCESS,
-        payload: user
+        payload: user,
       });
     }
   } catch (error) {
     yield put({
       type: AUTH_REGISTER_FAIL,
-      payload: 'somethink went wrong, try again'
+      payload: 'somethink went wrong, try again',
     });
   }
 }
@@ -53,21 +53,21 @@ export function* fetchLogIn() {
 
     yield put({
       type: AUTH_SUCCESS,
-      payload: true
+      payload: true,
     });
 
     yield put({
       type: CURRENT_USER_SUCCESS,
-      payload: user
+      payload: user,
     });
   } catch (error) {
     yield put({
       type: AUTH_FAIL,
-      payload: error
+      payload: error,
     });
 
     yield put({
-      type: CURRENT_USER_FAIL
+      type: CURRENT_USER_FAIL,
     });
   }
 }
@@ -82,12 +82,12 @@ export function* fetchLogOut() {
 
     yield put({
       type: AUTH_SUCCESS,
-      payload: false
+      payload: false,
     });
   } catch (error) {
     yield put({
       type: AUTH_FAIL,
-      payload: error
+      payload: error,
     });
   }
 }

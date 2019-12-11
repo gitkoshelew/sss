@@ -5,5 +5,5 @@ import data from './data';
 
 export default combineReducers({
   data,
-  form
+  form,
 });

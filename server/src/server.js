@@ -15,7 +15,7 @@ app.use(
     proxyReqOptDecorator(opts) {
       opts.headers['x-forwarded-host'] = 'localhost:3000';
       return opts;
-    }
+    },
   })
 );
 

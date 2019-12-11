@@ -12,23 +12,23 @@ export default [
       {
         ...HomePage,
         path: '/',
-        exact: true
+        exact: true,
       },
       {
         ...AdminsListPage,
-        path: '/admins'
+        path: '/admins',
       },
       {
         ...UsersListPage,
-        path: '/users'
+        path: '/users',
       },
       {
         ...AuthPage,
-        path: '/log'
+        path: '/log',
       },
       {
-        ...NotFoundPage
-      }
-    ]
-  }
+        ...NotFoundPage,
+      },
+    ],
+  },
 ];

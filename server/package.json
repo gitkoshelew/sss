@@ -4,6 +4,7 @@
   "description": "Server side rendering project",
   "main": "index.js",
   "scripts": {
+    "precommit": "lint-staged",
     "lint": "eslint --ignore-path .eslintignore ./src",
     "dev-needreload:build-client-watch": "set NODE_ENV=production&&set REBUILD_MODE=true&& webpack --mode production --env.NODE_ENV=production  --config webpack.client.js --watch",
     "dev-needreload:build-server-watch": "set NODE_ENV=production&&set REBUILD_MODE=true&& webpack --mode production --env.NODE_ENV=production  --config webpack.server.js --watch",
@@ -98,6 +99,12 @@
     "react-hot-loader": "^4.12.15",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [

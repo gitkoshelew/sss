@@ -8,12 +8,12 @@ export function* fetchCurrentUser() {
 
     yield put({
       type: CURRENT_USER_SUCCESS,
-      payload: user
+      payload: user,
     });
   } catch (error) {
     yield put({
       type: CURRENT_USER_FAIL,
-      payload: error
+      payload: error,
     });
   }
 }

@@ -50,7 +50,7 @@ function mapStateToProps(state) {
 export default {
   component: connect(mapStateToProps, {
     dispatchUsersFetch: usersFetch,
-    dispatchUsersSuccess: usersSuccess
+    dispatchUsersSuccess: usersSuccess,
   })(UsersList),
-  loadGeneratorData: fetchUsersSaga
+  loadGeneratorData: fetchUsersSaga,
 };

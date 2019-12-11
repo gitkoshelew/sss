@@ -10,18 +10,18 @@ export function* fetchUsers() {
     if (users.error) {
       yield put({
         type: USERS_FAIL,
-        payload: users.error
+        payload: users.error,
       });
     } else {
       yield put({
         type: USERS_SUCCESS,
-        payload: users
+        payload: users,
       });
     }
   } catch (error) {
     yield put({
       type: USERS_FAIL,
-      payload: error
+      payload: error,
     });
   }
 }

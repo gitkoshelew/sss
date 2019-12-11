@@ -7,12 +7,12 @@ const AuthPage = ({
   password,
   dispatchAuthFormChange,
   dispatchAuthFetchLogIn,
-  dispatchAuthFetchRegister
+  dispatchAuthFetchRegister,
 }) => {
   const onFieldChange = e => {
     dispatchAuthFormChange({
       name: e.target.name,
-      value: e.target.value
+      value: e.target.value,
     });
   };
 
@@ -43,7 +43,7 @@ const AuthPage = ({
 function mapStateToProps(state) {
   return {
     password: state.logForm.password,
-    email: state.logForm.email
+    email: state.logForm.email,
   };
 }
 
@@ -51,10 +51,10 @@ function mapDispatchToProps() {
   return {
     dispatchAuthFetchLogIn: authFetchLogIn,
     dispatchAuthFetchRegister: authFetchRegister,
-    dispatchAuthFormChange: authFormChange
+    dispatchAuthFormChange: authFormChange,
   };
 }
 
 export default {
-  component: connect(mapStateToProps, mapDispatchToProps)(AuthPage)
+  component: connect(mapStateToProps, mapDispatchToProps)(AuthPage),
 };

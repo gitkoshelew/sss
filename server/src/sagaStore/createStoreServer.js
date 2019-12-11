@@ -7,11 +7,11 @@ import reducers from './reducers';
 export default req => {
   const axiosCookieInstance = axios.create({
     baseURL: env.apiUrl,
-    headers: { cookie: req.get('cookie') || '' }
+    headers: { cookie: req.get('cookie') || '' },
   });
 
   const axiosInstance = axios.create({
-    baseURL: env.apiUrl
+    baseURL: env.apiUrl,
   });
 
   const effectMiddleware = next => effect => {
@@ -27,7 +27,7 @@ export default req => {
   };
 
   const sagaMiddleware = createSagaMiddleware({
-    effectMiddlewares: [effectMiddleware]
+    effectMiddlewares: [effectMiddleware],
   });
 
   const store = createStore(reducers, {}, applyMiddleware(sagaMiddleware));

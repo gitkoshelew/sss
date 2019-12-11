@@ -12,6 +12,6 @@ export default function* rootSaga() {
     fetchAdminsSaga(),
     fetchLogInSaga(),
     fetchLogOutSaga(),
-    fetchRegisterSaga()
+    fetchRegisterSaga(),
   ]);
 }

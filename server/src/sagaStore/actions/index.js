@@ -5,7 +5,7 @@ export {
   authFetchRegister,
   authRegisterFail,
   authSuccess,
-  authFail
+  authFail,
 } from './auth';
 
 export { adminsFetch, adminsSuccess, adminsFail } from './admins';

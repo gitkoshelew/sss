@@ -2,7 +2,7 @@ import { AUTH_SUCCESS, AUTH_FAIL, AUTH_REGISTER_FAIL } from '../../actions/const
 
 const initialState = {
   data: null,
-  errors: []
+  errors: [],
 };
 
 export default function(state = initialState, action) {

@@ -14,5 +14,5 @@ const App = ({ route }) => {
 
 export default {
   component: App,
-  loadGeneratorData: fetchCurrentUserSaga
+  loadGeneratorData: fetchCurrentUserSaga,
 };
