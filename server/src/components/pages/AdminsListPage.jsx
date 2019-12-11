@@ -12,7 +12,7 @@ class AdminsListPage extends Component {
 
   renderAdmins() {
     const {
-      admins: { data, errors }
+      admins: { data, errors },
     } = this.props;
 
     if (errors.length) {
@@ -41,5 +41,5 @@ export default {
   component: connect(mapStateToProps, { dispatchAdminsFetch: adminsFetch })(
     requireAuth(AdminsListPage)
   ),
-  loadGeneratorData: fetchAdminsSaga
+  loadGeneratorData: fetchAdminsSaga,
 };
