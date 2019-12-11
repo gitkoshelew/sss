@@ -7,7 +7,7 @@ import {
   sliderLeftArrowAction,
   sliderRightArrowAction,
   circleSliderAction,
-} from '../../store/actions';
+} from '../../sagaStore/actions';
 
 class Slider extends React.Component {
   constructor() {

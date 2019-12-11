@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import Button from '../../atoms/Button';
 import { connect } from 'react-redux';
-import { changeInputAction, focusInputAction, blurInputAction } from '../../store/actions';
+import { changeInputAction, focusInputAction, blurInputAction } from '../../sagaStore/actions';
 
 class ContactForm extends Component {
   render() {

@@ -1,12 +1,12 @@
 import React from 'react';
 import './style.scss';
 import Slider from '../../organizms/Slider';
-import MainRing from '../../assets/rings/main-ring.jpg';
-import SecondRing from '../../assets/rings/ring2.jpg';
-import ThirdRing from '../../assets/rings/ring3.jpg';
-import FourthRing from '../../assets/rings/ring4.jpg';
-import FifthRing from '../../assets/rings/ring5.jpg';
-import SixthRing from '../../assets/rings/ring6.jpg';
+import MainRing from '../../../assets/rings/main-ring.jpg';
+import SecondRing from '../../../assets/rings/ring2.jpg';
+import ThirdRing from '../../../assets/rings/ring3.jpg';
+import FourthRing from '../../../assets/rings/ring4.jpg';
+import FifthRing from '../../../assets/rings/ring5.jpg';
+import SixthRing from '../../../assets/rings/ring6.jpg';
 import Button from '../../atoms/Button';
 import { Link } from 'react-router-dom';
 

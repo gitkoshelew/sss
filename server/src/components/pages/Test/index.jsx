@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import './style.scss';
 import CheckboxList from '../../molecules/CheckboxList';
 import ProgressBar from '../../atoms/ProgressBar';
-import Testimage from '../../assets/Testimage.svg';
+import Testimage from '../../../assets/Testimage.svg';
 import checkList from './tests.json';
 import Button from '../../atoms/Button';
 import {
@@ -10,11 +12,9 @@ import {
   decrementTestAction,
   checkboxAction,
   endTestAction,
-} from '../../store/actions';
-import { connect } from 'react-redux';
+} from '../../../sagaStore/actions';
 import questions from './questions.json';
 import rings from '../Rings/rings.json';
-import { Link } from 'react-router-dom';
 
 class Test extends Component {
   render() {

@@ -7,7 +7,7 @@ import {
   commentButtonAction,
   focusInputAction,
   blurInputAction,
-} from '../../store/actions';
+} from '../../sagaStore/actions';
 
 class Reviews extends Component {
   render() {

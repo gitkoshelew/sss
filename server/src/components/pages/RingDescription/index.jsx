@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './style.scss';
 import Button from '../../atoms/Button';
 import { connect } from 'react-redux';
-import { adventureItemAction } from '../../store/actions';
+import { adventureItemAction } from '../../sagaStore/actions';
 import { Link } from 'react-router-dom';
 import MainRing from '../../assets/rings/main-ring.jpg';
 import SecondRing from '../../assets/rings/ring2.jpg';

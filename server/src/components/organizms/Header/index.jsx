@@ -4,7 +4,7 @@ import Nav from '../../molecules/Nav';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import { connect } from 'react-redux';
-import { headerNavOpenAction } from '../../store/actions';
+import { headerNavOpenAction } from '../../sagaStore/actions';
 
 function Header(props) {
   const { isHeaderNavOpen, headerNavOpenHandler, headerButtonText } = props;

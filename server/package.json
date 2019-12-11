@@ -105,12 +105,12 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "*.ljs": [
       "eslint",
       "prettier --write",
       "git add"
     ],
-    "*.jsx": [
+    "*.ljsx": [
       "eslint",
       "prettier --write",
       "git add"
