@@ -9,14 +9,14 @@ import { authFetchLogOut } from '../../sagaStore/actions';
 
 import './style.less';
 
-const Header = ({ auth: { data }, dispatchAuthFetchLogOut }) => {
-  const authButton = data ? (
+const Header = ({ data: { value }, dispatchAuthFetchLogOut }) => {
+  const authButton = value ? (
     <a href={env.apiLogoutGoogleUrl}>Logout</a>
   ) : (
     <a href={env.apiLoginGoogleUrl}>Login</a>
   );
 
-  const logButton = data ? (
+  const logButton = value ? (
     <button type="button" onClick={dispatchAuthFetchLogOut}>
       OUT
     </button>
@@ -48,8 +48,8 @@ const Header = ({ auth: { data }, dispatchAuthFetchLogOut }) => {
   );
 };
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth: { data } }) {
+  return { data };
 }
 
 export default connect(mapStateToProps, { dispatchAuthFetchLogOut: authFetchLogOut })(Header);

@@ -6,8 +6,8 @@ import { fetchUsers as fetchUsersSaga } from '../../sagaStore/sagas/users';
 
 class UsersList extends Component {
   componentDidMount() {
-    const { dispathcUsersFetch } = this.props;
-    dispathcUsersFetch();
+    const { dispatchUsersFetch } = this.props;
+    dispatchUsersFetch();
   }
 
   componentWillUnmount() {

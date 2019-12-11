@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 export default ChildComponent => {
-  const RequireAuth = ({ auth: { data }, ...spread }) => {
-    switch (data) {
+  const RequireAuth = ({ data: { value }, ...spread }) => {
+    switch (value) {
       case false:
       case null:
         return <Redirect to="/" />;
@@ -13,8 +13,8 @@ export default ChildComponent => {
     }
   };
 
-  function mapStateToProps({ auth }) {
-    return { auth };
+  function mapStateToProps({ auth: { data } }) {
+    return { data };
   }
 
   return connect(mapStateToProps)(RequireAuth);

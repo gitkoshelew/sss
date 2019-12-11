@@ -12,7 +12,9 @@ import reducers from './sagaStore/reducers';
 const store = createStore();
 
 if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./sagaStore/reducers', () => store.replaceReducer(reducers));
+  module.hot.accept('./sagaStore/reducers', () => {
+    store.replaceReducer(reducers);
+  });
 }
 
 ReactDOM.hydrate(

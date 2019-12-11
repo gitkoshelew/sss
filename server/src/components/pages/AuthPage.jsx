@@ -42,19 +42,17 @@ const AuthPage = ({
 
 function mapStateToProps(state) {
   return {
-    password: state.logForm.password,
-    email: state.logForm.email,
+    password: state.auth.form.password,
+    email: state.auth.form.email,
   };
 }
 
-function mapDispatchToProps() {
-  return {
-    dispatchAuthFetchLogIn: authFetchLogIn,
-    dispatchAuthFetchRegister: authFetchRegister,
-    dispatchAuthFormChange: authFormChange,
-  };
-}
+const actionCreators = {
+  dispatchAuthFetchLogIn: authFetchLogIn,
+  dispatchAuthFetchRegister: authFetchRegister,
+  dispatchAuthFormChange: authFormChange,
+};
 
 export default {
-  component: connect(mapStateToProps, mapDispatchToProps)(AuthPage),
+  component: connect(mapStateToProps, actionCreators)(AuthPage),
 };

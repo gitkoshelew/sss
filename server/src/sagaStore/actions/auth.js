@@ -8,10 +8,13 @@ import {
   AUTH_FAIL,
 } from './constants';
 
-export const authFormChange = payload => ({
-  type: AUTH_FORM_CHANGE,
-  payload,
-});
+export const authFormChange = payload => {
+  console.log(payload);
+  return {
+    type: AUTH_FORM_CHANGE,
+    payload,
+  };
+};
 
 export const authFetchLogIn = () => ({
   type: AUTH_FETCH_LOG_IN,
