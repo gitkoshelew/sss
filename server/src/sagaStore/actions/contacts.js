@@ -4,12 +4,12 @@ import {
   CONTACTS_INPUT_BLUR,
   CONTACTS_INPUT_CHANGE,
   CONTACTS_INPUT_FOCUS,
-  CONTACTS_SEND,
+  CONTACTS_SEND_FORM,
 } from './constants';
 
-export const contactsChangeInputAction = i => ({
+export const contactsChangeInputAction = payload => ({
   type: CONTACTS_INPUT_CHANGE,
-  elem: i,
+  payload,
 });
 
 export const constactsFocusInputAction = i => ({
@@ -32,5 +32,5 @@ export const contactsAdventureItemAction = i => ({
 });
 
 export const constctsSendFormAction = () => ({
-  type: CONTACTS_SEND,
+  type: CONTACTS_SEND_FORM,
 });

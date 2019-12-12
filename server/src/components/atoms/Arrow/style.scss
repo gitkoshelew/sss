@@ -1,36 +1,36 @@
-@import '../../@theme/index';
+@import '../../../@theme/index';
 
 .arrow {
-    width: 44px;
-    height: 44px;
-    @include absolute;
-    cursor: pointer;
-    &:before {
-        content: '';
-        display: block;
-        width: 24px;
-        height: 24px;
-        border: 4px solid $border5;
-        border-left: none;
-        border-bottom: none;
-    }
-    &:focus {
-        background: none;
-    }
+  width: 44px;
+  height: 44px;
+  @include absolute;
+  cursor: pointer;
+  &:before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 4px solid $border5;
+    border-left: none;
+    border-bottom: none;
+  }
+  &:focus {
+    background: none;
+  }
 
-    &:target {
-        background: none;
-    }
+  &:target {
+    background: none;
+  }
 
-    &:hover {
-        background: none;
-    }
+  &:hover {
+    background: none;
+  }
 }
 
 .arrow_right {
-    transform: rotate(45deg);
+  transform: rotate(45deg);
 }
 
 .arrow_left {
-    transform: rotate(-135deg);
+  transform: rotate(-135deg);
 }

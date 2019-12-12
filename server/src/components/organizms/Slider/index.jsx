@@ -1,13 +1,13 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './style.scss';
 import Arrow from '../../atoms/Arrow';
 import ProductCard from '../../molecules/ProductCard';
-import { connect } from 'react-redux';
 import {
-  sliderLeftArrowAction,
-  sliderRightArrowAction,
-  circleSliderAction,
-} from '../../sagaStore/actions';
+  sliderLeftAction,
+  sliderRightAction,
+  sliderCircleAction,
+} from '../../../sagaStore/actions';
 
 class Slider extends React.Component {
   constructor() {
@@ -24,8 +24,9 @@ class Slider extends React.Component {
   }
 
   timeOfHandler = () => {
+    const { rightArrowClickHandler } = this.props;
     this.timeOut = setTimeout(() => {
-      this.props.rightArrowClickHandler();
+      rightArrowClickHandler();
       this.timeOfHandler();
     }, 5000);
   };
@@ -38,6 +39,9 @@ class Slider extends React.Component {
       circleClickHandler,
       rightArrowClickHandler,
       leftArrowClickHandler,
+      activeSlide,
+      prevSlide,
+      nextSlide,
     } = this.props;
     const modClass = modificator ? `slider_${modificator}` : '';
 
@@ -49,33 +53,20 @@ class Slider extends React.Component {
 
         <div className="slider__slides">
           {slides.map((el, i) => {
-            const order =
-              i === this.props.activeSlide
-                ? 'slide__second'
-                : i === this.props.prevSlide
-                ? 'slide__first'
-                : i === this.props.nextSlide
-                ? 'slide__third'
-                : '';
-
-            const slideClass =
-              i === this.props.activeSlide
-                ? 'slide__active d-none d-sm-block'
-                : i === this.props.prevSlide
-                ? 'slide__prev'
-                : i === this.props.nextSlide
-                ? 'slide__next d-none d-md-block'
-                : '';
+            const { id, heading, price, img } = el;
 
             return (
-              <div className={`slider__slide ${slideClass} ${order}`} key={el.id}>
-                <ProductCard
-                  section="rings"
-                  heading={el.heading}
-                  price={el.price}
-                  id={el.id}
-                  imgUrl={el.img}
-                />
+              <div
+                className={`slider__slide  
+                ${i === activeSlide ? 'slide__active d-none d-sm-block' : ' '}
+                ${i === prevSlide ? 'slide__prev' : ' '} 
+                ${i === nextSlide ? 'slide__next d-none d-md-block' : ' '}  
+                ${i === activeSlide ? 'slide__second' : ' '}
+                ${i === prevSlide ? 'slide__first' : ' '}
+                ${i === nextSlide ? 'slide__third' : ' '}`}
+                key={id}
+              >
+                <ProductCard section="rings" heading={heading} price={price} id={id} imgUrl={img} />
               </div>
             );
           })}
@@ -87,15 +78,15 @@ class Slider extends React.Component {
 
         <div className="slider__circles  d-none d-md-flex">
           {slides.map((el, i) => {
-            const activeCircle = i === this.props.prevSlide ? 'circle__active' : '';
-            const activeInsideCircle = i === this.props.prevSlide ? 'inside-circle__active' : '';
             return (
               <div
-                className={`slider__circle ${activeCircle}`}
+                className={`slider__circle ${prevSlide ? 'circle__active' : ''}`}
                 key={i}
                 onClick={() => circleClickHandler(i)}
               >
-                <div className={`slider__inside-circle ${activeInsideCircle}`}></div>
+                <div
+                  className={`slider__inside-circle ${prevSlide ? 'inside-circle__active' : ''}`}
+                />
               </div>
             );
           })}
@@ -106,19 +97,19 @@ class Slider extends React.Component {
 }
 
 const SliderConnect = connect(
-  state => ({
-    ...state.slider,
+  ({ ringsSlider }) => ({
+    ...ringsSlider,
   }),
 
   dispatch => ({
     rightArrowClickHandler() {
-      dispatch(sliderRightArrowAction());
+      dispatch(sliderRightAction());
     },
     leftArrowClickHandler() {
-      dispatch(sliderLeftArrowAction());
+      dispatch(sliderLeftAction());
     },
     circleClickHandler(i) {
-      dispatch(circleSliderAction(i));
+      dispatch(sliderCircleAction({ index: i }));
     },
   })
 )(Slider);

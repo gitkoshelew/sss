@@ -1,6 +1,6 @@
 import { HEADER_NAV_OPEN } from '../actions/constants';
 
-export const header = (state = {}, action) => {
+const header = (state = {}, action) => {
   switch (action.type) {
     case HEADER_NAV_OPEN:
       return {
@@ -12,3 +12,5 @@ export const header = (state = {}, action) => {
       return state;
   }
 };
+
+export default header;

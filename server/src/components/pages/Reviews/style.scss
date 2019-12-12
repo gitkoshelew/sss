@@ -1,105 +1,104 @@
-@import '../../@theme/index';
+@import '../../../@theme/index';
 
 .reviews {
-    
+  &__form {
+    @include isFlex($direction: column);
+    text-align: center;
+  }
 
-    &__form {
-        @include isFlex($direction: column);
-        text-align: center;
+  &__heading {
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media #{$sm} {
+      margin-bottom: 30px;
     }
 
-    &__heading {
-        margin-bottom: 20px;
-        text-align: center;
+    @media #{$md} {
+      margin-bottom: 40px;
+    }
+  }
 
-        @media #{$sm} {
-            margin-bottom: 30px;
-        }
+  &__label {
+    width: 100%;
+    position: relative;
 
-        @media #{$md} {
-            margin-bottom: 40px;
-        }
+    @media #{$sm} {
+      width: 400px;
     }
 
-    &__label {
-        width: 100%;
-        position: relative;
+    @media #{$lg} {
+      width: 480px;
+    }
+  }
 
-        @media #{$sm} {
-            width: 400px;
-        }
+  &__label-text {
+    display: block;
+  }
 
-        @media #{$lg} {
-            width: 480px;
-        }
+  &__input {
+    margin-bottom: 5px;
+    border: 2px solid $borderComment;
+    width: 100%;
+    font-size: $fontLess;
+    border-radius: $borderRad;
+    padding: 5px 0 5px 10px;
+
+    @media #{$sm} {
+      font-size: $font;
+      width: 400px;
     }
 
-    &__label-text {
-        display: block;
+    @media #{$md} {
+      width: 400px;
     }
 
-    &__input {
-        margin-bottom: 5px;
-        border: 2px solid $borderComment;
-        width: 100%;
-        font-size: $fontLess;
-        border-radius: $borderRad;
-        padding: 5px 0 5px 10px;
+    @media #{$lg} {
+      font-size: $fontLarge;
+      width: 480px;
+    }
+  }
 
-        @media #{$sm} {
-            font-size: $font;
-            width: 400px;
-        }
+  &__area {
+    width: 100%;
+    resize: none;
+    height: 60px;
+    border: 2px solid $borderComment;
+    font-family: $fontMain;
+    font-size: $fontLess;
+    border-radius: $borderRad;
+    padding: 5px 40px 5px 10px;
 
-        @media #{$md} {
-            width: 400px;
-        }
-
-        @media #{$lg} {
-            font-size: $fontLarge;
-            width: 480px;
-        }
+    @media #{$sm} {
+      width: 400px;
+      font-size: $font;
     }
 
-    &__area {
-        width: 100%;
-        resize: none;
-        height: 60px;
-        border: 2px solid $borderComment;
-        font-family: $fontMain;
-        font-size: $fontLess;
-        border-radius: $borderRad;
-        padding: 5px 40px 5px 10px;
-
-        @media #{$sm} {
-            width: 400px;
-            font-size: $font;
-        }
-
-        @media #{$md} {
-            width: 400px;
-            height: 80px;
-        }
-
-        @media #{$lg} {
-            font-size: $fontLarge;
-            width: 480px;
-        }
+    @media #{$md} {
+      width: 400px;
+      height: 80px;
     }
 
-    &__no-reviews, &__comment {
-        margin-top: 20px;
-        width: 100%;
-        padding: 10px;
+    @media #{$lg} {
+      font-size: $fontLarge;
+      width: 480px;
     }
+  }
 
-    &__name {
-        font-weight: bold;
-        color: $mainPageText;
-    }
+  &__no-reviews,
+  &__comment {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+  }
 
-    &__date {
-        font-weight: normal;
-        color: $fg;
-    }
+  &__name {
+    font-weight: bold;
+    color: $mainPageText;
+  }
+
+  &__date {
+    font-weight: normal;
+    color: $fg;
+  }
 }

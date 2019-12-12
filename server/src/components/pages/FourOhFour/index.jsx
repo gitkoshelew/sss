@@ -1,5 +1,5 @@
 import React from 'react';
-import Travolta from '../../assets/Travolta.gif';
+import Travolta from '../../../assets/images/Travolta.gif';
 import './style.scss';
 
 function FourOhFour() {
@@ -21,4 +21,6 @@ function FourOhFour() {
   );
 }
 
-export default FourOhFour;
+export default {
+  component: FourOhFour,
+};

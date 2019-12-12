@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.scss';
 
-function Contact() {
+function Contacts() {
   return (
     <section className="contact">
       <div className="container">
@@ -17,4 +17,6 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default {
+  component: Contacts,
+};

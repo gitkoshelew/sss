@@ -1,27 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './style.scss';
 import Button from '../../atoms/Button';
-import { connect } from 'react-redux';
-import {
-  changeInputAction,
-  commentButtonAction,
-  focusInputAction,
-  blurInputAction,
-} from '../../sagaStore/actions';
+import { reviewsChangeInputAction, reviewsSendFormAction } from '../../../sagaStore/actions';
 
 class Reviews extends Component {
+  onSubmitHandler = e => {
+    e.preventDefault();
+  };
+
   render() {
-    const {
-      onChangeHandler,
-      name,
-      text,
-      addCommentHandler,
-      onFocusHandler,
-      onBlurHandler,
-      disabled,
-      comments,
-    } = this.props;
-    console.log(comments);
+    const { onChangeHandler, addSendCommentHandler, name, text, disabled, comments } = this.props;
+
     return (
       <section className="reviews">
         <div className="container">
@@ -29,40 +19,31 @@ class Reviews extends Component {
             <div className="col-12">
               <h4 className="reviews__heading">Оставьте Ваш отзыв</h4>
             </div>
-            <div className="col-12"></div>
+            <div className="col-12" />
             <div className="col-12">
               <form className="reviews__form" onSubmit={this.onSubmitHandler}>
                 <label className="reviews__label">
                   <span className="reviews__label-text">Ваше имя:</span>
-                  <input
-                    onChange={onChangeHandler}
-                    onFocus={onFocusHandler}
-                    type="text"
-                    name="name"
-                    value={name}
-                    className="reviews__input"
-                  />
+                  <input type="text" name="name" value={name} className="reviews__input" />
                 </label>
                 <label className="reviews__label">
                   <textarea
-                    onChange={onChangeHandler}
-                    onFocus={onFocusHandler}
                     name="text"
                     value={text}
                     className="reviews__area"
-                    onBlur={onBlurHandler}
+                    onChange={onChangeHandler}
                   />
                   <Button
                     section="reviews"
                     text="&#10148;"
-                    clickHandler={addCommentHandler}
+                    clickHandler={addSendCommentHandler}
                     modificator="darkblue"
                     disability={disabled}
                   />
                 </label>
               </form>
             </div>
-            <div className="col-12">
+            {/* <div className="col-12">
               {comments.length > 0 || <p className="reviews__no-reviews">Пока нет отзывов.</p>}
               {comments.map((el, i) => {
                 return (
@@ -75,36 +56,31 @@ class Reviews extends Component {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
         </div>
       </section>
     );
   }
-
-  onSubmitHandler = e => {
-    e.preventDefault();
-  };
 }
 
 const ReviewsConnect = connect(
-  state => ({
-    ...state.reviews,
+  ({ reviews }) => ({
+    ...reviews,
   }),
   dispatch => ({
-    onChangeHandler(i) {
-      dispatch(changeInputAction(i));
+    onChangeHandler(e) {
+      const {
+        target: { name, value },
+      } = e;
+      dispatch(reviewsChangeInputAction({ name, value }));
     },
-    onFocusHandler(i) {
-      dispatch(focusInputAction(i));
-    },
-    onBlurHandler(i) {
-      dispatch(blurInputAction(i));
-    },
-    addCommentHandler(i) {
-      dispatch(commentButtonAction(i));
+    addSendCommentHandler() {
+      dispatch(reviewsSendFormAction());
     },
   })
 )(Reviews);
 
-export default ReviewsConnect;
+export default {
+  component: ReviewsConnect,
+};

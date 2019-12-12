@@ -1,14 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './style.scss';
 import Slider from '../../organizms/Slider';
-import MainRing from '../../../assets/rings/main-ring.jpg';
-import SecondRing from '../../../assets/rings/ring2.jpg';
-import ThirdRing from '../../../assets/rings/ring3.jpg';
-import FourthRing from '../../../assets/rings/ring4.jpg';
-import FifthRing from '../../../assets/rings/ring5.jpg';
-import SixthRing from '../../../assets/rings/ring6.jpg';
+import MainRing from '../../../assets/images/rings/main-ring.jpg';
+import SecondRing from '../../../assets/images/rings/ring2.jpg';
+import ThirdRing from '../../../assets/images/rings/ring3.jpg';
+import FourthRing from '../../../assets/images/rings/ring4.jpg';
+import FifthRing from '../../../assets/images/rings/ring5.jpg';
+import SixthRing from '../../../assets/images/rings/ring6.jpg';
 import Button from '../../atoms/Button';
-import { Link } from 'react-router-dom';
 
 function Rings(props) {
   const slides = [
@@ -49,7 +49,6 @@ function Rings(props) {
       img: SixthRing,
     },
   ];
-  console.log(props);
   return (
     <section className="rings">
       <div className="container">
@@ -75,4 +74,6 @@ function Rings(props) {
   );
 }
 
-export default Rings;
+export default {
+  component: Rings,
+};

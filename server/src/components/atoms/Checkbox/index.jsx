@@ -10,7 +10,7 @@ function Checkbox({ section, text, modificator, clickHandler }) {
         name={section}
         onClick={clickHandler}
       />
-      <div onClick={clickHandler}></div>
+      <div onClick={clickHandler} role="button" />
       <span className={`${section}__label-text label-text`}>{text}</span>
     </label>
   );

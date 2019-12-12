@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["airbnb", "prettier", "react-app"],
-  "plugins": ["prettier", "react", "redux-saga"],
+  "plugins": ["prettier", "react", "redux-saga", "jsx-a11y"],
   "env": {
     "browser": true,
     "node": true,
@@ -35,6 +35,14 @@
     "import/no-named-as-default": "warn",
     "react/jsx-props-no-spreading": "warn",
     "react/no-array-index-key": "warn",
-    "react/button-has-type": "warn"
+    "react/button-has-type": "warn",
+    "import/prefer-default-export": "warn",
+    "jsx-a11y/click-events-have-key-events": "warn",
+    "jsx-a11y/label-has-associated-control": "warn",
+    "jsx-a11y/interactive-supports-focus": "warn",
+    "jsx-a11y/no-static-element-interactions": "warn",
+    "jsx-a11y/control-has-associated-label": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "warn",
+    "react/jsx-one-expression-per-line": "warn"
   }
 }

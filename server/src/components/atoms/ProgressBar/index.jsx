@@ -6,10 +6,10 @@ function ProgressBar({ section, ind, fullInd }) {
   return (
     <div className={`${section}__progress-bar progress-bar`}>
       <div className={`${section}__empty-bar empty-bar`}>
-        <div className={`${section}__full-bar full-bar`} style={{ width: width + '%' }}></div>
+        <div className={`${section}__full-bar full-bar`} style={{ width: `${width}%` }} />
       </div>
       <p className={`${section}__progress-text progress-text`}>
-        {ind + 1 + ' вопросов из ' + fullInd}
+        {`${ind + 1} вопросов из ${fullInd}`}
       </p>
     </div>
   );

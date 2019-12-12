@@ -1,7 +1,7 @@
-@import '../../@theme/index';
+@import '../../../@theme/index';
 
 .error {
-    &__wrapper {
-        @include isFlex($direction: column)
-    }
+  &__wrapper {
+    @include isFlex($direction: column);
+  }
 }

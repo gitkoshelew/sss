@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.scss';
-import powerRing from '../../assets/powerRing.jpg';
+import powerRing from '../../../assets/images/powerRing.jpg';
 
 function About() {
   return (
@@ -31,4 +31,6 @@ function About() {
   );
 }
 
-export default About;
+export default {
+  component: About,
+};

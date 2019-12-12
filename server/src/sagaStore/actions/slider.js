@@ -1,14 +1,14 @@
-import { SLIDER_CIRCLE, SLIDER_LEFT, SLIDER_RIGHT } from './constants';
+import { SLIDER_CHANGE, SLIDER_PREV, SLIDER_NEXT } from './constants';
 
 export const sliderRightAction = () => ({
-  type: SLIDER_RIGHT,
+  type: SLIDER_NEXT,
 });
 
 export const sliderLeftAction = () => ({
-  type: SLIDER_LEFT,
+  type: SLIDER_PREV,
 });
 
-export const circleSliderAction = i => ({
-  type: SLIDER_CIRCLE,
-  index: i,
+export const sliderCircleAction = payload => ({
+  type: SLIDER_CHANGE,
+  payload,
 });
