@@ -1,39 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import './style.scss';
 import CheckboxList from '../../molecules/CheckboxList';
 import ProgressBar from '../../atoms/ProgressBar';
 import Testimage from '../../../assets/images/Testimage.svg';
-import checkList from './tests.json';
+import checkList from '../../../data/tests.json';
 import Button from '../../atoms/Button';
 import {
-  testIncrement,
-  testDecrement,
-  testAnsverValidation,
-  testEnd,
+  testIncrementAction,
+  testDecrementAction,
+  testEndAction,
+  testValidationAction,
+  testCheckAction,
 } from '../../../sagaStore/actions';
-import questions from './questions.json';
-import rings from '../Rings/rings.json';
+import questions from '../../../data/questions.json';
+import rings from '../../../data/rings.json';
 
 const Test = ({
   testNumber,
+  disabled,
+  result,
   nextButtonText,
+  testItems,
   nextTestHandler,
   previousTestHandler,
   checkboxHandler,
-  disabled,
   endTestHandler,
-  result,
+  validationHandler,
 }) => {
-  const questionsList = questions.map(el => {
-    return (
-      <h4 className="test__question" key={el.id}>
-        {el.question}
-      </h4>
-    );
-  });
-
   const disabilityReturnButton = testNumber ? null : 'disabled';
   const buttonHandler = testNumber === questions.length - 1 ? endTestHandler : nextTestHandler;
   const renderRingText = testResult => {
@@ -64,11 +59,11 @@ const Test = ({
     <section className="test">
       <div className="container">
         <div className="row justify-content-around">
-          <div className="col-12 col-lg-10 order-1">{questionsList[testNumber]}</div>
+          <div className="col-12 col-lg-10 order-1">{testItems[testNumber].question}</div>
           <div className="col-12 col-md-6 order-3 order-md-2">
             <CheckboxList
               section="test"
-              checksList={checkList[testNumber]}
+              checksList={testItems[testNumber]}
               clickHandler={checkboxHandler}
             />
             <Button
@@ -104,22 +99,24 @@ const Test = ({
 };
 
 const TestConnect = connect(
-  state => ({
-    ...state.test,
+  ({ test }) => ({
+    ...test,
   }),
-
   dispatch => ({
     nextTestHandler() {
-      dispatch(testIncrement());
+      dispatch(testIncrementAction());
     },
     previousTestHandler() {
-      dispatch(testDecrement());
+      dispatch(testDecrementAction());
     },
-    checkboxHandler(i) {
-      dispatch(testAnsverValidation(i));
+    checkboxHandler(index) {
+      dispatch(testCheckAction({ index }));
+    },
+    validationHandler(index) {
+      dispatch(testValidationAction({ index }));
     },
     endTestHandler() {
-      dispatch(testEnd());
+      dispatch(testEndAction());
     },
   })
 )(Test);

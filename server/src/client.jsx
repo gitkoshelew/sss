@@ -7,15 +7,8 @@ import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
 import Routes from './components/Routes';
 import createStore from './sagaStore/createStoreClient';
-import reducers from './sagaStore/reducers';
 
 const store = createStore();
-
-if (process.env.NODE_ENV === 'development' && module.hot) {
-  module.hot.accept('./sagaStore/reducers', () => {
-    store.replaceReducer(reducers);
-  });
-}
 
 ReactDOM.hydrate(
   <Provider store={store}>

@@ -2,18 +2,18 @@ import React from 'react';
 import './style.scss';
 import Checkbox from '../../atoms/Checkbox';
 
-function CheckboxList({ checksList, section, clickHandler, onClick }) {
+function CheckboxList({ checksList: { answers }, section, clickHandler }) {
   return (
     <ul className={`${section}__checklist checklist`}>
-      {checksList.map((el, i) => {
+      {answers.map(({ text, id, checked }, idx) => {
         return (
-          <li className={`${section}__checklist-item checklist-item`} key={el.id}>
+          <li className={`${section}__checklist-item checklist-item`} key={id}>
             <Checkbox
-              text={el.text}
+              checked={checked}
+              text={text}
               section={section}
               modificator=""
-              clickHandler={() => clickHandler(i)}
-              onClick={onClick}
+              clickHandler={() => clickHandler(idx)}
             />
           </li>
         );

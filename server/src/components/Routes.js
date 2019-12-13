@@ -11,7 +11,7 @@ import ContactForm from './pages/ContactForm';
 import Reviews from './pages/Reviews';
 import RingDescription from './pages/RingDescription';
 import Rings from './pages/Rings';
-// import Test from './pages/Test';
+import Test from './pages/Test';
 // import TestIntro from './pages/TestIntro';
 
 export default [
@@ -59,11 +59,10 @@ export default [
         ...RingDescription,
         path: '/ringdescription/:id',
       },
-
-      // {
-      //   ...Test,
-      //   path: '/test',
-      // },
+      {
+        ...Test,
+        path: '/test',
+      },
       // {
       //   ...TestIntro,
       //   path: '/test_intro',

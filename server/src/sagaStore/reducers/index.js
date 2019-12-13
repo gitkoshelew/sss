@@ -6,6 +6,7 @@ import currentUserReducer from './currentUserReducer';
 import contactFormReducer from './contactFormReducer';
 import reviewsReducer from './reviewsReducer';
 import ringsSliderReducer from './ringsSliderReducer';
+import testReducer from './testReducer';
 
 export default combineReducers({
   users: usersReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   contactForm: contactFormReducer,
   reviews: reviewsReducer,
   ringsSlider: ringsSliderReducer,
+  test: testReducer,
 });

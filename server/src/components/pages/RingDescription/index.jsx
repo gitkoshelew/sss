@@ -19,7 +19,7 @@ import Sam from '../../../assets/images/characters/sam.jpg';
 import Light from '../../../assets/images/maps/light.jpg';
 import Standart from '../../../assets/images/maps/standart.jpg';
 import Advanced from '../../../assets/images/maps/advanced.jpg';
-import RingsArray from '../Rings/rings.json';
+import RingsArray from '../../../data/rings.json';
 
 const RingDescription = ({
   active,

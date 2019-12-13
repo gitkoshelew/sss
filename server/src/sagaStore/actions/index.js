@@ -29,4 +29,10 @@ export { headerNavOpenAction } from './nav';
 
 export { sliderRightAction, sliderLeftAction, sliderCircleAction } from './slider';
 
-export { testIncrement, testDecrement, testEnd, testAnsverValidation } from './test';
+export {
+  testIncrementAction,
+  testDecrementAction,
+  testEndAction,
+  testValidationAction,
+  testCheckAction,
+} from './test';
