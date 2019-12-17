@@ -1,13 +1,15 @@
 import React from 'react';
+import { Switch } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import Header from './organizms/Header';
+import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
+import Header from './organizms/Header/index';
 import { fetchCurrentUser as fetchCurrentUserSaga } from '../sagaStore/sagas/currentUser';
 
 const App = ({ route }) => {
   return (
     <div>
       <Header />
-      {renderRoutes(route.routes)}
+      <Switch>{renderRoutes(route.routes)}</Switch>
     </div>
   );
 };

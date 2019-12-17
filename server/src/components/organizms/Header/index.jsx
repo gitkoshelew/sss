@@ -1,17 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import cn from 'classnames';
+
+import env from '../../../../config/env';
 import './style.scss';
 import Nav from '../../molecules/Nav';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
-import { connect } from 'react-redux';
-import { headerNavOpenAction } from '../../sagaStore/actions';
+import { headerNavOpenAction, authFetchLogOut } from '../../../sagaStore/actions';
 
-function Header(props) {
-  const { isHeaderNavOpen, headerNavOpenHandler, headerButtonText } = props;
-  const width = window.innerWidth < 768 ? true : false;
+function Header({
+  isHeaderNavOpen,
+  headerButtonText,
+  isUserLoged,
+  dispatchAuthFetchLogOut,
+  headerNavOpenHandler,
+}) {
   const headerLinks = [
     {
-      href: '/about',
+      href: '/users',
+      text: 'Users',
+    },
+    {
+      href: '/admins',
+      text: 'Admin',
+    },
+    {
+      href: '/abou',
       text: 'О нас',
     },
     {
@@ -31,27 +46,51 @@ function Header(props) {
       text: 'Обратная связь',
     },
   ];
+
+  const socLog = {
+    login: {
+      href: env.apiLoginGoogleUrl,
+      text: 'Login',
+    },
+    logout: {
+      href: env.apiLogoutGoogleUrl,
+      text: 'Logout',
+    },
+  };
+
+  const logStrategy = {
+    login: {
+      href: '/log',
+      text: 'IN',
+    },
+    logout: {
+      handler: dispatchAuthFetchLogOut,
+      text: 'OUT',
+    },
+  };
+
   return (
     <header className="header">
-      {width && (
-        <Button
-          text={headerButtonText}
-          section="header"
-          modificator="darkblue"
-          clickHandler={headerNavOpenHandler}
-        />
-      )}
       <div className="container">
         <div className="row justify-content-between align-items-center">
           <div className="col-2">
             <Logo section="header" />
           </div>
-          <div className="col-8">
-            {width ? (
-              isHeaderNavOpen && <Nav section="header" links={headerLinks} />
-            ) : (
-              <Nav section="header" links={headerLinks} />
-            )}
+          <div className={cn('col-12', 'col-md-10')}>
+            <Nav
+              section="header"
+              modificator={isHeaderNavOpen ? 'open' : 'close'}
+              links={headerLinks}
+              socLog={socLog}
+              logStrategy={logStrategy}
+              isUserLoged={isUserLoged}
+            />
+            <Button
+              text={headerButtonText}
+              section="header"
+              modificator={isHeaderNavOpen ? 'open' : 'close'}
+              clickHandler={headerNavOpenHandler}
+            />
           </div>
         </div>
       </div>
@@ -59,16 +98,21 @@ function Header(props) {
   );
 }
 
-const HeaderConnect = connect(
-  state => ({
-    ...state.header,
+export default connect(
+  ({
+    header,
+    auth: {
+      data: { value },
+    },
+  }) => ({
+    ...header,
+    isUserLoged: value,
   }),
 
   dispatch => ({
     headerNavOpenHandler() {
       dispatch(headerNavOpenAction());
     },
+    dispatchAuthFetchLogOut: authFetchLogOut,
   })
 )(Header);
-
-export default HeaderConnect;

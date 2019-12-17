@@ -1,9 +1,8 @@
 import React from 'react';
 import './style.scss';
 
-function Button({ text, section, clickHandler, modificator, disability }) {
+function Button({ text, section, clickHandler, modificator, disabled }) {
   const customClass = modificator ? `button_${modificator}` : '';
-  const disabled = disability ? 'disabled' : null;
   return (
     <button
       className={`${section}__button button ${customClass}`}

@@ -1,3 +1,4 @@
+import React from 'react';
 import App from './App';
 import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
@@ -12,11 +13,12 @@ import Reviews from './pages/Reviews';
 import RingDescription from './pages/RingDescription';
 import Rings from './pages/Rings';
 import Test from './pages/Test';
-// import TestIntro from './pages/TestIntro';
+import TestIntro from './pages/TestIntro';
 
 export default [
   {
     ...App,
+    path: '/',
     routes: [
       {
         ...HomePage,
@@ -26,49 +28,59 @@ export default [
       {
         ...AdminsListPage,
         path: '/admins',
+        exact: true,
       },
       {
         ...UsersListPage,
         path: '/users',
+        exact: true,
       },
       {
         ...AuthPage,
         path: '/log',
+        exact: true,
       },
       {
         ...About,
         path: '/about',
+        exact: true,
       },
       {
         ...Contacts,
         path: '/contacts',
+        exact: true,
       },
       {
         ...ContactForm,
         path: '/contact_us',
+        exact: true,
       },
       {
         ...Reviews,
         path: '/reviews',
+        exact: true,
       },
       {
         ...Rings,
         path: '/rings',
+        exact: true,
       },
       {
         ...RingDescription,
-        path: '/ringdescription/:id',
+        path: '/ring/:id',
+        exact: true,
       },
       {
         ...Test,
         path: '/test',
+        exact: true,
       },
-      // {
-      //   ...TestIntro,
-      //   path: '/test_intro',
-      // },
       {
-        path: '/',
+        ...TestIntro,
+        path: '/test_intro',
+        exact: true,
+      },
+      {
         ...NotFoundPage,
       },
     ],

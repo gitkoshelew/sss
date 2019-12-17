@@ -9,7 +9,7 @@ function Checkbox({ section, text, modificator, clickHandler, checked }) {
         checked={checked}
         className={`${section}__checkbox checkbox checkbox_${modificator}`}
         name={section}
-        onClick={clickHandler}
+        onChange={clickHandler}
       />
       <div role="button" />
       <span className={`${section}__label-text label-text`}>{text}</span>

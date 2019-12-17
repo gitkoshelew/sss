@@ -10,6 +10,7 @@ const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Uglify = require('uglifyjs-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const paths = require('./config/paths');
 const addHash = require('./src/helpers/utils').addHash;
@@ -24,6 +25,7 @@ const lessModuleRegex = /\.module\.less$/;
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
 const isRebiuldMode = process.env.REBUILD_MODE === 'true';
+const isStaticMode = process.env.STATIC_MODE === 'true';
 process.env.BABEL_ENV = process.env.NODE_ENV;
 
 const baseConfig = require('./webpack.base.js');
@@ -87,7 +89,7 @@ const plugins = [
   }),
 ];
 
-if (!isEnvDevelopment) {
+if (isEnvProduction) {
   plugins.push(new CleanWebpackPlugin());
   plugins.push(
     new AssetsPlugin({
@@ -112,6 +114,15 @@ if (isEnvProduction && !isRebiuldMode) {
   plugins.push(new Uglify());
 }
 
+if (isEnvDevelopment && isStaticMode) {
+  plugins.push(
+    new HTMLWebpackPlugin({
+      title: 'Only client mode',
+      template: path.resolve(__dirname, './src/assets/index.html'),
+    })
+  );
+}
+
 const config = {
   plugins,
   // context: path.resolve(__dirname, './src'),
@@ -122,7 +133,7 @@ const config = {
   output: {
     path: `${__dirname}/build/public/assets/`,
     filename: addHash('[name].bundle.js'),
-    publicPath: isEnvProduction ? '.' : 'http://localhost:8040/assets',
+    publicPath: isEnvProduction ? '/assets/' : isStaticMode ? '/' : 'http://localhost:8040/assets/',
   },
   module: {
     rules: [
@@ -223,7 +234,7 @@ const config = {
             loader: 'url-loader',
             options: {
               limit: isEnvDevelopment ? 3000 : 1000,
-              name: addHash('/media/[name].[ext]'),
+              name: addHash('media/[name].[ext]'),
             },
           },
           {
@@ -234,7 +245,7 @@ const config = {
             // by webpacks internal loaders.
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              name: addHash('/media/[name].[ext]'),
+              name: addHash('media/[name].[ext]'),
             },
           },
         ],
@@ -245,13 +256,15 @@ const config = {
   devServer: {
     headers: { 'Access-Control-Allow-Origin': '*' },
     contentBase: __dirname + '/build/',
-    proxy: {
-      '*': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        secure: false,
-      },
-    },
+    proxy: isStaticMode
+      ? {}
+      : {
+          '*': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            secure: false,
+          },
+        },
     hot: true,
     quiet: true,
     watchOptions: {
@@ -260,7 +273,7 @@ const config = {
   },
 };
 
-// const mergedmodule = merge(baseConfig, config);
-// console.log(mergedmodule)
+const mergedmodule = merge(baseConfig, config);
+// console.log(mergedmodule);
 
-module.exports = merge(baseConfig, config);
+module.exports = mergedmodule;

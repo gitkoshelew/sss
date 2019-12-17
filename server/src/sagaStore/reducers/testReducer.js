@@ -17,33 +17,34 @@ const testItems = checkList.map(test => {
 });
 
 const initialState = {
-  testNumber: 1,
+  testNumber: 0,
   nextButtonText: 'Далее >',
   nextDisabled: true,
   testItems,
   result: null,
-  disabled: 1,
 };
 
 const testReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
-    case TEST_NUMBER_INCREMENT:
+    case TEST_NUMBER_INCREMENT: {
+      const nextTestNumber =
+        state.testNumber < state.testItems.length - 1 ? state.testNumber + 1 : state.testNumber;
+      const nextDisabled = !state.testItems[nextTestNumber].answers.some(({ checked }) => checked);
       return {
         ...state,
-        testNumber:
-          state.testNumber < state.testItems.length - 1 ? state.testNumber + 1 : state.testNumber,
+        testNumber: nextTestNumber,
+        nextDisabled,
         nextButtonText:
-          state.testNumber < state.testItems.length - 1 ? 'Далее >' : 'Завершить тест',
-        disabled: true,
+          state.testNumber < state.testItems.length - 2 ? 'Далее >' : 'Завершить тест',
       };
+    }
     case TEST_NUMBER_DECREMENT:
       return {
         ...state,
         testNumber: state.testNumber > 0 ? state.testNumber - 1 : state.testNumber,
-        nextButtonText:
-          state.testNumber < state.testItems.length - 1 ? 'Далее >' : 'Завершить тест',
-        disabled: true,
+        nextButtonText: state.testNumber < state.testItems.length ? 'Далее >' : 'Завершить тест',
+        nextDisabled: false,
       };
     case TEST_CHECK: {
       const newTestItems = state.testItems.map((test, idx) => {
@@ -63,7 +64,7 @@ const testReducer = (state = initialState, action) => {
           }),
         };
       });
-      const nextDisabled = state.testItems[state.testNumber].answers.some(({ checked }) => checked);
+      const nextDisabled = !newTestItems[state.testNumber].answers.some(({ checked }) => checked);
       return {
         ...state,
         testItems: newTestItems,
@@ -89,10 +90,19 @@ const testReducer = (state = initialState, action) => {
     case TEST_END:
       return {
         ...state,
-        // result: state.answers.reduce((acc, elem) => {
-        //   return elem.valid ? ++acc : acc;
-        // }, 0)
-        // result: state.answers.filter(el => el.valid === true).length,
+        result: state.testItems.reduce(
+          (acc, test) => {
+            const validAnsvers = test.answers.reduce((validAcc, { correct, checked }) => {
+              if (correct === checked) return validAcc + 1;
+              return validAcc;
+            }, 0);
+            return {
+              valid: acc.valid + validAnsvers,
+              questions: acc.questions + test.answers.length,
+            };
+          },
+          { valid: 0, questions: 0 }
+        ),
         nextDisabled: true,
       };
     default:

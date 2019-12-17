@@ -14,12 +14,11 @@ import {
   testValidationAction,
   testCheckAction,
 } from '../../../sagaStore/actions';
-import questions from '../../../data/questions.json';
 import rings from '../../../data/rings.json';
 
 const Test = ({
   testNumber,
-  disabled,
+  nextDisabled,
   result,
   nextButtonText,
   testItems,
@@ -29,31 +28,29 @@ const Test = ({
   endTestHandler,
   validationHandler,
 }) => {
-  const disabilityReturnButton = testNumber ? null : 'disabled';
-  const buttonHandler = testNumber === questions.length - 1 ? endTestHandler : nextTestHandler;
+  const buttonHandler = testNumber === testItems.length - 1 ? endTestHandler : nextTestHandler;
   const renderRingText = testResult => {
-    if (testResult === 10) {
-      return <Link to={`/rings/${rings[0].id}`}>{rings[0].heading}</Link>;
+    const resultDiff = (testResult.valid / testResult.questions) * 10;
+    if (resultDiff === 10) {
+      return <Link to={`/ring/${rings[0].id}`}>{rings[0].heading}</Link>;
     }
-    if (testResult >= 8) {
-      return <Link to={`/rings/${rings[3].id}`}>{rings[3].heading}</Link>;
+    if (resultDiff >= 8) {
+      return <Link to={`/ring/${rings[3].id}`}>{rings[3].heading}</Link>;
     }
-    if (testResult >= 6) {
-      return <Link to={`/rings/${rings[2].id}`}>{rings[2].heading}</Link>;
+    if (resultDiff >= 6) {
+      return <Link to={`/ring/${rings[2].id}`}>{rings[2].heading}</Link>;
     }
-    if (testResult >= 4) {
-      return <Link to={`/rings/${rings[1].id}`}>{rings[1].heading}</Link>;
+    if (resultDiff >= 4) {
+      return <Link to={`/ring/${rings[1].id}`}>{rings[1].heading}</Link>;
     }
-    if (testResult >= 3) {
-      return <Link to={`/rings/${rings[5].id}`}>{rings[5].heading}</Link>;
+    if (resultDiff >= 3) {
+      return <Link to={`/ring/${rings[5].id}`}>{rings[5].heading}</Link>;
     }
-    if (testResult < 3) {
-      return <Link to={`/rings/${rings[4].id}`}>{rings[4].heading}</Link>;
+    if (resultDiff < 3) {
+      return <Link to={`/ring/${rings[4].id}`}>{rings[4].heading}</Link>;
     }
     return null;
   };
-
-  const resultRing = renderRingText(result);
 
   return (
     <section className="test">
@@ -70,14 +67,14 @@ const Test = ({
               section="test"
               text="< Назад"
               clickHandler={previousTestHandler}
-              disability={disabilityReturnButton}
+              disabled={testNumber === 0 || result}
             />
             <Button
               section="test"
               text={nextButtonText}
               clickHandler={buttonHandler}
               modificator="next"
-              disability={disabled}
+              disabled={nextDisabled}
             />
           </div>
           <div className="col-12 col-md-6 order-2 order-md-3">
@@ -87,8 +84,8 @@ const Test = ({
           {result ? (
             <div className="col-12 order-4">
               <p>
-                Рекомендуем приобрести кольцо
-                {resultRing}
+                {'Рекомендуем приобрести кольцо '}
+                {renderRingText(result)}
               </p>
             </div>
           ) : null}

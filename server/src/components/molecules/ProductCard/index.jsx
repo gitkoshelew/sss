@@ -13,7 +13,7 @@ export default ({ section, heading, modificator, price, id, imgUrl }) => {
         <h4 className="card__heading">{heading}</h4>
         <div className="card__footer">
           <p className="card__price">{`от ${price} у.е.`}</p>
-          <Link to={`/ringdescription/${id}`} className="card__link">
+          <Link to={`/ring/${id}`} className="card__link">
             Подробнее &gt;
           </Link>
         </div>
