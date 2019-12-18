@@ -27,7 +27,7 @@ function Header({
     },
     {
       href: '/abou',
-      text: 'О нас',
+      text: 'О наc',
     },
     {
       href: '/test_intro',

@@ -32,6 +32,7 @@
     "prettier/prettier": ["error"],
     "react/prop-types": 0,
     "comma-dangle": 0,
+    "react/jsx-curly-newline": "warn",
     "import/no-named-as-default": "warn",
     "react/jsx-props-no-spreading": "warn",
     "react/no-array-index-key": "warn",

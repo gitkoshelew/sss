@@ -9,7 +9,8 @@ const App = ({ route }) => {
   return (
     <div>
       <Header />
-      <Switch>{renderRoutes(route.routes)}</Switch>
+      {/* <Switch>{renderRoutes(route.routes)}</Switch> */}
+      <Switch>{route}</Switch>
     </div>
   );
 };

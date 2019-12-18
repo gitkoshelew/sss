@@ -1,6 +1,4 @@
 const path = require('path');
-const fs = require('fs');
-const url = require('url');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const AssetsPlugin = require('assets-webpack-plugin');
@@ -13,7 +11,8 @@ const Uglify = require('uglifyjs-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const paths = require('./config/paths');
-const addHash = require('./src/helpers/utils').addHash;
+const { addHash } = require('./src/helpers/utils');
+const baseConfig = require('./webpack.base.js');
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -28,7 +27,6 @@ const isRebiuldMode = process.env.REBUILD_MODE === 'true';
 const isStaticMode = process.env.STATIC_MODE === 'true';
 process.env.BABEL_ENV = process.env.NODE_ENV;
 
-const baseConfig = require('./webpack.base.js');
 const shouldUseSourceMap = isEnvDevelopment && process.env.GENERATE_SOURCEMAP !== 'false';
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
@@ -48,8 +46,8 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
         // https://github.com/facebook/create-react-app/issues/2677
         ident: 'postcss',
         plugins: () => [
-          require('postcss-flexbugs-fixes'),
-          require('postcss-preset-env')({
+          require.resolve('postcss-flexbugs-fixes'),
+          require.resolve('postcss-preset-env')({
             autoprefixer: {
               flexbox: 'no-2009',
             },
@@ -123,6 +121,12 @@ if (isEnvDevelopment && isStaticMode) {
   );
 }
 
+const publicPathResolver = () => {
+  if (isEnvProduction) return '/assets/';
+  if (isStaticMode) return '/';
+  return 'http://localhost:8040/assets/';
+};
+
 const config = {
   plugins,
   // context: path.resolve(__dirname, './src'),
@@ -133,7 +137,7 @@ const config = {
   output: {
     path: `${__dirname}/build/public/assets/`,
     filename: addHash('[name].bundle.js'),
-    publicPath: isEnvProduction ? '/assets/' : isStaticMode ? '/' : 'http://localhost:8040/assets/',
+    publicPath: publicPathResolver(),
   },
   module: {
     rules: [
@@ -255,7 +259,7 @@ const config = {
   devtool: isEnvDevelopment ? 'source-map' : false,
   devServer: {
     headers: { 'Access-Control-Allow-Origin': '*' },
-    contentBase: __dirname + '/build/',
+    contentBase: path.join(__dirname, 'build'),
     proxy: isStaticMode
       ? {}
       : {
@@ -266,7 +270,12 @@ const config = {
           },
         },
     hot: true,
+    // hotOnly: true,
+    // index: 'index.html',
     quiet: true,
+    // inline: true,
+    liveReload: false,
+    historyApiFallback: true,
     watchOptions: {
       ignored: ignoredFiles(paths.appSrcFolder),
     },
