@@ -14,10 +14,10 @@
     "build:server": "set NODE_ENV=production&& webpack --mode production --env.NODE_ENV=production --config webpack.server.js -p ",
     "run-server": "node ./build/server/bundle.js",
     "webpack-devserver": "set NODE_ENV=development&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors  --open --port 8040",
-    "webpack-static-devserver": "set NODE_ENV=development&&set STATIC_MODE=true&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors --open --port 8080",
+    "start": "set NODE_ENV=development&&set STATIC_MODE=true&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors --open --port 8080",
     "stop-server": "killall node",
     "start-demon": "npm-run-all --parallel dev-needreload:*",
-    "start": "npm-run-all --serial dev:client dev:server --parallel run-server webpack-devserver",
+    "start-isomorphic": "npm-run-all --serial dev:client dev:server --parallel run-server webpack-devserver",
     "build": "npm-run-all --serial build:*"
   },
   "author": "",

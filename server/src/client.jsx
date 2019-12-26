@@ -27,10 +27,10 @@ const createRoutes = routes =>
 ReactDOM.hydrate(
   <Provider store={store}>
     <BrowserRouter>
-      {/* <div>{renderRoutes(Routes)}</div> */}
-      <div>
+      <div>{renderRoutes(Routes)}</div>
+      {/* <div>
         <Switch>{createRoutes(Routes)}</Switch>
-      </div>
+      </div> */}
     </BrowserRouter>
   </Provider>,
   document.querySelector('#root')
