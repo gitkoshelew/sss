@@ -66,7 +66,7 @@ module.exports = {
     appBuildHtml: resolveApp('build/public/index.html'),
     appIndexJs: resolveModule(resolveApp, 'src/client.js'),
     appServerIndexJs: resolveModule(resolveApp, 'src/server.js'),
-    appPackageJson: resolveApp('package.json'),
+    // appPackageJson: resolveApp('package.json'),
     appSrc: resolveApp('src'),
     appSrcFolder: resolveApp('src'),
     appTsConfig: resolveApp('tsconfig.json'),
@@ -75,6 +75,6 @@ module.exports = {
     testsSetup: resolveModule(resolveApp, 'src/setupTests'),
     proxySetup: resolveApp('src/setupProxy.js'),
     appNodeModules: resolveApp('node_modules'),
-    publicUrl: getPublicUrl(resolveApp('package.json')),
-    servedPath: getServedPath(resolveApp('package.json')),
+    // publicUrl: getPublicUrl(resolveApp('package.json')),
+    // servedPath: getServedPath(resolveApp('package.json')),
   };

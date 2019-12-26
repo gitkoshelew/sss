@@ -1,18 +1,18 @@
 const path = require('path');
-const fs = require('fs');
-const url = require('url');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const AssetsPlugin = require('assets-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const postcssNormalize = require('postcss-normalize');
 const ignoredFiles = require('react-dev-utils/ignoredFiles');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Uglify = require('uglifyjs-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 const paths = require('./config/paths');
-const addHash = require('./src/helpers/utils').addHash;
+const { addHash } = require('./src/helpers/utils');
+const baseConfig = require('./webpack.base.js');
 
 const cssRegex = /\.css$/;
 const cssModuleRegex = /\.module\.css$/;
@@ -23,16 +23,17 @@ const lessModuleRegex = /\.module\.less$/;
 
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
+const isRebiuldMode = process.env.REBUILD_MODE === 'true';
+const isStaticMode = process.env.STATIC_MODE === 'true';
 process.env.BABEL_ENV = process.env.NODE_ENV;
 
-const baseConfig = require('./webpack.base.js');
 const shouldUseSourceMap = isEnvDevelopment && process.env.GENERATE_SOURCEMAP !== 'false';
 
 const getStyleLoaders = (cssOptions, preProcessor) => {
   const loaders = [
     isEnvDevelopment && require.resolve('style-loader'),
     isEnvProduction && {
-      loader: MiniCssExtractPlugin.loader
+      loader: MiniCssExtractPlugin.loader,
     },
     {
       loader: require.resolve('css-loader'),
@@ -80,46 +81,63 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
 const plugins = [
   new webpack.DefinePlugin({
     'process.env': {
-      BROWSER:  JSON.stringify(true),
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-    }
-  })
+      BROWSER: JSON.stringify(true),
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
+  }),
 ];
 
-if (!isEnvDevelopment){
-  plugins.push(
-    new CleanWebpackPlugin()
-  );
+if (isEnvProduction) {
+  plugins.push(new CleanWebpackPlugin());
   plugins.push(
     new AssetsPlugin({
       filename: 'assets.json',
-      path: path.resolve(__dirname, './build/public/assets/')
+      path: path.resolve(__dirname, './build/public/assets/'),
     })
   );
-  plugins.push(new MiniCssExtractPlugin({
-    filename: addHash('[name].styles.css'),
-    // filename:  (getPath) => {
-    //   return getPath('[name].css').replace('css/js', 'css');
-    // },
-    chunkFilename: '[id].css',
-    ignoreOrder: false,
-    allChunks: true
-  }));
+  plugins.push(
+    new MiniCssExtractPlugin({
+      filename: addHash('[name].styles.css'),
+      // filename:  (getPath) => {
+      //   return getPath('[name].css').replace('css/js', 'css');
+      // },
+      chunkFilename: '[id].css',
+      ignoreOrder: false,
+      allChunks: true,
+    })
+  );
+}
+
+if (isEnvProduction && !isRebiuldMode) {
   plugins.push(new Uglify());
 }
+
+if (isEnvDevelopment && isStaticMode) {
+  plugins.push(
+    new HTMLWebpackPlugin({
+      title: 'Only client mode',
+      template: path.resolve(__dirname, './src/assets/index.html'),
+    })
+  );
+}
+
+const publicPathResolver = () => {
+  if (isEnvProduction) return '/assets/';
+  if (isStaticMode) return '/';
+  return 'http://localhost:8040/assets/';
+};
 
 const config = {
   plugins,
   // context: path.resolve(__dirname, './src'),
   entry: [
-    isEnvDevelopment &&
-    require.resolve('react-dev-utils/webpackHotDevClient'),
-    './src/client.js'
+    isEnvDevelopment && require.resolve('react-dev-utils/webpackHotDevClient'),
+    './src/client.jsx',
   ].filter(Boolean),
   output: {
     path: `${__dirname}/build/public/assets/`,
     filename: addHash('[name].bundle.js'),
-    publicPath: isEnvProduction ? '.' : 'http://localhost:8040/assets'
+    publicPath: publicPathResolver(),
   },
   module: {
     rules: [
@@ -129,9 +147,9 @@ const config = {
         use: [
           {
             options: {
-              cache: true,
-              formatter: require.resolve('react-dev-utils/eslintFormatter'),
+              // cache: true,
               eslintPath: require.resolve('eslint'),
+              formatter: require.resolve('react-dev-utils/eslintFormatter'),
               resolvePluginsRelativeTo: __dirname,
             },
             loader: require.resolve('eslint-loader'),
@@ -141,12 +159,12 @@ const config = {
       },
       {
         oneOf: [
-          { 
+          {
             test: /\.(woff|woff2|ttf|eot)/,
             loader: require.resolve('url-loader'),
             options: {
-              limit: 1
-            } 
+              limit: 1,
+            },
           },
           {
             test: cssRegex,
@@ -220,8 +238,8 @@ const config = {
             loader: 'url-loader',
             options: {
               limit: isEnvDevelopment ? 3000 : 1000,
-              name: addHash('/media/[name].[ext]'),
-            }
+              name: addHash('media/[name].[ext]'),
+            },
           },
           {
             loader: require.resolve('file-loader'),
@@ -231,36 +249,40 @@ const config = {
             // by webpacks internal loaders.
             exclude: [/\.(js|mjs|jsx|ts|tsx)$/, /\.html$/, /\.json$/],
             options: {
-              name: addHash('/media/[name].[ext]'),
+              name: addHash('media/[name].[ext]'),
             },
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
   devtool: isEnvDevelopment ? 'source-map' : false,
   devServer: {
     headers: { 'Access-Control-Allow-Origin': '*' },
-    watchOptions: {
-      ignored: /node_modules/
-    },
-    contentBase: __dirname+'/build/',
-    proxy: {
-      '*': {
-        target: 'http://localhost:3000',
-        changeOrigin: true,
-        secure: false
-      }
-    },
+    contentBase: path.join(__dirname, 'build'),
+    proxy: isStaticMode
+      ? {}
+      : {
+          '*': {
+            target: 'http://localhost:3000',
+            changeOrigin: true,
+            secure: false,
+          },
+        },
     hot: true,
+    // hotOnly: true,
+    // index: 'index.html',
     quiet: true,
+    // inline: true,
+    liveReload: false,
+    historyApiFallback: true,
     watchOptions: {
       ignored: ignoredFiles(paths.appSrcFolder),
-    }
-  }
+    },
+  },
 };
 
-// const mergedmodule = merge(baseConfig, config);
-// console.log(mergedmodule)
+const mergedmodule = merge(baseConfig, config);
+// console.log(mergedmodule);
 
-module.exports = merge(baseConfig, config);
+module.exports = mergedmodule;

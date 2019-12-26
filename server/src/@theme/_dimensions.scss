@@ -1,0 +1,64 @@
+/*
+  border-radus
+*/
+
+$borderRad: 5px;
+$borderRadLess: 3px;
+
+/*
+  Font sizes
+*/
+
+$h2: 23px;
+$h2Tablet: 36px;
+$h2TabletLarge: 48px;
+$h2Desk: 56px;
+
+$h2intro: 16px;
+$h2introTablet: 18px;
+$h2introDesk: 20px;
+
+$h3: 24px;
+$h3Tablet: 28px;
+$h3Desk: 48px;
+
+$h4: 18px;
+$h4Tablet: 21px;
+$h4Desk: 24px;
+
+$h5: 16px;
+$h5Tablet: 18px;
+$h5Desk: 24px;
+
+$fontLarger: 20px;
+$fontLarge: 18px;
+$font: 16px;
+$fontLess: 14px;
+$fontSmall: 12px;
+$fontSmallest: 10px;
+
+$btnFontSize: 18px;
+$btnFontSizeSmall: 16px;
+
+$title: 24px;
+$titleBig: 48px;
+
+$subtitle: 18px;
+$subtitleBig: 32px;
+
+$popupHeading: 24px;
+$popupHeadingTablet: 28px;
+$popupHeadingDesk: 36px;
+
+//Grid sizes
+
+$sm: '(min-width: 576px)';
+$premd: '(max-width: 767px)';
+$md: '(min-width: 768px)';
+$lg: '(min-width: 992px)';
+$xl: '(min-width: 1200px)';
+$xxl: '(min-width: 1320px)';
+$fourK: '( min-width: 2000px)';
+
+$landscape: '(orientation: landscape)';
+

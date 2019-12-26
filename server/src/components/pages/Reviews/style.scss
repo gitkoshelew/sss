@@ -1,0 +1,104 @@
+@import '../../../@theme/index';
+
+.reviews {
+  &__form {
+    @include isFlex($direction: column);
+    text-align: center;
+  }
+
+  &__heading {
+    margin-bottom: 20px;
+    text-align: center;
+
+    @media #{$sm} {
+      margin-bottom: 30px;
+    }
+
+    @media #{$md} {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__label {
+    width: 100%;
+    position: relative;
+
+    @media #{$sm} {
+      width: 400px;
+    }
+
+    @media #{$lg} {
+      width: 480px;
+    }
+  }
+
+  &__label-text {
+    display: block;
+  }
+
+  &__input {
+    margin-bottom: 5px;
+    border: 2px solid $borderComment;
+    width: 100%;
+    font-size: $fontLess;
+    border-radius: $borderRad;
+    padding: 5px 0 5px 10px;
+
+    @media #{$sm} {
+      font-size: $font;
+      width: 400px;
+    }
+
+    @media #{$md} {
+      width: 400px;
+    }
+
+    @media #{$lg} {
+      font-size: $fontLarge;
+      width: 480px;
+    }
+  }
+
+  &__area {
+    width: 100%;
+    resize: none;
+    height: 60px;
+    border: 2px solid $borderComment;
+    font-family: $fontMain;
+    font-size: $fontLess;
+    border-radius: $borderRad;
+    padding: 5px 40px 5px 10px;
+
+    @media #{$sm} {
+      width: 400px;
+      font-size: $font;
+    }
+
+    @media #{$md} {
+      width: 400px;
+      height: 80px;
+    }
+
+    @media #{$lg} {
+      font-size: $fontLarge;
+      width: 480px;
+    }
+  }
+
+  &__no-reviews,
+  &__comment {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+  }
+
+  &__name {
+    font-weight: bold;
+    color: $mainPageText;
+  }
+
+  &__date {
+    font-weight: normal;
+    color: $fg;
+  }
+}

@@ -1,0 +1,220 @@
+/* src/assets/styles/layout/_general.scss  */
+
+* {
+  box-sizing: border-box;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: $mainText;
+  font-family: $fontMain;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  background: $bgMain;
+  &.no--scroll {
+    overflow-y: hidden;
+  }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $fontMain;
+  font-weight: 600;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+p {
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+em {
+  font-style: normal;
+}
+
+button {
+  font-size: $font;
+}
+
+header,
+section,
+footer {
+  width: 100%;
+  overflow: hidden;
+}
+section,
+footer {
+  padding: 45px 0;
+  position: relative;
+  @media #{$md} {
+    padding: 85px 0;
+  }
+  @media #{$xl} {
+    padding: 93px 0;
+  }
+}
+
+address {
+  font-style: normal;
+}
+
+mark {
+  background: none;
+  color: $danger;
+}
+
+p {
+  font-size: $fontLess;
+  line-height: 1.75em;
+  @media #{$md} {
+    font-size: $font;
+    line-height: 1.5em;
+  }
+  @media #{$xl} {
+    font-size: $font;
+    line-height: 1.5em;
+  }
+}
+
+h1,
+h2,
+h1 > p,
+h2 > p {
+  font-size: $h2;
+  line-height: 1.4em;
+  margin-bottom: 0.85em;
+  display: inline-block;
+
+  @media #{$md} {
+    font-size: $h2Tablet;
+    line-height: 1.2em;
+    margin-bottom: 0.45em;
+  }
+  @media #{$xl} {
+    font-size: $h2Desk;
+    line-height: 1.225em;
+    margin-bottom: 0.45em;
+  }
+  @media #{$xl} {
+    margin-bottom: 0.85em;
+  }
+
+  & > p {
+    display: inline;
+    @media #{$xl} {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  & + p {
+    font-size: $h2intro;
+    line-height: 1.5em;
+
+    @media #{$md} {
+      font-size: $h2introTablet;
+      width: 67%;
+    }
+    @media #{$xl} {
+      line-height: 1.5em;
+      width: 58%;
+    }
+    @media #{$xxl} {
+      font-size: $h2introDesk;
+      line-height: 1.75em;
+      width: 50%;
+    }
+  }
+}
+
+h3 {
+  margin-bottom: 0.3em;
+  font-weight: 600;
+  @media #{$md} {
+    margin-bottom: 0.01em;
+    padding-right: 25%;
+  }
+  @media #{$xl} {
+    margin-bottom: 0.6em;
+    padding-right: 15%;
+  }
+}
+
+h3,
+h3 > p {
+  font-size: $h3;
+  display: inline-block;
+  @media #{$md} {
+    font-size: $h3Tablet;
+  }
+  @media #{$xl} {
+    font-size: $h3Desk;
+    margin-bottom: 0.55em;
+  }
+
+  & + p {
+    margin-top: 0.5em;
+    @media #{$md} {
+      line-height: 1.75em;
+      padding-right: 25%;
+    }
+    @media #{$xl} {
+      line-height: 2em;
+      padding-right: 33%;
+    }
+    @media #{$xxl} {
+      padding-right: 50%;
+    }
+  }
+}
+
+h4,
+h4 > p {
+  font-size: $h4;
+  line-height: 1.6em;
+  font-weight: 600;
+  @media #{$md} {
+    font-size: $h4Tablet;
+  }
+  @media #{$xl} {
+    font-size: $h4Desk;
+  }
+}
+
+h5,
+h5 > p {
+  font-size: $h5;
+  line-height: 1.5em;
+  @media #{$md} {
+    font-size: $h5Tablet;
+  }
+  @media #{$xl} {
+    font-size: $h5Desk;
+  }
+}
+
+h6 {
+  font-size: $fontLarger;
+}
+
+input:-webkit-autofill {
+  box-shadow: 0 0 0px 1000px white inset;
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+}

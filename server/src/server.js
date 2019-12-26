@@ -1,50 +1,45 @@
-import 'babel-polyfill';
+import 'core-js';
 import express from 'express';
 import { matchRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
-import Routes from './shared/Routes';
+import Routes from './components/Routes';
 import renderer from './helpers/renderer';
-import createStore from './helpers/createStore';
+import env from '../config/env';
+import createStore from './sagaStore/createStoreServer';
 
 const app = express();
 
-
 app.use(
   '/api',
-  proxy('http://react-ssr-api.herokuapp.com', {
+  proxy(env.apiUrl, {
     proxyReqOptDecorator(opts) {
       opts.headers['x-forwarded-host'] = 'localhost:3000';
       return opts;
-    }
+    },
   })
 );
 
-// if (process.env.NODE_ENV === 'production'){
-  app.use(express.static('build/public'));
-// }
-// else{
-//   app.use(express.static('http://localhost:8040/public'));
-// }
+app.use(express.static('build/public'));
 
 app.get('*', (req, res) => {
   const store = createStore(req);
 
   const promises = matchRoutes(Routes, req.path)
     .map(({ route }) => {
-      return route.loadData ? route.loadData(store) : null;
+      return route.loadGeneratorData ? route.loadGeneratorData : null;
     })
-    .map(promise => {
-      if (promise) {
-        return new Promise((resolve, reject) => {
-          promise.then(resolve).catch(resolve);
-        });
-      }
+    .filter(generator => !!generator)
+    .map(generator => {
+      const sagaTaskPromise = store.runSaga(generator).toPromise();
+      return new Promise((resolve, reject) => {
+        sagaTaskPromise.then(resolve).catch(resolve);
+      });
     });
 
   Promise.all(promises).then(() => {
     const context = {};
     const content = renderer(req, store, context);
-
+    console.log(context, req.url, 'context', content);
     if (context.url) {
       return res.redirect(301, context.url);
     }
@@ -52,8 +47,10 @@ app.get('*', (req, res) => {
       res.status(404);
     }
 
-    res.send(content);
+    return res.send(content);
   });
+
+  store.close();
 });
 
 app.listen(3000, () => {

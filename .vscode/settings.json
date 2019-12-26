@@ -1,0 +1,21 @@
+{
+  "eslint.lintTask.enable": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": true
+  },
+  "[html]": {
+    "editor.formatOnSave": false
+  },
+  "[json]": {
+    "editor.formatOnSave": false
+  },
+  "eslint.autoFixOnSave": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.workingDirectories": ["."],
+  "eslint.options": {
+    "configFile": "./server/.eslintrc.json"
+  },
+  "eslint.nodePath": "./server/node_modules"
+}

@@ -1,0 +1,7 @@
+@import '../../../@theme/index';
+
+.error {
+  &__wrapper {
+    @include isFlex($direction: column);
+  }
+}

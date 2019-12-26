@@ -1,0 +1,85 @@
+@import '../../../@theme/index';
+
+.contact-us {
+  background: $formBg;
+  color: $text1;
+  text-align: center;
+
+  &__form {
+    @include isFlex($direction: column);
+  }
+
+  &__heading {
+    margin-bottom: 20px;
+
+    @media #{$sm} {
+      margin-bottom: 30px;
+    }
+
+    @media #{$md} {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__input {
+    margin-bottom: 30px;
+    background: $formBg;
+    border: none;
+    border-bottom: 2px solid $text1;
+    color: $text1;
+    text-align: center;
+    width: 100%;
+    font-size: $fontLess;
+
+    @media #{$sm} {
+      font-size: $font;
+      width: 400px;
+      margin-bottom: 30px;
+    }
+
+    @media #{$md} {
+      width: 400px;
+      margin-bottom: 40px;
+    }
+
+    @media #{$lg} {
+      font-size: $fontLarge;
+      width: 480px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__agreement {
+    margin-top: 10px;
+    font-size: $fontSmall;
+
+    @media #{$md} {
+      margin-top: 20px;
+    }
+  }
+
+  &__area {
+    width: 100%;
+    resize: none;
+    height: 100px;
+    background: $formBg;
+    border: 2px solid $text1;
+    color: $text1;
+    font-family: $fontMain;
+    font-size: $fontLess;
+
+    @media #{$sm} {
+      width: 400px;
+      font-size: $font;
+    }
+
+    @media #{$md} {
+      width: 400px;
+    }
+
+    @media #{$lg} {
+      font-size: $fontLarge;
+      width: 480px;
+    }
+  }
+}

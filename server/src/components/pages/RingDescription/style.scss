@@ -1,0 +1,192 @@
+@import '../../../@theme/index';
+
+.ring-description {
+
+    &__heading {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        font-size: $h4;
+
+        @media #{$md} {
+            margin-bottom: 50px;
+            font-size: $h4Desk;
+        }
+
+        @media #{$lg} {
+            margin-bottom: 80px;
+            font-size: 32px;
+        }
+
+        @media #{$xl} {
+            margin-bottom: 100px;
+        }
+    }
+
+    &__text {
+        margin-bottom: 10px;
+
+        @media #{$xl} {
+            font-size: $fontLarger;
+            margin-bottom: 20px;
+        }
+    }
+
+    &__text:last-child {
+        @media #{$md} {
+            margin-bottom: 40px;
+        }
+
+        @media #{$lg} {
+            margin-bottom: 60px;
+        }
+
+        @media #{$xl} {
+            margin-bottom: 80px;
+        }
+    }
+    
+    &__small-heading {
+        text-align: center;
+        margin-bottom: 20px;
+
+        @media #{$md} {
+            text-align: left;
+        }
+
+        @media #{$lg} {
+            font-size: $title;
+        }
+
+        @media #{$xl} {
+            margin-bottom: 40px;
+        }
+    }
+
+    &__character-name {
+        font-size: $fontLess;
+
+        @media #{$md} {
+            font-size: $font;
+            margin-bottom: 10px;
+            text-align: right;
+        }
+
+        @media #{$lg} {
+            font-size: $fontLarge;
+        }
+
+        @media #{$xl} {
+            font-size: $title;
+            margin-bottom: 15px;
+        }
+    }
+
+    &__character-experience {
+        font-size: $fontSmall;
+
+        @media #{$md} {
+            font-size: $fontLess;
+            margin-bottom: 5px;
+            text-align: right;
+        }
+
+        @media #{$lg} {
+            font-size: $font;
+        }
+
+        @media #{$xl} {
+            font-size: $fontLarge;
+            margin-bottom: 10px;
+        }
+    }
+
+    &__character-information {
+        font-size: $fontSmallest;
+        margin-bottom: 30px;
+
+        @media #{$sm} {
+            margin-bottom: 0;
+        }
+
+        @media #{$md} {
+            font-size: $fontSmall;
+            text-align: right;
+        }
+
+        @media #{$lg} {
+            font-size: $fontLess;
+        }
+
+        @media #{$xl} {
+            font-size: $font;
+        }
+    }
+
+    &__image-wrapper {
+        text-align: center;
+    }
+
+    &__ring-image {
+        height: 200px;
+
+        @media #{$md} {
+            width: 100%;
+            height: auto;
+        }
+
+        @media #{$lg} {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &__character-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 40px;
+
+        @media #{$md} {
+            width: 150px;
+            height: 150px;
+        }
+
+        @media #{$xl} {
+            width: 200px;
+            height: 200px;
+        }
+    }
+
+    &__adventure-list {
+        text-align: center;
+        @media #{$sm} {
+            display: flex;
+        }
+    }
+
+    &__adventure-item {
+        padding: 10px;
+        border: 1px solid $text1;
+        background: $adventureBg;
+        cursor: pointer;
+
+        @media #{$sm} {
+            flex-basis: 33.33%;
+        }
+
+        &_active {
+            background: $adventureBgActive;
+            color: $text1;
+        }
+    }
+
+    &__adventure-image {
+        width: 100%;
+    }
+
+    &__button-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+}

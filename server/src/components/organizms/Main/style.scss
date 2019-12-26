@@ -1,0 +1,22 @@
+@import '../../../@theme/index';
+
+.main {
+    padding: 100px 0;
+    color: $mainPageText;
+
+    &__header {
+        font-size: $h2;
+        font-family: $fontMain;
+
+        @media (min-width: 768px) {
+            font-size: $h2Tablet;
+        }
+    }
+
+    &__text {
+        font-size: $fontLess;
+        @media (min-width: 768px) {
+            font-size: $font;
+        }
+    }
+}

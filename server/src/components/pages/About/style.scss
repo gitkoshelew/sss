@@ -1,0 +1,37 @@
+@import '../../../@theme/index';
+
+.about {
+  &__heading {
+    margin-bottom: 30px;
+    font-size: $h3;
+    color: $testIntroText;
+
+    @media #{$md} {
+      font-size: $h3Tablet;
+    }
+
+    @media #{$lg} {
+      font-size: $subtitleBig;
+    }
+  }
+
+  &__text {
+    margin-bottom: 10px;
+    color: $testIntroText;
+    font-size: $font;
+
+    @media #{$lg} {
+      font-size: $fontLarger;
+    }
+  }
+
+  &__image {
+    @media #{$md} {
+      width: 100%;
+    }
+
+    @media #{$xl} {
+      width: 400px;
+    }
+  }
+}

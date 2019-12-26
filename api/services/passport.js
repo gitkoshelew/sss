@@ -1,37 +1,46 @@
 const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const mongoose = require('mongoose');
-const keys = require('../config/keys');
+const LocalStrategy = require('passport-local').Strategy;
 
-const User = mongoose.model('users');
+const userDB = [
+  {
+    id: 1,
+    email: 'test@mail.ru',
+    password: '123'
+  },
+  {
+    id: 2,
+    email: 'test2@mail.ru',
+    password: '1232'
+  }
+]
+
+passport.userDB = userDB;
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
-  });
+  const user = passport.userDB.find(el=>el.id === id);
+  done(null, user || false);
 });
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: keys.googleClientID,
-      clientSecret: keys.googleClientSecret,
-      callbackURL: '/api/auth/google/callback',
-      proxy: true
-    },
-    async (accessToken, refreshToken, profile, done) => {
-      const existingUser = await User.findOne({ googleId: profile.id });
+passport.use(new LocalStrategy({usernameField: 'email'},
+  async (email, password, done) =>{
+    try{
 
-      if (existingUser) {
-        return done(null, existingUser);
+      const user = passport.userDB.find(el => el.email === email && el.password === password);
+      
+      if (user) {
+        return done(null, user)
       }
 
-      const user = await new User({ googleId: profile.id }).save();
-      done(null, user);
+      return done(null, false);
+
+    }catch(err){
+      if (err){
+        return done(null, err)
+      }
     }
-  )
-);
+  }
+));

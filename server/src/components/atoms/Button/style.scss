@@ -1,0 +1,128 @@
+@import '../../../@theme/index';
+
+.button {
+  border-radius: 20px;
+  padding: 10px 20px;
+  border: none;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+  &_darkblue {
+    background: $bgDarkButton;
+    color: $text1;
+
+    @media #{$lg} {
+      &:hover {
+        background-color: $bg;
+        color: $fgText;
+      }
+    }
+  }
+
+  &_white {
+    background: $btnWhiteBg;
+    color: $btnWhiteText;
+    font-weight: bold;
+
+    @media #{$lg} {
+      &:hover {
+        background-color: $btnWhiteHoverBg;
+      }
+    }
+  }
+
+  &_bg-white {
+    background: $btnWhiteBg;
+    border: 2px solid $bgDarkButton;
+    color: $bgDarkButton;
+
+    @media #{$lg} {
+      &:hover {
+        background-color: $adventureBgActive;
+      }
+    }
+  }
+
+  &_arrow {
+    &:after {
+      content: '\003E';
+      margin-left: 5px;
+    }
+  }
+}
+
+.header__button {
+  color: #fff;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
+  border-radius: 0;
+  font-size: $fontSmall;
+}
+
+.test__button {
+  margin-right: 10px;
+
+  @media #{$lg} {
+    &:hover {
+      background-color: $bg;
+      color: $fgText;
+    }
+  }
+
+  &[disabled] {
+    background: $text1;
+    &:hover {
+      background-color: inherit;
+      color: inherit;
+    }
+  }
+}
+
+.main__button {
+  background: $mainPageText;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: $fontSmall;
+  font-weight: normal;
+
+  @media #{$md} {
+    font-size: $font;
+    padding: 15px 50px;
+  }
+
+  @media #{$lg} {
+    &:hover {
+      background: $hover;
+    }
+  }
+}
+
+.rings__button {
+  margin: 0;
+}
+
+.test-intro__button {
+  padding: 10px 40px;
+}
+
+.reviews__button {
+  position: absolute;
+  border-radius: 0;
+  border-radius: $borderRad;
+  height: 40px;
+  right: 0;
+  top: 0;
+  margin: 0;
+  line-height: 1em;
+  padding: 10px 10px;
+
+  @media #{$lg} {
+    &:hover {
+      background-color: $bg;
+      color: $fg;
+    }
+  }
+}

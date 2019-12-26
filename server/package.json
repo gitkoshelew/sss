@@ -4,18 +4,20 @@
   "description": "Server side rendering project",
   "main": "index.js",
   "scripts": {
-    "dev-reload:build-client-watch": "set NODE_ENV=production&&set REBUILD_MODE=true&& webpack --mode production --env.NODE_ENV=production  --config webpack.client.js --watch",
-    "dev-reload:build-server-watch": "set NODE_ENV=production&&set REBUILD_MODE=true&& webpack --mode production --env.NODE_ENV=production  --config webpack.server.js --watch",
-    "dev-reload:demon-server": "nodemon --watch build/server/ --ignore build/server/assets/ --delay 1 --exec node ./build/server/bundle.js",
+    "lint": "eslint --ignore-path .eslintignore ./src",
+    "dev-needreload:build-client-watch": "set NODE_ENV=production&&set REBUILD_MODE=true&& webpack --mode production --env.NODE_ENV=production  --config webpack.client.js --watch",
+    "dev-needreload:build-server-watch": "set NODE_ENV=production&&set REBUILD_MODE=true&& webpack --mode production --env.NODE_ENV=production  --config webpack.server.js --watch",
+    "dev-needreload:demon-server": "nodemon --watch build/server/ --ignore build/server/assets/ --delay 1 --exec node ./build/server/bundle.js",
     "dev:server": "set NODE_ENV=development&& webpack --mode development --env.NODE_ENV=development  --config webpack.server.js",
     "dev:client": "set NODE_ENV=production&&set PREBUILD=true&& webpack --mode production --env.NODE_ENV=production --config webpack.client.js",
     "build:client": "set NODE_ENV=production&& webpack --mode production --env.NODE_ENV=production --config webpack.client.js -p",
     "build:server": "set NODE_ENV=production&& webpack --mode production --env.NODE_ENV=production --config webpack.server.js -p ",
     "run-server": "node ./build/server/bundle.js",
-    "webpack-devserver": "set NODE_ENV=development&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug --hot --devtool eval-source-map --colors --inline --open --port 8040 --host 0.0.0.0",
+    "webpack-devserver": "set NODE_ENV=development&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors  --open --port 8040",
+    "start": "set NODE_ENV=development&&set STATIC_MODE=true&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors --open --port 8080",
     "stop-server": "killall node",
-    "start-devreload": "npm-run-all --parallel dev-reload:*",
-    "start": "npm-run-all --serial dev:client dev:server --parallel run-server webpack-devserver",
+    "start-demon": "npm-run-all --parallel dev-needreload:*",
+    "start-isomorphic": "npm-run-all --serial dev:client dev:server --parallel run-server webpack-devserver",
     "build": "npm-run-all --serial build:*"
   },
   "author": "",
@@ -35,18 +37,20 @@
     "babel-preset-react": "6.24.1",
     "babel-preset-react-app": "^9.0.2",
     "babel-preset-stage-0": "6.24.1",
+    "bootstrap": "^4.4.1",
+    "classnames": "^2.2.6",
     "clean-webpack-plugin": "^3.0.0",
     "compression": "^1.7.4",
     "concurrently": "3.5.0",
     "copy-webpack-plugin": "^5.0.5",
     "core-js": "^3.4.5",
     "css-loader": "^3.2.0",
-    "eslint": "^6.7.1",
     "eslint-loader": "^3.0.2",
     "express": "^4.17.1",
     "express-http-proxy": "1.0.6",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^5.0.2",
+    "isomorphic-fetch": "^2.2.1",
     "json-loader": "^0.5.7",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
@@ -60,7 +64,7 @@
     "postcss-normalize": "7.0.1",
     "postcss-preset-env": "6.7.0",
     "postcss-safe-parser": "4.0.1",
-    "react": "16.0.0",
+    "react": "^16.12.0",
     "react-dev-utils": "^9.1.0",
     "react-dom": "16.0.1",
     "react-helmet": "5.2.0",
@@ -68,6 +72,7 @@
     "react-router-config": "1.0.0-beta.4",
     "react-router-dom": "4.2.2",
     "redux": "3.7.2",
+    "redux-saga": "^1.1.3",
     "redux-thunk": "2.2.0",
     "resolve-url-loader": "^3.1.1",
     "sass-loader": "^8.0.0",
@@ -77,15 +82,43 @@
     "url-loader": "^3.0.0",
     "webpack": "4.39.1",
     "webpack-merge": "4.1.0",
-    "webpack-node-externals": "1.6.0"
+    "webpack-node-externals": "1.6.0",
+    "html-webpack-plugin": "^3.2.0"
   },
   "devDependencies": {
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-app": "^6.1.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
+    "eslint-plugin-redux-saga": "^1.1.3",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "prettier": "^1.19.1",
     "react-hot-loader": "^4.12.15",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint",
+      "prettier --write",
+      "git add"
+    ],
+    "*.jsx": [
+      "eslint",
+      "prettier --write",
+      "git add"
+    ]
   },
   "browserslist": {
     "production": [
