@@ -1,9 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cn from 'classnames';
-
 import env from '../../../../config/env';
-import './style.scss';
+import styles from './style.module.scss';
 import Nav from '../../molecules/Nav';
 import Button from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
@@ -15,35 +15,40 @@ function Header({
   isUserLoged,
   dispatchAuthFetchLogOut,
   headerNavOpenHandler,
+  isHome,
 }) {
   const headerLinks = [
+    // {
+    //   href: '/users',
+    //   text: 'Users',
+    // },
+    // {
+    //   href: '/admins',
+    //   text: 'Admin',
+    // },
     {
-      href: '/users',
-      text: 'Users',
+      href: '/about',
+      text: 'о наc',
     },
-    {
-      href: '/admins',
-      text: 'Admin',
-    },
-    {
-      href: '/abou',
-      text: 'О наc',
-    },
-    {
-      href: '/test_intro',
-      text: 'Тест',
-    },
+    // {
+    //   href: '/test',
+    //   text: 'тест',
+    // },
     {
       href: '/rings',
-      text: 'Кольца',
+      text: 'кольца',
     },
     {
-      href: '/reviews',
-      text: 'Отзывы',
+      href: '/blog',
+      text: 'блог',
     },
+    // {
+    //   href: '/feedback',
+    //   text: 'отзывы',
+    // },
     {
-      href: '/contact_us',
-      text: 'Обратная связь',
+      href: '/contacts',
+      text: 'контакты',
     },
   ];
 
@@ -70,11 +75,11 @@ function Header({
   };
 
   return (
-    <header className="header">
+    <header className={`${styles.header} ${isHome ? styles.header_transparent : ''}`}>
       <div className="container">
         <div className="row justify-content-between align-items-center">
           <div className="col-2">
-            <Logo section="header" />
+            <Logo section="header" isHome={isHome} />
           </div>
           <div className={cn('col-12', 'col-md-10')}>
             <Nav
@@ -84,13 +89,14 @@ function Header({
               socLog={socLog}
               logStrategy={logStrategy}
               isUserLoged={isUserLoged}
+              isHome={isHome}
             />
-            <Button
+            {/* <Button
               text={headerButtonText}
               section="header"
               modificator={isHeaderNavOpen ? 'open' : 'close'}
               clickHandler={headerNavOpenHandler}
-            />
+            /> */}
           </div>
         </div>
       </div>
@@ -115,4 +121,4 @@ export default connect(
     },
     dispatchAuthFetchLogOut: authFetchLogOut,
   })
-)(Header);
+)(withRouter(Header));

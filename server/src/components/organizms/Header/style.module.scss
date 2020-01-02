@@ -1,0 +1,11 @@
+@import '../../../@theme/index';
+
+.header {
+  position: relative;
+  padding: 20px 0;
+  background: $bgHeadAndFoot;
+
+  &_transparent {
+    background: transparent;
+  }
+}

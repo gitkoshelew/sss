@@ -10,7 +10,7 @@
 
   &_darkblue {
     background: $bgDarkButton;
-    color: $text1;
+    color: $lightText;
 
     @media #{$lg} {
       &:hover {
@@ -73,7 +73,7 @@
   }
 
   &[disabled] {
-    background: $text1;
+    background: $lightText;
     &:hover {
       background-color: inherit;
       color: inherit;

@@ -186,7 +186,7 @@ const config = {
               importLoaders: 1,
               sourceMap: isEnvProduction && shouldUseSourceMap,
               modules: true,
-              getLocalIdent: getCSSModuleLocalIdent,
+              //getLocalIdent: getCSSModuleLocalIdent,
             }),
           },
           {
@@ -212,7 +212,7 @@ const config = {
                 importLoaders: 2,
                 sourceMap: shouldUseSourceMap,
                 modules: true,
-                getLocalIdent: getCSSModuleLocalIdent,
+                //getLocalIdent: getCSSModuleLocalIdent,
               },
               'sass-loader'
             ),

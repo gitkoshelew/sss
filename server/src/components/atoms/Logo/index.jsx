@@ -1,11 +1,13 @@
 import React from 'react';
-import './style.scss';
 import { Link } from 'react-router-dom';
+import styles from './style.module.scss';
 
-function Logo({ section, modificator }) {
+function Logo({ modificator, isHome }) {
   const customClass = modificator ? `logo_${modificator}` : '';
 
-  return <Link to="/" className={`${section}__logo logo ${customClass}`} />;
+  return (
+    <Link to="/" className={`${styles.logo} ${customClass} ${isHome ? styles.logo_dark : ''}`} />
+  );
 }
 
 export default Logo;

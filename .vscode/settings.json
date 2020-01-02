@@ -17,5 +17,8 @@
   "eslint.options": {
     "configFile": "./server/.eslintrc.json"
   },
-  "eslint.nodePath": "./server/node_modules"
+  "eslint.nodePath": "./server/node_modules",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  }
 }

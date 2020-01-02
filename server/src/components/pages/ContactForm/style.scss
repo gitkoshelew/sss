@@ -2,7 +2,7 @@
 
 .contact-us {
   background: $formBg;
-  color: $text1;
+  color: $lightText;
   text-align: center;
 
   &__form {
@@ -25,8 +25,8 @@
     margin-bottom: 30px;
     background: $formBg;
     border: none;
-    border-bottom: 2px solid $text1;
-    color: $text1;
+    border-bottom: 2px solid $lightText;
+    color: $lightText;
     text-align: center;
     width: 100%;
     font-size: $fontLess;
@@ -63,8 +63,8 @@
     resize: none;
     height: 100px;
     background: $formBg;
-    border: 2px solid $text1;
-    color: $text1;
+    border: 2px solid $lightText;
+    color: $lightText;
     font-family: $fontMain;
     font-size: $fontLess;
 
