@@ -9,7 +9,7 @@ import { fetchCurrentUser as fetchCurrentUserSaga } from '../sagaStore/sagas/cur
 const App = ({ route, location }) => {
   return (
     <div>
-      <Header isHome={location.pathname == '/'} />
+      <Header isHome={location.pathname === '/'} />
       <Switch>{renderRoutes(route.routes)}</Switch>
       {/* <Switch>{route}</Switch> */}
     </div>
