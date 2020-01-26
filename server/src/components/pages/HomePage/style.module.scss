@@ -1,0 +1,20 @@
+@import '../../../@theme/index';
+
+.mainHeading {
+  font-family: $fontMain;
+  font-weight: 700;
+  font-size: $h1main;
+  color: $testIntroText;
+  text-transform: uppercase;
+}
+
+.intro {
+  font-family: $fontSecondary;
+  font-size: $fontIntro;
+  color: $testIntroText;
+  font-weight: 300;
+}
+
+.hero {
+  height: calc(100vh - 90px);
+}

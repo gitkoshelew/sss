@@ -1,11 +1,13 @@
+@import './fonts';
+
 $primary: #a16eff;
 $success: #00d68f;
 $info: #0095ff;
 $warning: #ffaa00;
 $danger: #ff3d71;
 
-$fontMain: sans-serif;
-$fontSecondary: Calibri, sans-serif;
+$fontMain: $notosans, sans-serif;
+$fontSecondary: $sourcecodepro, monospace;
 
 $bgCard: #c4c4c4;
 $borderRadiusCard: 16px;
