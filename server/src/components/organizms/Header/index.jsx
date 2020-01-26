@@ -75,11 +75,11 @@ function Header({
   };
 
   return (
-    <header className={`${styles.header} ${isHome ? styles.header_transparent : ''}`}>
+    <header className={styles.header}>
       <div className="container">
         <div className="row justify-content-between align-items-center">
           <div className="col-2">
-            <Logo section="header" isHome={isHome} />
+            <Logo section="header" />
           </div>
           <div className={cn('col-12', 'col-md-10')}>
             <Nav
@@ -89,7 +89,6 @@ function Header({
               socLog={socLog}
               logStrategy={logStrategy}
               isUserLoged={isUserLoged}
-              isHome={isHome}
             />
             {/* <Button
               text={headerButtonText}

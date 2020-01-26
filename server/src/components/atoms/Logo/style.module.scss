@@ -11,7 +11,4 @@
     height: 50px;
     display: block;
   }
-  &_dark {
-    @include bgImg('../assets/images/LogoDark.svg', $size: contain);
-  }
 }

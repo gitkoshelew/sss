@@ -2,16 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './style.module.scss';
 
-function Nav({ links, logStrategy, socLog, isUserLoged, isHome }) {
+function Nav({ links, logStrategy, socLog, isUserLoged }) {
   return (
     <nav className={`${styles.nav}`}>
       <ul className={`${styles.nav_list}`}>
         {links.map(({ href, text }, i) => (
           <li className={`${styles.nav_link}`} key={i}>
-            <Link
-              to={href}
-              className={`${styles.nav_anchor} ${isHome ? styles.nav_anchor__dark : ''}`}
-            >
+            <Link to={href} className={styles.nav_anchor}>
               {text}
             </Link>
           </li>

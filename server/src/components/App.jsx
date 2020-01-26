@@ -6,10 +6,10 @@ import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import Header from './organizms/Header/index';
 import { fetchCurrentUser as fetchCurrentUserSaga } from '../sagaStore/sagas/currentUser';
 
-const App = ({ route, location }) => {
+const App = ({ route }) => {
   return (
     <div>
-      <Header isHome={location.pathname === '/'} />
+      <Header />
       <Switch>{renderRoutes(route.routes)}</Switch>
       {/* <Switch>{route}</Switch> */}
     </div>
