@@ -166,7 +166,7 @@
 
   &__adventure-item {
     padding: 10px;
-    border: 1px solid $lightText;
+    border: 1px solid $lightColor;
     background: $adventureBg;
     cursor: pointer;
 
@@ -176,7 +176,7 @@
 
     &_active {
       background: $adventureBgActive;
-      color: $lightText;
+      color: $lightColor;
     }
   }
 

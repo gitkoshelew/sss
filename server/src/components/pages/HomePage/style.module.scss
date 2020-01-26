@@ -1,17 +1,21 @@
 @import '../../../@theme/index';
 
+section {
+  background-color: $bgMain;
+}
+
 .mainHeading {
   font-family: $fontMain;
   font-weight: 700;
   font-size: $h1main;
-  color: $testIntroText;
+  color: $lightColor;
   text-transform: uppercase;
 }
 
 .intro {
   font-family: $fontSecondary;
   font-size: $fontIntro;
-  color: $testIntroText;
+  color: $lightColor;
   font-weight: 300;
 }
 

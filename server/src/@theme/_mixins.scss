@@ -17,7 +17,7 @@
 
 @mixin btn($bg, $bgHover, $color, $colorHover, $border, $borderHover) {
   text-align: center;
-  background-color: $bg;
+  background-color: $bgMain;
   cursor: pointer;
   color: $color;
   display: inline-block;
@@ -54,7 +54,7 @@
   height: $size;
   border-radius: 50%;
   text-align: center;
-  background: $bg;
+  background: $bgMain;
   border: 2px solid $border;
   color: $color;
   font-size: 0;
@@ -77,7 +77,8 @@
 @mixin absolute {
   content: '';
   position: relative;
-  &:before, &:after {
+  &:before,
+  &:after {
     position: absolute;
     top: 50%;
     left: 50%;

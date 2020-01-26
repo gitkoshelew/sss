@@ -14,15 +14,19 @@
   font-size: $btnFontSize;
   text-decoration: none;
 
-  &_darkblue {
-    background: $bgDarkButton;
-    color: $lightText;
+  &_dark {
+    background-color: $bgDarkButton;
+    color: $lightColor;
 
-    @media #{$lg} {
-      &:hover {
-        background-color: $bg;
-        color: $fgText;
-      }
+    // @media #{$lg} {
+    //   &:hover {
+    //     background-color: $bg;
+    //     color: $fgText;
+    //   }
+    // }
+    &:hover {
+      background-color: $lightColor;
+      color: $bgMain;
     }
   }
 }

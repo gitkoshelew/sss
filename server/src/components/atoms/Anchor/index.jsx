@@ -4,7 +4,7 @@ import styles from './style.module.scss';
 
 function Anchor({ text, address }) {
   return (
-    <Link to={address} className={`${styles.anchor} ${styles.anchor_darkblue}`}>
+    <Link to={address} className={`${styles.anchor} ${styles.anchor_dark}`}>
       {text}
     </Link>
   );
