@@ -6,7 +6,7 @@ const HomePage = () => {
   return (
     <section>
       <div className="container">
-        <div className={`row d-flex align-items-center ${styles.hero}`}>
+        <div className="row d-flex align-items-center">
           <div className="col-6">
             <h1 className={styles.mainHeading}>Властелин колец братство кольца</h1>
             <p className={styles.intro}>

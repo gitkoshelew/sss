@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style.scss';
+import styles from './style.module.scss';
 import Slider from '../../organizms/Slider';
 import MainRing from '../../../assets/images/rings/main-ring.jpg';
 import SecondRing from '../../../assets/images/rings/ring2.jpg';
@@ -57,7 +57,7 @@ function Rings(props) {
             <Slider slides={slides} section="rings" />
           </div>
           <div className="col-12 col-md-8">
-            <h4 className="rings__question">
+            <h4 className={styles.question}>
               Не знаешь, какое кольцо выбрать? Пройди тест и узнай!
             </h4>
           </div>

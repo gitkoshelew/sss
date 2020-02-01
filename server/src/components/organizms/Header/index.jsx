@@ -36,7 +36,7 @@ function Header({
     // },
     {
       href: '/rings',
-      text: 'кольца',
+      text: 'курсы',
     },
     {
       href: '/blog',

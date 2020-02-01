@@ -1,0 +1,21 @@
+@import '../../../@theme/index';
+
+.rings {
+  &__button-wrapper {
+    text-align: center;
+
+    @media #{$lg} {
+      text-align: left;
+    }
+  }
+}
+
+.question {
+  font-family: $sourcecodepro;
+  color: $lightColor;
+  margin: 10px 0;
+  text-align: center;
+  @media #{$md} {
+    margin: 40px 0 40px 50px;
+  }
+}

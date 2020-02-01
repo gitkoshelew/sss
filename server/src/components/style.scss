@@ -1,0 +1,9 @@
+@import '../@theme/index';
+
+#root {
+  background-color: $bgMain;
+}
+
+section {
+  height: calc(100vh - 90px);
+}

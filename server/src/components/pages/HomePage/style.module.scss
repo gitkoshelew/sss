@@ -1,9 +1,5 @@
 @import '../../../@theme/index';
 
-section {
-  background-color: $bgMain;
-}
-
 .mainHeading {
   font-family: $fontMain;
   font-weight: 700;
@@ -17,8 +13,4 @@ section {
   font-size: $fontIntro;
   color: $lightColor;
   font-weight: 300;
-}
-
-.hero {
-  height: calc(100vh - 90px);
 }
