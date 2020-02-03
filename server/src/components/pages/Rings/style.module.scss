@@ -1,13 +1,27 @@
 @import '../../../@theme/index';
 
-.rings {
-  &__button-wrapper {
-    text-align: center;
+.heading {
+  font-family: $fontMain;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 60px;
+}
 
-    @media #{$lg} {
-      text-align: left;
-    }
-  }
+.courses {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  // &__button-wrapper {
+  //   text-align: center;
+
+  //   @media #{$lg} {
+  //     text-align: left;
+  //   }
+  // }
+}
+
+.totest {
+  margin-top: 60px;
 }
 
 .question {

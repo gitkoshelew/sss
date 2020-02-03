@@ -1,0 +1,23 @@
+@import '../../../@theme/index';
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slide {
+  background-color: $lightColor;
+  border-radius: 16px;
+  color: $mainText;
+}
+
+.arrow {
+  cursor: pointer;
+  display: inline-block;
+  // &__prev {
+
+  // }
+  // &__next {
+
+  // }
+}
