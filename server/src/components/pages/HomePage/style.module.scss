@@ -1,0 +1,16 @@
+@import '../../../@theme/index';
+
+.mainHeading {
+  font-family: $fontMain;
+  font-weight: 700;
+  font-size: $h1main;
+  color: $lightColor;
+  text-transform: uppercase;
+}
+
+.intro {
+  font-family: $fontSecondary;
+  font-size: $fontIntro;
+  color: $lightColor;
+  font-weight: 300;
+}

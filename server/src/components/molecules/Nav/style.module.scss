@@ -1,0 +1,74 @@
+@import '../../../@theme/index';
+
+.nav {
+  &_list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0;
+  }
+
+  &_link {
+    width: 20%;
+    text-align: center;
+    list-style: none;
+    font-size: $fontLess;
+    @media (min-width: 768px) {
+      font-size: $font;
+    }
+  }
+
+  &_anchor {
+    color: $lightColor;
+    font-family: $fontMain;
+    text-decoration: none;
+    font-weight: 700;
+
+    &:focus,
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.header {
+  &__nav {
+    &_list {
+      flex-flow: column;
+      margin-top: 30px;
+
+      @media (min-width: 768px) {
+        margin-top: 0;
+        flex-flow: row;
+      }
+    }
+
+    &_link {
+      width: 100%;
+      margin-bottom: 10px;
+
+      @media (min-width: 768px) {
+        margin-bottom: 0;
+      }
+    }
+
+    &_anchor {
+      //color: $lightColor;
+      color: lightgreen;
+      font-family: $fontMain;
+    }
+
+    &_anchor__dark {
+      color: $testIntroText;
+    }
+  }
+}
+
+.footer {
+  &__nav {
+    &_anchor {
+      color: $lightColor;
+      font-family: $fontMain;
+    }
+  }
+}

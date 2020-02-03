@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './style.scss';
-import Slider from '../../organizms/Slider';
+import styles from './style.module.scss';
+import CoursesSlider from '../../organizms/CoursesSlider';
 import MainRing from '../../../assets/images/rings/main-ring.jpg';
 import SecondRing from '../../../assets/images/rings/ring2.jpg';
 import ThirdRing from '../../../assets/images/rings/ring3.jpg';
@@ -10,7 +10,7 @@ import FifthRing from '../../../assets/images/rings/ring5.jpg';
 import SixthRing from '../../../assets/images/rings/ring6.jpg';
 import Button from '../../atoms/Button';
 
-function Rings(props) {
+function Rings() {
   const slides = [
     {
       heading: 'Кольцо всевластия',
@@ -50,18 +50,25 @@ function Rings(props) {
     },
   ];
   return (
-    <section className="rings">
+    <section className={styles.courses}>
       <div className="container">
-        <div className="row justify-content-around">
+        <div className="row d-flex justify-content-center">
           <div className="col-12">
-            <Slider slides={slides} section="rings" />
+            <h1 className={styles.heading}>Каталог курсов</h1>
           </div>
+        </div>
+        <div className="row d-flex justify-content-around">
+          <div className="col-12">
+            <CoursesSlider slides={slides} />
+          </div>
+        </div>
+        <div className={`row ${styles.totest}`}>
           <div className="col-12 col-md-8">
-            <h4 className="rings__question">
+            <h4 className={styles.question}>
               Не знаешь, какое кольцо выбрать? Пройди тест и узнай!
             </h4>
           </div>
-          <div className="col-12 col-md-3 align-self-center">
+          <div className="col-12 col-md-4 align-self-center">
             <div className="rings__button-wrapper">
               <Link to="/test_intro">
                 <Button section="rings" text="Начать тест" modificator="darkblue" />

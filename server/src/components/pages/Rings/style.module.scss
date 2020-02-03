@@ -1,0 +1,35 @@
+@import '../../../@theme/index';
+
+.heading {
+  font-family: $fontMain;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 60px;
+}
+
+.courses {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  // &__button-wrapper {
+  //   text-align: center;
+
+  //   @media #{$lg} {
+  //     text-align: left;
+  //   }
+  // }
+}
+
+.totest {
+  margin-top: 60px;
+}
+
+.question {
+  font-family: $sourcecodepro;
+  color: $lightColor;
+  margin: 10px 0;
+  text-align: center;
+  @media #{$md} {
+    margin: 40px 0 40px 50px;
+  }
+}

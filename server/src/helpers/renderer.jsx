@@ -48,7 +48,6 @@ export default (req, store, context) => {
       <head>
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
         ${renderCssLinks}
       </head>
       <body>
