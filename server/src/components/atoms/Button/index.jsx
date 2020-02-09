@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './style.module.scss';
 
-function Button({ text, clickHandler, modificator, disabled }) {
+function Button({ isCTA, text, clickHandler, disabled }) {
   return (
-    <button className={styles.button} onClick={clickHandler} disabled={disabled}>
+    <button
+      className={`${styles.button}  ${isCTA ? styles.cta : ''}`}
+      onClick={clickHandler}
+      disabled={disabled}
+    >
       {text}
     </button>
   );
