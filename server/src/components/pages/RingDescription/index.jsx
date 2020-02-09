@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './style.scss';
+import styles from './style.module.scss';
+import CourseFormats from '../../organizms/CourseFormats';
 import Button from '../../atoms/Button';
 import { contactsAdventureItemAction } from '../../../sagaStore/actions';
 import MainRing from '../../../assets/images/rings/main-ring.jpg';
@@ -16,10 +17,7 @@ import Gimli from '../../../assets/images/characters/gimli.jpg';
 import Legolas from '../../../assets/images/characters/legolas.jpg';
 import Gendalf from '../../../assets/images/characters/gendalf.jpg';
 import Sam from '../../../assets/images/characters/sam.jpg';
-import Light from '../../../assets/images/maps/light.jpg';
-import Standart from '../../../assets/images/maps/standart.jpg';
-import Advanced from '../../../assets/images/maps/advanced.jpg';
-import RingsArray from '../../../data/rings.json';
+import RingsArray from '../../../data/courses.json';
 
 const RingDescription = ({
   active,
@@ -44,100 +42,83 @@ const RingDescription = ({
     Gendalf,
     Sam,
   };
-  const mapsImg = [Light, Standart, Advanced];
 
-  const requiredRing = RingsArray.find(el => el.id === id);
-  const adventureType = ['Light', 'Standart', 'Advanced'];
+  const course = RingsArray.find(el => el.id === id);
+  const {
+    heading,
+    brief,
+    programPoints,
+    price,
+    img,
+    name,
+    experience,
+    character,
+    information,
+    totalfreeFormat,
+    lightFormat,
+    standartFormat,
+    advancedFormat,
+    ninjaFormat,
+    incubatorFormat,
+  } = course;
 
   return (
-    <section className="ring-description">
+    <section>
       <div className="container">
         <div className="row justify-content-between">
-          <div className="col-12 order-1">
-            <h4 className="ring-description__heading">ПУТЕШЕСТВИЕ В МОРДОР</h4>
+          <div className="col-12">
+            <h1 className={styles.page__heading}>{heading}</h1>
           </div>
-          <div className="col-12 col-md-6 col-lg-5 order-3 order-md-2">
-            <p className="ring-description__text">
-              Это кольцо рассчитано на тех, кто хочет пойти в мордор. Начальные навыки не
-              обязательны.
-            </p>
-            <h4 className="ring-description__small-heading">Программа похода:</h4>
-            <p className="ring-description__text">
-              - Три - эльфийским владыкам в подзвездный предел;
-            </p>
-            <p className="ring-description__text">
-              - Семь - для гномов царящих в подгорном просторе;
-            </p>
-            <p className="ring-description__text">- Девять - смертным, чей выведен срок и удел;</p>
-            <p className="ring-description__text">- И Одно - Властелину на черном престоле.</p>
-            <p className="ring-description__text">- В Мордоре, где вековечная тьма:</p>
-            <p className="ring-description__text">- Чтобы всех отыскать, воедино созвать</p>
-            <p className="ring-description__text">- И единою черною волей сковать</p>
-            <p className="ring-description__text">- В Мордоре, где вековечная тьма.</p>
-          </div>
-          <div className="col-12 col-md-6 col-lg-5 order-2 order-md-3 align-self-center">
-            <p className="ring-description__image-wrapper">
-              <img
-                className="ring-description__ring-image"
-                src={ringsImg[requiredRing.img]}
-                alt={requiredRing.heading}
-              />
-            </p>
-          </div>
-          <div className="col-12 col-md-4 order-4">
-            <h4 className="ring-description__small-heading">Участник братства:</h4>
-          </div>
-          <div className="col-7 col-md-5 order-5">
-            <h5 className="ring-description__character-name">{requiredRing.name}</h5>
-            <p className="ring-description__character-experience">{requiredRing.experience}</p>
-            <p className="ring-description__character-information">
-              Lorem ipsum dolor sit amet, id sit option prompta moderatius, eos sint placerat in,
-              dolorem pericula neglegentur cu has.
-            </p>
-          </div>
-          <div className="col-5 col-md-3 order-6">
-            <p className="ring-description__image-wrapper">
-              <img
-                className="ring-description__character-image"
-                src={charactersImg[requiredRing.character]}
-                alt={requiredRing.name}
-              />
-            </p>
-          </div>
-          <div className="col-12 order-7">
-            <h4 className="ring-description__heading">Выбери формат путешествия:</h4>
-          </div>
-          <div className="col-12 order-8">
-            <ul className="ring-description__adventure-list">
-              {adventureType.map((el, i) => {
-                const activeItem = i === active ? 'ring-description__adventure-item_active' : null;
-                return (
-                  <li
-                    className={`ring-description__adventure-item ${activeItem}`}
-                    key={i}
-                    onClick={() => onClickHandler(i)}
-                  >
-                    {el}
-                  </li>
-                );
-              })}
+          <div className="col-12 col-md-6 col-lg-5">
+            <p className={styles.text}>{brief}</p>
+            <h4 className={styles.small__heading}>Программа курса:</h4>
+            <ul>
+              {programPoints.map((item, i) => (
+                <li key={i} className={styles.text}>
+                  {item}
+                </li>
+              ))}
             </ul>
-            <div className="ring-description__adventure-img-wrapper">
-              <img
-                className="ring-description__adventure-image ring-description__adventure-image_active"
-                src={mapsImg[active]}
-                alt={adventureType[active]}
-              />
-            </div>
           </div>
-          <div className="col-12 order-9">
-            <div className="ring-description__button-wrapper">
+          <div className="col-12 col-md-6 col-lg-5 align-self-center">
+            <p className={styles.image__wrapper}>
+              <img className={styles.ring__image} src={ringsImg[img]} alt={heading} />
+            </p>
+          </div>
+          <div className="col-12 col-md-4">
+            <h4 className={styles.small__heading}>Участник братства:</h4>
+          </div>
+          <div className="col-7 col-md-5">
+            <h5 className={styles.character__name}>{name}</h5>
+            <p className={styles.character__experience}>{experience}</p>
+            <p className={styles.character__information}>{information}</p>
+          </div>
+          <div className="col-5 col-md-3">
+            <p className={styles.image__wrapper}>
+              <img className={styles.character__image} src={charactersImg[character]} alt={name} />
+            </p>
+          </div>
+          <div className="col-12">
+            <h4 className={styles.heading}>Выбери формат обучения:</h4>
+          </div>
+          <div className="col-12">
+            <CourseFormats
+              totalfreeFormat={totalfreeFormat}
+              lightFormat={lightFormat}
+              standartFormat={standartFormat}
+              advancedFormat={advancedFormat}
+              ninjaFormat={ninjaFormat}
+              incubatorFormat={incubatorFormat}
+            />
+          </div>
+          <div className="col-12">
+            <div className={styles.button__wrapper}>
               <Link to="/rings">
-                <Button section="ring-description" text="< Все кольца" modificator="bg-white" />
+                <Button text="< Все курсы" />
               </Link>
 
               <Link to="/">
-                <Button section="ring-description" text="Записаться >" modificator="darkblue" />
+                <Button isCTA text="Записаться >" />
               </Link>
             </div>
           </div>

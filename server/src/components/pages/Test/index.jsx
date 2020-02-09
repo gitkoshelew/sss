@@ -14,7 +14,7 @@ import {
   testValidationAction,
   testCheckAction,
 } from '../../../sagaStore/actions';
-import rings from '../../../data/rings.json';
+import rings from '../../../data/courses.json';
 
 const Test = ({
   testNumber,
