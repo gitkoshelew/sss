@@ -1,13 +1,13 @@
 import React from 'react';
-import './style.scss';
+import styles from './style.module.scss';
 import Checkbox from '../../atoms/Checkbox';
 
 function CheckboxList({ checksList: { answers }, section, clickHandler }) {
   return (
-    <ul className={`${section}__checklist checklist`}>
+    <ul className={styles.checklist}>
       {answers.map(({ text, id, checked }, idx) => {
         return (
-          <li className={`${section}__checklist-item checklist-item`} key={id}>
+          <li className={styles.item} key={id}>
             <Checkbox
               checked={checked}
               text={text}

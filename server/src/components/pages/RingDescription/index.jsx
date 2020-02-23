@@ -114,11 +114,14 @@ const RingDescription = ({
           <div className="col-12">
             <div className={styles.button__wrapper}>
               <Link to="/rings">
-                <Button text="< Все курсы" />
+                <Button text="< все курсы" />
               </Link>
 
-              <Link to="/">
-                <Button isCTA text="Записаться >" />
+              <Link
+                to="/test_intro
+              "
+              >
+                <Button isCTA text="записаться >" />
               </Link>
             </div>
           </div>

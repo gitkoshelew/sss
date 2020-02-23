@@ -1,7 +1,7 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import './style.scss';
 import Button from '../../atoms/Button';
-import { Link } from 'react-router-dom';
 
 function Main() {
   return (
@@ -16,7 +16,7 @@ function Main() {
               призыв.
             </p>
             <Link to="/rings">
-              <Button text="ВЫБРАТЬ КОЛЬЦО >" section="main" />
+              <Button text="выбрать кольцо >" section="main" />
             </Link>
           </div>
         </div>

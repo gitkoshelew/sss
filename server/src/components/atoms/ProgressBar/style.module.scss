@@ -1,0 +1,25 @@
+@import '../../../@theme/index';
+
+.empty {
+  height: 20px;
+  width: 100%;
+  position: relative;
+  background: $lightColor;
+  border-radius: 3px;
+}
+
+.full {
+  top: 0;
+  left: 0;
+  position: absolute;
+  height: 20px;
+  background: $bgDarkButton;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.text {
+  font-family: $fontMain;
+  color: $lightColor;
+  text-align: center;
+}

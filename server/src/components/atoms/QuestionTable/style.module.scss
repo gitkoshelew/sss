@@ -1,0 +1,16 @@
+@import '../../../@theme/index';
+
+table,
+th,
+td {
+  padding: 16px;
+  border: 1px solid $lightColor;
+  border-collapse: collapse;
+  user-select: none;
+  font-family: $fontSecondary;
+  color: $lightColor;
+}
+
+table {
+  margin: 20px;
+}
