@@ -1,0 +1,9 @@
+@import '../../../@theme/index';
+
+.clock {
+  font-family: $fontSecondary;
+  color: $bgDarkButton;
+  font-weight: 700;
+  font-size: $h3;
+  margin-top: 0;
+}

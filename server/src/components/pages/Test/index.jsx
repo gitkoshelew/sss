@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import './style.scss';
+import styles from './style.module.scss';
 import CheckboxList from '../../molecules/CheckboxList';
+import Countdown from '../../atoms/Countdown';
 import ProgressBar from '../../atoms/ProgressBar';
-import Testimage from '../../../assets/images/Testimage.svg';
-import checkList from '../../../data/tests.json';
+import QuestionTable from '../../atoms/QuestionTable';
+import Answer from '../../atoms/Answer';
 import Button from '../../atoms/Button';
+import checkList from '../../../data/test.json';
 import {
   testIncrementAction,
   testDecrementAction,
@@ -15,6 +17,10 @@ import {
   testCheckAction,
 } from '../../../sagaStore/actions';
 import rings from '../../../data/courses.json';
+import testquestion17 from '../../../assets/images/test/17.svg';
+import testquestion29 from '../../../assets/images/test/29.svg';
+import testquestion32 from '../../../assets/images/test/32.svg';
+import testquestion49 from '../../../assets/images/test/49.svg';
 
 const Test = ({
   testNumber,
@@ -51,44 +57,55 @@ const Test = ({
     }
     return null;
   };
-
+  const defineImg = path => {
+    switch (path) {
+      case 'testquestion17':
+        return testquestion17;
+      case 'testquestion29':
+        return testquestion29;
+      case 'testquestion32':
+        return testquestion32;
+      case 'testquestion49':
+        return testquestion49;
+      default:
+        return 0;
+    }
+  };
+  const path = defineImg(testItems[testNumber].imagePath);
   return (
-    <section className="test">
+    <section>
       <div className="container">
         <div className="row justify-content-around">
-          <div className="col-12 col-lg-10 order-1">{testItems[testNumber].question}</div>
-          <div className="col-12 col-md-6 order-3 order-md-2">
-            <CheckboxList
-              section="test"
-              checksList={testItems[testNumber]}
-              clickHandler={checkboxHandler}
-            />
-            <Button
-              section="test"
-              text="< Назад"
-              clickHandler={previousTestHandler}
-              disabled={testNumber === 0 || result}
-            />
-            <Button
-              section="test"
-              text={nextButtonText}
-              clickHandler={buttonHandler}
-              modificator="next"
-              disabled={nextDisabled}
-            />
+          <div className="col-12 col-md-6">
+            <Countdown />
           </div>
-          <div className="col-12 col-md-6 order-2 order-md-3">
+          <div className="col-12 col-md-6">
             <ProgressBar section="test" ind={testNumber} fullInd={checkList.length} />
-            <img src={Testimage} alt="test" className="test__image d-none d-md-block" />
           </div>
-          {result ? (
-            <div className="col-12 order-4">
-              <p>
-                {'Рекомендуем приобрести кольцо '}
-                {renderRingText(result)}
-              </p>
-            </div>
-          ) : null}
+        </div>
+        <div className="row">
+          <div className={`col-12 col-lg-10 ${styles.ask}`}>{testItems[testNumber].question}</div>
+          <div className={`col-12 col-md-6 ${styles.options}`}>
+            {!testItems[testNumber].isOpenQuestion && (
+              <CheckboxList
+                section="test"
+                checksList={testItems[testNumber]}
+                clickHandler={checkboxHandler}
+              />
+            )}
+            {testItems[testNumber].doesContainTable && (
+              <QuestionTable tableItems={testItems[testNumber].markup} />
+            )}
+            {testItems[testNumber].doesContainImage && (
+              <div>
+                <img src={path} alt="question image" className={styles.picture} />
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="row justify-content-between align-items-center">
+          {testItems[testNumber].isOpenQuestion && <Answer />}
+          <Button isCTA text={nextButtonText} clickHandler={buttonHandler} />
         </div>
       </div>
     </section>

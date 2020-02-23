@@ -6,7 +6,7 @@ import {
   TEST_ANSWER_VALIDATION,
 } from '../actions/constants';
 
-import checkList from '../../data/tests.json';
+import checkList from '../../data/test.json';
 
 const testItems = checkList.map(test => {
   return {
@@ -18,7 +18,7 @@ const testItems = checkList.map(test => {
 
 const initialState = {
   testNumber: 0,
-  nextButtonText: 'Далее >',
+  nextButtonText: 'далее >',
   nextDisabled: true,
   testItems,
   result: null,
@@ -36,14 +36,14 @@ const testReducer = (state = initialState, action) => {
         testNumber: nextTestNumber,
         nextDisabled,
         nextButtonText:
-          state.testNumber < state.testItems.length - 2 ? 'Далее >' : 'Завершить тест',
+          state.testNumber < state.testItems.length - 2 ? 'далее >' : 'завершить тест',
       };
     }
     case TEST_NUMBER_DECREMENT:
       return {
         ...state,
         testNumber: state.testNumber > 0 ? state.testNumber - 1 : state.testNumber,
-        nextButtonText: state.testNumber < state.testItems.length ? 'Далее >' : 'Завершить тест',
+        nextButtonText: state.testNumber < state.testItems.length ? 'далее >' : 'завершить тест',
         nextDisabled: false,
       };
     case TEST_CHECK: {

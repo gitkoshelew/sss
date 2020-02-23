@@ -1,16 +1,14 @@
 import React from 'react';
-import './style.scss';
+import styles from './style.module.scss';
 
 function ProgressBar({ section, ind, fullInd }) {
   const width = ((ind + 1) / fullInd) * 100;
   return (
-    <div className={`${section}__progress-bar progress-bar`}>
-      <div className={`${section}__empty-bar empty-bar`}>
-        <div className={`${section}__full-bar full-bar`} style={{ width: `${width}%` }} />
+    <div>
+      <div className={styles.empty}>
+        <div className={styles.full} style={{ width: `${width}%` }} />
       </div>
-      <p className={`${section}__progress-text progress-text`}>
-        {`${ind + 1} вопросов из ${fullInd}`}
-      </p>
+      <p className={styles.text}>{`${ind + 1} вопросов из ${fullInd}`}</p>
     </div>
   );
 }

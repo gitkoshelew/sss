@@ -1,0 +1,42 @@
+@import '../../../@theme/index';
+
+.button_wrapper {
+  text-align: center;
+}
+
+.heading {
+  margin-bottom: 50px;
+  font-family: $fontMain;
+  font-weight: 700;
+  font-size: $h3;
+  color: $lightColor;
+
+  @media #{$md} {
+    font-size: $h3Tablet;
+  }
+
+  @media #{$lg} {
+    font-size: $subtitleBig;
+  }
+}
+
+.text {
+  margin-bottom: 30px;
+  font-family: $fontMain;
+  color: $lightColor;
+  font-size: $font;
+
+  @media #{$lg} {
+    font-size: $title;
+  }
+}
+
+.image {
+  @media #{$md} {
+    width: 300px;
+  }
+
+  @media #{$lg} {
+    width: 100%;
+  }
+}

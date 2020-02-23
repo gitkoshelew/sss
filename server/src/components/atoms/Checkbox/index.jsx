@@ -1,18 +1,18 @@
 import React from 'react';
-import './style.scss';
+import styles from './style.module.scss';
 
 function Checkbox({ section, text, modificator, clickHandler, checked }) {
   return (
-    <label className={`${section}__label label`}>
+    <label className={styles.label}>
       <input
         type="checkbox"
         checked={checked}
-        className={`${section}__checkbox checkbox checkbox_${modificator}`}
+        className={styles.checkbox}
         name={section}
         onChange={clickHandler}
       />
       <div role="button" />
-      <span className={`${section}__label-text label-text`}>{text}</span>
+      <span className={styles.label__text}>{text}</span>
     </label>
   );
 }

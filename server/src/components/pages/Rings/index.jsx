@@ -64,12 +64,12 @@ function Rings() {
         </div>
         <div className={`row ${styles.totest}`}>
           <div className="col-12 col-md-8">
-            <h4 className={styles.question}>Не знаешь, какой курс выбрать? Пройди тест и узнай!</h4>
+            <h4 className={styles.question}>Не знаешь, какой курс выбрать?</h4>
           </div>
-          <div className="col-12 col-md-4 align-self-center">
+          <div className="col-8 col-md-4 align-self-center">
             <div className="rings__button-wrapper">
               <Link to="/test_intro">
-                <Button isCTA text="Начать тест" />
+                <Button isCTA text="задать вопрос" />
               </Link>
             </div>
           </div>
