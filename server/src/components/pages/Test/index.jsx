@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './style.module.scss';
-import CheckboxList from '../../molecules/CheckboxList';
+import OptionsList from '../../molecules/OptionsList';
 import Countdown from '../../atoms/Countdown';
 import ProgressBar from '../../atoms/ProgressBar';
 import QuestionTable from '../../atoms/QuestionTable';
@@ -87,7 +87,7 @@ const Test = ({
           <div className={`col-12 col-lg-10 ${styles.ask}`}>{testItems[testNumber].question}</div>
           <div className={`col-12 col-md-6 ${styles.options}`}>
             {!testItems[testNumber].isOpenQuestion && (
-              <CheckboxList
+              <OptionsList
                 section="test"
                 checksList={testItems[testNumber]}
                 clickHandler={checkboxHandler}

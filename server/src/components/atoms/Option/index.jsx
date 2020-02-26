@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './style.module.scss';
 
-function Checkbox({ section, text, modificator, clickHandler, checked }) {
+function Option({ section, text, modificator, clickHandler, checked }) {
   return (
     <label className={styles.label}>
       <input
-        type="checkbox"
+        type="radio"
         checked={checked}
         className={styles.checkbox}
         name={section}
@@ -17,4 +17,4 @@ function Checkbox({ section, text, modificator, clickHandler, checked }) {
   );
 }
 
-export default Checkbox;
+export default Option;
