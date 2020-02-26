@@ -1,14 +1,14 @@
 import React from 'react';
 import styles from './style.module.scss';
-import Checkbox from '../../atoms/Checkbox';
+import Option from '../../atoms/Option';
 
-function CheckboxList({ checksList: { answers }, section, clickHandler }) {
+function OptionsList({ checksList: { answers }, section, clickHandler }) {
   return (
     <ul className={styles.checklist}>
       {answers.map(({ text, id, checked }, idx) => {
         return (
           <li className={styles.item} key={id}>
-            <Checkbox
+            <Option
               checked={checked}
               text={text}
               section={section}
@@ -22,4 +22,4 @@ function CheckboxList({ checksList: { answers }, section, clickHandler }) {
   );
 }
 
-export default CheckboxList;
+export default OptionsList;
