@@ -106,7 +106,7 @@ const Test = ({
           </div>
         </div>
         <div className="row justify-content-between align-items-center">
-          {testItems[testNumber].isOpenQuestion && <Answer clickHandler={changeInputHandler} />}
+          {testItems[testNumber].isOpenQuestion && <Answer changeHandler={changeInputHandler} />}
           <Button isCTA text={nextButtonText} clickHandler={buttonHandler} />
         </div>
       </div>
