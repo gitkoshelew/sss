@@ -1,0 +1,11 @@
+/build/**
+/config/**
+webpack.client.js
+webpack.server.js
+webpack.base.js
+/src/sagaStore/createStoreClient.js
+/src/sagaStore/createStoreServer.js
+/src/server.js
+/src/helpers/utils.js
+test.js
+!.eslintrc.js

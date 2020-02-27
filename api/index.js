@@ -7,11 +7,21 @@ const passport = require('passport');
 const cors = require('cors');
 const keys = require('./config/keys');
 const env = require('./config/env');
+const config = require('config');
+
 require('./models/User');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
-// mongoose.connect(keys.mongoURI);
+
+async function start() {
+  try {
+    await mongoose.connect(config.get('mongoUri'), {});
+  } catch (e) {
+    console.log('Server Error', e.message);
+    process.exit(1);
+  }
+}
 
 const app = express();
 
@@ -34,16 +44,15 @@ app.use(
       maxAge: 30 * 24 * 60 * 60 * 1000,
     },
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
   })
-)
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
 
 require('./routes/authRoutes')(app);
 require('./routes/userRoutes')(app);
-
 
 app.get('/', (req, res) => {
   let adminContent = `
@@ -72,5 +81,5 @@ app.get('/', (req, res) => {
   `);
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT);
+const PORT = process.env.PORT || config.get('port') || 5000;
+app.listen(PORT, () => console.log('server running on port' + PORT));
