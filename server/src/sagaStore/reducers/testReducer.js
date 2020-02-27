@@ -4,6 +4,7 @@ import {
   TEST_NUMBER_DECREMENT,
   TEST_NUMBER_INCREMENT,
   TEST_ANSWER_VALIDATION,
+  TEST_INPUT_CHANGE,
 } from '../actions/constants';
 
 import checkList from '../../data/test.json';
@@ -55,7 +56,10 @@ const testReducer = (state = initialState, action) => {
           ...test,
           answers: test.answers.map((answer, answerIndex) => {
             if (answerIndex !== payload.index) {
-              return answer;
+              return {
+                ...answer,
+                checked: false,
+              };
             }
             return {
               ...answer,
@@ -78,7 +82,12 @@ const testReducer = (state = initialState, action) => {
         testItems: state.testItems.map((test, idx) => {
           if (idx === state.testNumber) {
             const { answers } = test;
-            const valid = answers.every(({ correct, checked }) => correct === checked);
+            const valid = answers.every(({ correct, checked }) => {
+              if (test.givenAnswer) {
+                return correct === test.givenAnswer;
+              }
+              return correct === checked;
+            });
             return {
               ...test,
               valid,
@@ -92,18 +101,31 @@ const testReducer = (state = initialState, action) => {
         ...state,
         result: state.testItems.reduce(
           (acc, test) => {
-            const validAnsvers = test.answers.reduce((validAcc, { correct, checked }) => {
+            const validAnswers = test.answers.reduce((validAcc, { correct, checked }) => {
               if (correct === checked) return validAcc + 1;
               return validAcc;
             }, 0);
             return {
-              valid: acc.valid + validAnsvers,
+              valid: acc.valid + validAnswers,
               questions: acc.questions + test.answers.length,
             };
           },
           { valid: 0, questions: 0 }
         ),
         nextDisabled: true,
+      };
+    case TEST_INPUT_CHANGE:
+      return {
+        ...state,
+        testItems: testItems.map((test, idx) => {
+          if (state.testNumber !== idx) {
+            return test;
+          }
+          return {
+            ...test,
+            givenAnswer: payload.target.value,
+          };
+        }),
       };
     default:
       return state;

@@ -4,6 +4,7 @@ import {
   TEST_NUMBER_DECREMENT,
   TEST_NUMBER_INCREMENT,
   TEST_ANSWER_VALIDATION,
+  TEST_INPUT_CHANGE,
 } from './constants';
 
 export const testIncrementAction = () => ({
@@ -25,5 +26,10 @@ export const testCheckAction = payload => ({
 
 export const testValidationAction = payload => ({
   type: TEST_ANSWER_VALIDATION,
+  payload,
+});
+
+export const testInputAction = payload => ({
+  type: TEST_INPUT_CHANGE,
   payload,
 });

@@ -242,7 +242,7 @@
         "answers":     [
             {
                 "text": "1",
-                "correct": true,
+                "correct": "1",
                 "id": "081"
             }
         ]
@@ -292,7 +292,7 @@
         "answers":     [
             {
                 "text": "40",
-                "correct": true,
+                "correct": "40",
                 "id": "101"
             }
         ]
@@ -332,7 +332,7 @@
         "answers":     [
             {
                 "text": "270",
-                "correct": true,
+                "correct": "270",
                 "id": "121"
             }
         ]
@@ -348,7 +348,7 @@
         "answers":     [
             {
                 "text": "3",
-                "correct": true,
+                "correct": "3",
                 "id": "131"
             }
         ]
@@ -439,7 +439,7 @@
         "answers":     [
             {
                 "text": "ни",
-                "correct": true,
+                "correct": "ни",
                 "id": "161"
             }
         ]
@@ -455,7 +455,7 @@
         "answers":     [
             {
                 "text": "4",
-                "correct": true,
+                "correct": "4",
                 "id": "171"
             }
         ]
@@ -470,7 +470,7 @@
         "answers":     [
             {
                 "text": "4",
-                "correct": true,
+                "correct": "4",
                 "id": "181"
             }
         ]
@@ -511,7 +511,7 @@
         "answers":     [
             {
                 "text": "Н",
-                "correct": true,
+                "correct": "Н",
                 "id": "201"
             }
         ]
@@ -527,7 +527,7 @@
         "answers":     [
             {
                 "text": "25",
-                "correct": true,
+                "correct": "25",
                 "id": "211"
             }
         ]
@@ -543,7 +543,7 @@
         "answers":     [
             {
                 "text": "31",
-                "correct": true,
+                "correct": "31",
                 "id": "221"
             }
         ]
@@ -614,7 +614,7 @@
         "answers":     [
             {
                 "text": "15",
-                "correct": true,
+                "correct": "15",
                 "id": "251"
             }
         ]
@@ -654,7 +654,7 @@
         "answers":     [
             {
                 "text": "1",
-                "correct": true,
+                "correct": "1",
                 "id": "271"
             }
         ]
@@ -695,7 +695,7 @@
         "answers":     [
             {
                 "text": "213",
-                "correct": true,
+                "correct": "213",
                 "id": "291"
             }
         ]
@@ -735,7 +735,7 @@
         "answers":     [
             {
                 "text": "1600",
-                "correct": true,
+                "correct": "1600",
                 "id": "311"
             }
         ]
@@ -751,7 +751,7 @@
         "answers":     [
             {
                 "text": "142",
-                "correct": true,
+                "correct": "142",
                 "id": "321"
             }
         ]
@@ -766,7 +766,7 @@
         "answers":     [
             {
                 "text": "20",
-                "correct": true,
+                "correct": "20",
                 "id": "331"
             }
         ]
@@ -856,7 +856,7 @@
         "answers":     [
             {
                 "text": "0,48",
-                "correct": true,
+                "correct": "0,48",
                 "id": "371"
             }
         ]
@@ -896,7 +896,7 @@
         "answers":     [
             {
                 "text": "10",
-                "correct": true,
+                "correct": "10",
                 "id": "391"
             }
         ]
@@ -912,7 +912,7 @@
         "answers":     [
             {
                 "text": "0,125",
-                "correct": true,
+                "correct": "0,125",
                 "id": "401"
             }
         ]
@@ -952,7 +952,7 @@
         "answers":     [
             {
                 "text": "35",
-                "correct": true,
+                "correct": "35",
                 "id": "421"
             }
         ]
@@ -992,7 +992,7 @@
         "answers":     [
             {
                 "text": "800",
-                "correct": true,
+                "correct": "800",
                 "id": "441"
             }
         ]
@@ -1008,7 +1008,7 @@
         "answers":     [
             {
                 "text": "0,1",
-                "correct": true,
+                "correct": "0,1",
                 "id": "451"
             }
         ]
@@ -1023,7 +1023,7 @@
         "answers":     [
             {
                 "text": "200",
-                "correct": true,
+                "correct": "200",
                 "id": "461"
             }
         ]
@@ -1039,7 +1039,7 @@
         "answers":     [
             {
                 "text": "25",
-                "correct": true,
+                "correct": "25",
                 "id": "471"
             }
         ]
@@ -1080,7 +1080,7 @@
         "answers":     [
             {
                 "text": "3",
-                "correct": true,
+                "correct": "3",
                 "id": "491"
             }
         ]
@@ -1095,7 +1095,7 @@
         "answers":     [
             {
                 "text": "17",
-                "correct": true,
+                "correct": "17",
                 "id": "501"
             }
         ]

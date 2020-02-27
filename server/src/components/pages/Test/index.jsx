@@ -15,7 +15,8 @@ import {
   testEndAction,
   testValidationAction,
   testCheckAction,
-} from '../../../sagaStore/actions';
+  testInputAction,
+} from '../../../sagaStore/actions/test';
 import rings from '../../../data/courses.json';
 import testquestion17 from '../../../assets/images/test/17.svg';
 import testquestion29 from '../../../assets/images/test/29.svg';
@@ -33,6 +34,7 @@ const Test = ({
   checkboxHandler,
   endTestHandler,
   validationHandler,
+  changeInputHandler,
 }) => {
   const buttonHandler = testNumber === testItems.length - 1 ? endTestHandler : nextTestHandler;
   const renderRingText = testResult => {
@@ -104,7 +106,7 @@ const Test = ({
           </div>
         </div>
         <div className="row justify-content-between align-items-center">
-          {testItems[testNumber].isOpenQuestion && <Answer />}
+          {testItems[testNumber].isOpenQuestion && <Answer clickHandler={changeInputHandler} />}
           <Button isCTA text={nextButtonText} clickHandler={buttonHandler} />
         </div>
       </div>
@@ -118,6 +120,7 @@ const TestConnect = connect(
   }),
   dispatch => ({
     nextTestHandler() {
+      dispatch(testValidationAction());
       dispatch(testIncrementAction());
     },
     previousTestHandler() {
@@ -131,6 +134,9 @@ const TestConnect = connect(
     },
     endTestHandler() {
       dispatch(testEndAction());
+    },
+    changeInputHandler(event) {
+      dispatch(testInputAction(event));
     },
   })
 )(Test);
