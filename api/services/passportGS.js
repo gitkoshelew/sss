@@ -3,7 +3,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const mongoose = require('mongoose');
 const keys = require('../config/keys');
 
-const User = mongoose.model('users');
+const User = mongoose.model('user');
 
 passport.deserializeUser((id, done) => {
   User.findById(id).then(user => {
@@ -11,10 +11,12 @@ passport.deserializeUser((id, done) => {
   });
 });
 
-passport.use(new LocalStrategy(
-  function(username, password, done) {
+passport.use(
+  new LocalStrategy(function(username, password, done) {
     User.findOne({ username: username }, function(err, user) {
-      if (err) { return done(err); }
+      if (err) {
+        return done(err);
+      }
       if (!user) {
         return done(null, false, { message: 'Incorrect username.' });
       }
@@ -23,8 +25,8 @@ passport.use(new LocalStrategy(
       }
       return done(null, user);
     });
-  }
-));
+  })
+);
 
 passport.use(
   new GoogleStrategy(
@@ -32,7 +34,7 @@ passport.use(
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
       callbackURL: '/api/auth/google/callback',
-      proxy: true
+      proxy: true,
     },
     async (accessToken, refreshToken, profile, done) => {
       const existingUser = await User.findOne({ googleId: profile.id });

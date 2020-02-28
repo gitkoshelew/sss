@@ -9,14 +9,20 @@ const keys = require('./config/keys');
 const env = require('./config/env');
 const config = require('config');
 
-require('./models/User');
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
 
 async function start() {
   try {
-    await mongoose.connect(config.get('mongoUri'), {});
+    await mongoose.connect(config.get('mongoUri'), {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    });
+
+    const PORT = process.env.PORT || config.get('port') || 5000;
+    app.listen(PORT, () => console.log('server running on port' + PORT));
   } catch (e) {
     console.log('Server Error', e.message);
     process.exit(1);
@@ -51,7 +57,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./routes/authRoutes')(app);
+require('./routes/authRoutes')(app, '/auth/local');
 require('./routes/userRoutes')(app);
 
 app.get('/', (req, res) => {
@@ -81,5 +87,4 @@ app.get('/', (req, res) => {
   `);
 });
 
-const PORT = process.env.PORT || config.get('port') || 5000;
-app.listen(PORT, () => console.log('server running on port' + PORT));
+start();
