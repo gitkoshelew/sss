@@ -35,4 +35,5 @@ export {
   testEndAction,
   testValidationAction,
   testCheckAction,
+  testInputAction,
 } from './test';

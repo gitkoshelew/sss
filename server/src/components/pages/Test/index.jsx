@@ -16,7 +16,7 @@ import {
   testValidationAction,
   testCheckAction,
   testInputAction,
-} from '../../../sagaStore/actions/test';
+} from '../../../sagaStore/actions';
 import rings from '../../../data/courses.json';
 import testquestion17 from '../../../assets/images/test/17.svg';
 import testquestion29 from '../../../assets/images/test/29.svg';

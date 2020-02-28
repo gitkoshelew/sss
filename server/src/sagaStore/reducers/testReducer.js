@@ -84,7 +84,7 @@ const testReducer = (state = initialState, action) => {
             const { answers } = test;
             const valid = answers.every(({ correct, checked }) => {
               if (test.givenAnswer) {
-                return correct === test.givenAnswer;
+                return correct === test.givenAnswer.toLowerCase();
               }
               return correct === checked;
             });
