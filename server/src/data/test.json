@@ -4,6 +4,7 @@
         "id": "01",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -35,6 +36,7 @@
         "id": "02",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -71,6 +73,7 @@
         "id": "03",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": true,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -107,6 +110,7 @@
         "id": "04",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -128,6 +132,7 @@
         "id": "05",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -164,6 +169,7 @@
         "id": "06",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -200,6 +206,7 @@
         "id": "07",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -236,6 +243,7 @@
         "id": "08",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["Driht N.C.", "Driht N.C."], ["Fidler E.H.", "Fidler E.N."], ["Connor V.J.", "Conner V.J."], ["Hoesner O.W.", "Hoerner O.W."], ["Zolerquist P.E.", "Zolerquiest B.E."]],
         "doesContainImage": false,
         "imagePath": "",
@@ -252,6 +260,7 @@
         "id": "09",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -287,6 +296,7 @@
         "id": "10",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -302,6 +312,7 @@
         "id": "11",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -327,6 +338,7 @@
         "id": "12",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -342,6 +354,7 @@
         "id": "13",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["5196", "5196"], ["66986", "69686"], ["834426", "834436"], ["1354256", "1354256"], ["64497172", "64497172"], ["83238224", "83238234"]],
         "doesContainImage": false,
         "imagePath": "",
@@ -358,6 +371,7 @@
         "id": "14",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": true,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -393,6 +407,7 @@
         "id": "15",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -433,6 +448,7 @@
         "id": "16",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["есть", "соль", "любовь", "жизни"]],
         "doesContainImage": false,
         "imagePath": "",
@@ -465,6 +481,7 @@
         "id": "18",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -480,6 +497,7 @@
         "id": "19",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -505,6 +523,7 @@
         "id": "20",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["мхом", "обороты", "камень", "набирает", "заросший"]],
         "doesContainImage": false,
         "imagePath": "",
@@ -521,6 +540,7 @@
         "id": "21",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["1", "Держать нос по ветру."], ["2", "Трое докторов не лучше одного."], ["3", "Пустой мешок не стоит."], ["4", "Не все то золото, что блестит."], ["5", "У семи нянек дитя без глаза."]],
         "doesContainImage": false,
         "imagePath": "",
@@ -537,6 +557,7 @@
         "id": "22",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["73", "66", "59", "52", "45", "38", "?"]],
         "doesContainImage": false,
         "imagePath": "",
@@ -553,6 +574,7 @@
         "id": "23",
         "isOpenQuestion": false,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "imagePath": "",
@@ -584,6 +606,7 @@
         "id": "24",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -609,6 +632,7 @@
         "id": "25",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -624,6 +648,7 @@
         "id": "26",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -649,6 +674,7 @@
         "id": "27",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -664,6 +690,7 @@
         "id": "28",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -689,6 +716,7 @@
         "id": "29",
         "isOpenQuestion": true,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": true,
         "imagePath": "testquestion29",
@@ -705,6 +733,7 @@
         "id": "30",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -730,6 +759,7 @@
         "id": "31",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -745,6 +775,7 @@
         "id": "32",
         "isOpenQuestion": true,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": true,
         "imagePath": "testquestion32",
@@ -761,6 +792,7 @@
         "id": "33",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -776,6 +808,7 @@
         "id": "34",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -801,6 +834,7 @@
         "id": "35",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -826,6 +860,7 @@
         "id": "36",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -851,6 +886,7 @@
         "id": "37",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -866,6 +902,7 @@
         "id": "38",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -891,6 +928,7 @@
         "id": "39",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -906,6 +944,7 @@
         "id": "40",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["1/4", "1/8", "1/8", "1/4", "1/8", "1/8", "1/4", "1/8", "1/6"]],
         "doesContainImage": false,
         "imagePath": "",
@@ -922,6 +961,7 @@
         "id": "41",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -947,6 +987,7 @@
         "id": "42",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -962,6 +1003,7 @@
         "id": "43",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -987,6 +1029,7 @@
         "id": "44",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -1002,6 +1045,7 @@
         "id": "45",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["1/4", "1/6", "1/8", "1/9", "1/12", "1/14"]],
         "doesContainImage": false,
         "imagePath": "",
@@ -1018,6 +1062,7 @@
         "id": "46",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -1033,6 +1078,7 @@
         "id": "47",
         "isOpenQuestion": true,
         "doesContainTable": true,
+        "haveSomeCorrectAnswers": false,
         "markup": [["1", "Куй железо, пока горячо."], ["2", "Не все то золото, что блестит."], ["3", "Лес рубят, щепки летят."], ["4", "Один в поле не воин."], ["5", "Не по виду суди, а по делам гляди."]],
         "doesContainImage": false,
         "imagePath": "",
@@ -1049,6 +1095,7 @@
         "id": "48",
         "isOpenQuestion": false,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [
@@ -1074,6 +1121,7 @@
         "id": "49",
         "isOpenQuestion": true,
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": true,
         "imagePath": "testquestion49",
@@ -1090,6 +1138,7 @@
         "id": "50",
         "isOpenQuestion": true,        
         "doesContainTable": false,
+        "haveSomeCorrectAnswers": false,
         "markup": "",
         "doesContainImage": false,
         "answers":     [

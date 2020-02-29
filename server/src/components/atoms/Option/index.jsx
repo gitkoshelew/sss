@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './style.module.scss';
 
-function Option({ section, text, modificator, clickHandler, checked }) {
+function Option({ section, text, modificator, clickHandler, checked, type }) {
   return (
     <label className={styles.label}>
       <input
-        type="radio"
+        type={type}
         checked={checked}
         className={styles.checkbox}
         name={section}

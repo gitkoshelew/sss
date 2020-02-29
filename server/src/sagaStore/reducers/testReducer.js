@@ -59,7 +59,7 @@ const testReducer = (state = initialState, action) => {
             if (answerIndex !== payload.index) {
               return {
                 ...answer,
-                checked: false,
+                checked: test.haveSomeCorrectAnswers ? answer.checked : false,
               };
             }
             return {
