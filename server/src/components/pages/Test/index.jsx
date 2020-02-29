@@ -35,6 +35,8 @@ const Test = ({
   endTestHandler,
   validationHandler,
   changeInputHandler,
+  givenAnswer,
+  inputValue,
 }) => {
   const buttonHandler = testNumber === testItems.length - 1 ? endTestHandler : nextTestHandler;
   const renderRingText = testResult => {
@@ -106,8 +108,15 @@ const Test = ({
           </div>
         </div>
         <div className="row justify-content-between align-items-center">
-          {testItems[testNumber].isOpenQuestion && <Answer changeHandler={changeInputHandler} />}
-          <Button isCTA text={nextButtonText} clickHandler={buttonHandler} />
+          {testItems[testNumber].isOpenQuestion && (
+            <Answer changeHandler={changeInputHandler} inputValue={inputValue} />
+          )}
+          <Button
+            isCTA
+            text={nextButtonText}
+            clickHandler={buttonHandler}
+            disabled={nextDisabled}
+          />
         </div>
       </div>
     </section>

@@ -34,6 +34,7 @@ const testReducer = (state = initialState, action) => {
       const nextDisabled = !state.testItems[nextTestNumber].answers.some(({ checked }) => checked);
       return {
         ...state,
+        inputValue: '',
         testNumber: nextTestNumber,
         nextDisabled,
         nextButtonText:
@@ -84,7 +85,11 @@ const testReducer = (state = initialState, action) => {
             const { answers } = test;
             const valid = answers.every(({ correct, checked }) => {
               if (test.givenAnswer) {
-                return correct === test.givenAnswer.toLowerCase();
+                const changedAnswer = test.givenAnswer
+                  .split('')
+                  .map(symbol => (symbol === '.' ? ',' : symbol))
+                  .join('');
+                return correct === changedAnswer.toLowerCase();
               }
               return correct === checked;
             });
@@ -114,19 +119,24 @@ const testReducer = (state = initialState, action) => {
         ),
         nextDisabled: true,
       };
-    case TEST_INPUT_CHANGE:
+    case TEST_INPUT_CHANGE: {
+      const inputValue = payload.target.value;
+      const nextDisabled = !inputValue;
       return {
         ...state,
+        nextDisabled,
+        inputValue,
         testItems: testItems.map((test, idx) => {
           if (state.testNumber !== idx) {
             return test;
           }
           return {
             ...test,
-            givenAnswer: payload.target.value,
+            givenAnswer: inputValue,
           };
         }),
       };
+    }
     default:
       return state;
   }
