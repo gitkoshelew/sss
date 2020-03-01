@@ -4,6 +4,7 @@ import {
   TEST_NUMBER_DECREMENT,
   TEST_NUMBER_INCREMENT,
   TEST_ANSWER_VALIDATION,
+  TEST_INPUT_CHANGE,
 } from '../actions/constants';
 
 import checkList from '../../data/test.json';
@@ -33,6 +34,7 @@ const testReducer = (state = initialState, action) => {
       const nextDisabled = !state.testItems[nextTestNumber].answers.some(({ checked }) => checked);
       return {
         ...state,
+        inputValue: '',
         testNumber: nextTestNumber,
         nextDisabled,
         nextButtonText:
@@ -55,7 +57,10 @@ const testReducer = (state = initialState, action) => {
           ...test,
           answers: test.answers.map((answer, answerIndex) => {
             if (answerIndex !== payload.index) {
-              return answer;
+              return {
+                ...answer,
+                checked: test.haveSomeCorrectAnswers ? answer.checked : false,
+              };
             }
             return {
               ...answer,
@@ -78,7 +83,16 @@ const testReducer = (state = initialState, action) => {
         testItems: state.testItems.map((test, idx) => {
           if (idx === state.testNumber) {
             const { answers } = test;
-            const valid = answers.every(({ correct, checked }) => correct === checked);
+            const valid = answers.every(({ correct, checked }) => {
+              if (test.givenAnswer) {
+                const changedAnswer = test.givenAnswer
+                  .split('')
+                  .map(symbol => (symbol === '.' ? ',' : symbol))
+                  .join('');
+                return correct === changedAnswer.toLowerCase();
+              }
+              return correct === checked;
+            });
             return {
               ...test,
               valid,
@@ -92,12 +106,12 @@ const testReducer = (state = initialState, action) => {
         ...state,
         result: state.testItems.reduce(
           (acc, test) => {
-            const validAnsvers = test.answers.reduce((validAcc, { correct, checked }) => {
+            const validAnswers = test.answers.reduce((validAcc, { correct, checked }) => {
               if (correct === checked) return validAcc + 1;
               return validAcc;
             }, 0);
             return {
-              valid: acc.valid + validAnsvers,
+              valid: acc.valid + validAnswers,
               questions: acc.questions + test.answers.length,
             };
           },
@@ -105,6 +119,24 @@ const testReducer = (state = initialState, action) => {
         ),
         nextDisabled: true,
       };
+    case TEST_INPUT_CHANGE: {
+      const inputValue = payload.target.value;
+      const nextDisabled = !inputValue;
+      return {
+        ...state,
+        nextDisabled,
+        inputValue,
+        testItems: testItems.map((test, idx) => {
+          if (state.testNumber !== idx) {
+            return test;
+          }
+          return {
+            ...test,
+            givenAnswer: inputValue,
+          };
+        }),
+      };
+    }
     default:
       return state;
   }
