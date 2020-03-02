@@ -11,6 +11,7 @@ module.exports = (app, path) => {
     [
       check('email', 'email incorrect').isEmail(),
       check('password', 'to short password (min 6)').isLength({ min: 6 }),
+      check('name', 'to short name (min 2)').isLength({ min: 2 }),
     ],
     async (req, res, next) => {
       try {
@@ -23,13 +24,15 @@ module.exports = (app, path) => {
           });
         }
 
-        const { email, password } = req.body;
+        console.log(req.body, '+++');
+
+        const { email, password, name } = req.body;
         const candidate = await User.findOne({ email });
         if (candidate) {
           return res.status(400).json({ message: 'user exist' });
         }
         const hashedPassword = await bcrypt.hash(password, 12);
-        const user = new User({ email, password: hashedPassword });
+        const user = new User({ email, password: hashedPassword, name });
 
         await user.save();
         return res.status(201).json({ message: 'user created' });
@@ -77,7 +80,7 @@ module.exports = (app, path) => {
 
         const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), { expiresIn: '1h' });
 
-        res.json({ token, userId: user.id });
+        res.json({ token, userId: user.id, name: user.name });
       } catch (e) {
         res.status(500).json({ message: 'went wrong try again' });
       }
