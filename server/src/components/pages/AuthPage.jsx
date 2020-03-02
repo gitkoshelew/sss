@@ -5,6 +5,7 @@ import { authFetchLogIn, authFetchRegister, authFormChange } from '../../sagaSto
 const AuthPage = ({
   email,
   password,
+  name,
   dispatchAuthFormChange,
   dispatchAuthFetchLogIn,
   dispatchAuthFetchRegister,
@@ -28,8 +29,15 @@ const AuthPage = ({
 
   return (
     <form onSubmit={e => e.preventDefault}>
-      <input type="text" name="email" value={email} onChange={onFieldChange} />
-      <input type="password" name="password" value={password} onChange={onFieldChange} />
+      <input type="text" name="email" value={email} placeholder="email" onChange={onFieldChange} />
+      <input
+        type="password"
+        name="password"
+        value={password}
+        placeholder="passport"
+        onChange={onFieldChange}
+      />
+      <input type="text" name="name" value={name} placeholder="name" onChange={onFieldChange} />
       <button type="submit" onClick={onLogin}>
         Login
       </button>
@@ -44,6 +52,7 @@ function mapStateToProps(state) {
   return {
     password: state.auth.form.password,
     email: state.auth.form.email,
+    name: state.auth.form.name,
   };
 }
 

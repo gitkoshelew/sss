@@ -6,6 +6,7 @@ import {
   AUTH_REGISTER_FAIL,
   AUTH_SUCCESS,
   AUTH_FAIL,
+  AUTH_INITIAL_CHECK,
 } from './constants';
 
 export const authFormChange = payload => {
@@ -40,4 +41,8 @@ export const authSuccess = payload => ({
 export const authFail = payload => ({
   type: AUTH_FAIL,
   payload,
+});
+
+export const authInitialCheck = () => ({
+  type: AUTH_INITIAL_CHECK,
 });

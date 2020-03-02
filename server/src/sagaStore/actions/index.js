@@ -6,6 +6,7 @@ export {
   authRegisterFail,
   authSuccess,
   authFail,
+  authInitialCheck,
 } from './auth';
 
 export { adminsFetch, adminsSuccess, adminsFail } from './admins';
@@ -37,3 +38,5 @@ export {
   testCheckAction,
   testInputAction,
 } from './test';
+
+export { loaderMainChange, loaderSecondaryChange } from './loaders';
