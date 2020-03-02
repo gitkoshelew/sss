@@ -25,7 +25,6 @@ import testquestion49 from '../../../assets/images/test/49.svg';
 
 const Test = ({
   testNumber,
-  nextDisabled,
   result,
   nextButtonText,
   testItems,
@@ -111,12 +110,10 @@ const Test = ({
           {testItems[testNumber].isOpenQuestion && (
             <Answer changeHandler={changeInputHandler} inputValue={inputValue} />
           )}
-          <Button
-            isCTA
-            text={nextButtonText}
-            clickHandler={buttonHandler}
-            disabled={nextDisabled}
-          />
+        </div>
+        <div className="row justify-content-between">
+          <Button text="Назад" clickHandler={previousTestHandler} />
+          <Button isCTA text={nextButtonText} clickHandler={buttonHandler} />
         </div>
       </div>
     </section>
