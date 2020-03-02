@@ -13,30 +13,23 @@ function Nav({ links, logStrategy, socLog, isUserLoged }) {
             </Link>
           </li>
         ))}
-        {/* {logStrategy && (
-          <li className={`${styles...}`}>
+        {logStrategy && (
+          <li className={`${styles.nav_link}`}>
             {isUserLoged ? (
               <button
                 type="button"
-                className={`${styles...} ${
-                  isHome ? styles... : ''
-                }`}
+                className={`${styles.nav_anchor}`}
                 onClick={logStrategy.login.handler}
               >
                 {logStrategy.logout.text}
               </button>
             ) : (
-              <Link
-                to={logStrategy.login.href}
-                className={`${styles...} ${
-                  isHome ? styles... : ''
-                }`}
-              >
+              <Link to={logStrategy.login.href} className={`${styles.nav_anchor}`}>
                 {logStrategy.login.text}
               </Link>
             )}
           </li>
-        )} */}
+        )}
         {/* {socLog && (
           <li className={`${styles...}`}>
             {isUserLoged ? (
