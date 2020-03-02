@@ -20,6 +20,7 @@ const testItems = checkList.map(test => {
 const initialState = {
   testNumber: 0,
   nextButtonText: 'далее >',
+  // nextDisabled: true,
   testItems,
   result: null,
 };
@@ -30,10 +31,12 @@ const testReducer = (state = initialState, action) => {
     case TEST_NUMBER_INCREMENT: {
       const nextTestNumber =
         state.testNumber < state.testItems.length - 1 ? state.testNumber + 1 : state.testNumber;
+      // const nextDisabled = !state.testItems[nextTestNumber].answers.some(({ checked }) => checked);
       return {
         ...state,
         inputValue: '',
         testNumber: nextTestNumber,
+        // nextDisabled,
         nextButtonText:
           state.testNumber < state.testItems.length - 2 ? 'далее >' : 'завершить тест',
       };
@@ -42,6 +45,8 @@ const testReducer = (state = initialState, action) => {
       return {
         ...state,
         testNumber: state.testNumber > 0 ? state.testNumber - 1 : state.testNumber,
+        // nextButtonText: state.testNumber < state.testItems.length ? 'далее >' : 'завершить тест',
+        // nextDisabled: false,
       };
     case TEST_CHECK: {
       const newTestItems = state.testItems.map((test, idx) => {
@@ -64,14 +69,17 @@ const testReducer = (state = initialState, action) => {
           }),
         };
       });
+      // const nextDisabled = !newTestItems[state.testNumber].answers.some(({ checked }) => checked);
       return {
         ...state,
         testItems: newTestItems,
+        // nextDisabled,
       };
     }
     case TEST_ANSWER_VALIDATION:
       return {
         ...state,
+        // disabled: !state.disabled ? false : !state.disabled,
         testItems: state.testItems.map((test, idx) => {
           if (idx === state.testNumber) {
             const { answers } = test;
@@ -109,11 +117,14 @@ const testReducer = (state = initialState, action) => {
           },
           { valid: 0, questions: 0 }
         ),
+        // nextDisabled: true,
       };
     case TEST_INPUT_CHANGE: {
       const inputValue = payload.target.value;
+      // const nextDisabled = !inputValue;
       return {
         ...state,
+        // nextDisabled,
         inputValue,
         testItems: testItems.map((test, idx) => {
           if (state.testNumber !== idx) {
