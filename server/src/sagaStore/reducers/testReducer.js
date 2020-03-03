@@ -5,6 +5,7 @@ import {
   TEST_NUMBER_INCREMENT,
   TEST_ANSWER_VALIDATION,
   TEST_INPUT_CHANGE,
+  TEST_TIME_OVER,
 } from '../actions/constants';
 
 import checkList from '../../data/test.json';
@@ -23,6 +24,8 @@ const initialState = {
   // nextDisabled: true,
   testItems,
   result: null,
+  timeIsOver: false,
+  timer: null,
 };
 
 const testReducer = (state = initialState, action) => {
@@ -137,6 +140,11 @@ const testReducer = (state = initialState, action) => {
         }),
       };
     }
+    case TEST_TIME_OVER:
+      return {
+        ...state,
+        timeIsOver: true,
+      };
     default:
       return state;
   }

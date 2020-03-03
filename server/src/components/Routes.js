@@ -14,6 +14,7 @@ import RingDescription from './pages/RingDescription';
 import Rings from './pages/Rings';
 import Test from './pages/Test';
 import TestIntro from './pages/TestIntro';
+import TestNotification from './pages/TestNotification';
 
 export default [
   {
@@ -78,6 +79,11 @@ export default [
       {
         ...TestIntro,
         path: '/test_intro',
+        exact: true,
+      },
+      {
+        ...TestNotification,
+        path: '/test_notification',
         exact: true,
       },
       {
