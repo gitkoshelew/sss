@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import styles from './style.module.scss';
 import OptionsList from '../../molecules/OptionsList';
 import Countdown from '../../atoms/Countdown';
@@ -16,6 +16,7 @@ import {
   testValidationAction,
   testCheckAction,
   testInputAction,
+  timeOverAction,
 } from '../../../sagaStore/actions';
 import rings from '../../../data/courses.json';
 import testquestion17 from '../../../assets/images/test/17.svg';
@@ -34,32 +35,44 @@ const Test = ({
   endTestHandler,
   validationHandler,
   changeInputHandler,
-  givenAnswer,
   inputValue,
+  timeIsOver,
+  history,
+  timeOver,
 }) => {
-  const buttonHandler = testNumber === testItems.length - 1 ? endTestHandler : nextTestHandler;
-  const renderRingText = testResult => {
-    const resultDiff = (testResult.valid / testResult.questions) * 10;
-    if (resultDiff === 10) {
-      return <Link to={`/ring/${rings[0].id}`}>{rings[0].heading}</Link>;
-    }
-    if (resultDiff >= 8) {
-      return <Link to={`/ring/${rings[3].id}`}>{rings[3].heading}</Link>;
-    }
-    if (resultDiff >= 6) {
-      return <Link to={`/ring/${rings[2].id}`}>{rings[2].heading}</Link>;
-    }
-    if (resultDiff >= 4) {
-      return <Link to={`/ring/${rings[1].id}`}>{rings[1].heading}</Link>;
-    }
-    if (resultDiff >= 3) {
-      return <Link to={`/ring/${rings[5].id}`}>{rings[5].heading}</Link>;
-    }
-    if (resultDiff < 3) {
-      return <Link to={`/ring/${rings[4].id}`}>{rings[4].heading}</Link>;
-    }
-    return null;
+  useEffect(() => {
+    setTimeout(() => {
+      timeOver();
+    }, 900000);
+  });
+
+  const endButtonHandler = () => {
+    endTestHandler();
+    history.push('test_notification');
   };
+  const buttonHandler = testNumber === testItems.length - 1 ? endButtonHandler : nextTestHandler;
+  // const renderRingText = testResult => {
+  //   const resultDiff = (testResult.valid / testResult.questions) * 10;
+  //   if (resultDiff === 10) {
+  //     return <Link to={`/ring/${rings[0].id}`}>{rings[0].heading}</Link>;
+  //   }
+  //   if (resultDiff >= 8) {
+  //     return <Link to={`/ring/${rings[3].id}`}>{rings[3].heading}</Link>;
+  //   }
+  //   if (resultDiff >= 6) {
+  //     return <Link to={`/ring/${rings[2].id}`}>{rings[2].heading}</Link>;
+  //   }
+  //   if (resultDiff >= 4) {
+  //     return <Link to={`/ring/${rings[1].id}`}>{rings[1].heading}</Link>;
+  //   }
+  //   if (resultDiff >= 3) {
+  //     return <Link to={`/ring/${rings[5].id}`}>{rings[5].heading}</Link>;
+  //   }
+  //   if (resultDiff < 3) {
+  //     return <Link to={`/ring/${rings[4].id}`}>{rings[4].heading}</Link>;
+  //   }
+  //   return null;
+  // };
   const defineImg = path => {
     switch (path) {
       case 'testquestion17':
@@ -75,7 +88,9 @@ const Test = ({
     }
   };
   const path = defineImg(testItems[testNumber].imagePath);
-  return (
+  return timeIsOver ? (
+    <Redirect to="/test_notification" />
+  ) : (
     <section>
       <div className="container">
         <div className="row justify-content-around">
@@ -143,6 +158,9 @@ const TestConnect = connect(
     },
     changeInputHandler(event) {
       dispatch(testInputAction(event));
+    },
+    timeOver() {
+      dispatch(timeOverAction());
     },
   })
 )(Test);
