@@ -25,7 +25,7 @@ const initialState = {
   testItems,
   result: null,
   timeIsOver: false,
-  timer: null,
+  timer: 900000,
 };
 
 const testReducer = (state = initialState, action) => {

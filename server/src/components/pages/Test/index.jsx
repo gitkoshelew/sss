@@ -39,12 +39,17 @@ const Test = ({
   timeIsOver,
   history,
   timeOver,
+  timer,
 }) => {
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       timeOver();
-    }, 900000);
-  });
+    }, timer);
+
+    return function clear() {
+      clearTimeout(timeout);
+    };
+  }, timer);
 
   const endButtonHandler = () => {
     endTestHandler();
