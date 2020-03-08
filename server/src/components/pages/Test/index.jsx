@@ -49,7 +49,7 @@ const Test = ({
     return function clear() {
       clearTimeout(timeout);
     };
-  }, timer);
+  }, [timer]);
 
   const endButtonHandler = () => {
     endTestHandler();

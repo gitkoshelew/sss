@@ -32,6 +32,9 @@ function TestNotification({ timeIsOver }) {
               <Link to="/">
                 <Button text="На главную" />
               </Link>
+              <Link to="/rings">
+                <Button isCTA text="К каталогу" />
+              </Link>
             </div>
           </div>
         </div>
