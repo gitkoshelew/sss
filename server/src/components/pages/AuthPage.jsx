@@ -34,7 +34,7 @@ const AuthPage = ({
         type="password"
         name="password"
         value={password}
-        placeholder="passport"
+        placeholder="password"
         onChange={onFieldChange}
       />
       <input type="text" name="name" value={name} placeholder="name" onChange={onFieldChange} />

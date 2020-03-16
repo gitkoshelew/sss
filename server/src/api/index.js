@@ -1,4 +1,5 @@
 import fetch from 'isomorphic-fetch';
+import status from 'statuses';
 
 export const fetchApi = url => api => {
   api.get(url).then(response => {
@@ -24,12 +25,12 @@ export const getAxiosApi = url => api => () =>
     .then(res => res.data)
     .catch(err => {
       if (err.response.data) {
-        console.log('1Problem With Response ', err.response.data);
-        return { error: `1Problem With Response ${err.response.data.error}` };
+        console.log('Problem With Response ', err.response.data.message);
+        return { error: `Problem With Response ${err.response.data.message}` };
       }
       if (err.response.status) {
-        console.log('2Problem With Response ', err.response.status);
-        return { error: `2Problem With Response ${err.response.status}` };
+        console.log('Problem With Response ', err.response.status);
+        return { error: `Problem With Response. Status: ${status[err.response.status]}` };
       }
       if (err.request) {
         console.log('Problem With Request!');
@@ -45,12 +46,12 @@ export const postAxiosApi = (url, data) => api => () =>
     .then(res => res.data)
     .catch(err => {
       if (err.response.data) {
-        console.log('1Problem With Response ', err.response.data);
-        return { error: `1Problem With Response ${err.response.data.error}` };
+        console.log('Problem With Response ', err.response.data.message);
+        return { error: `Problem With Response ${err.response.data.message}` };
       }
       if (err.response.status) {
-        console.log('2Problem With Response ', err.response.status);
-        return { error: `2Problem With Response  ${err.response.status}` };
+        console.log('Problem With Response ', err.response.status);
+        return { error: `Problem With Response. Status: ${status[err.response.status]}` };
       }
       if (err.request) {
         console.log('Problem With Request!');

@@ -11,8 +11,6 @@ export {
 
 export { adminsFetch, adminsSuccess, adminsFail } from './admins';
 
-export { currentUserFetch, currentUserSuccess, currentUserFail } from './currentUser';
-
 export { usersFetch, usersSuccess, usersFail } from './users';
 
 export {

@@ -7,11 +7,12 @@ import '../../node_modules/bootstrap/dist/css/bootstrap-grid.min.css';
 import './style.scss';
 import Header from './organizms/Header/index';
 import Loader from './atoms/Loader';
-import { fetchCurrentUser as fetchCurrentUserSaga } from '../sagaStore/sagas/currentUser';
 import { authInitialCheck } from '../sagaStore/actions';
 
 const App = ({ route, loaderMain, dispatchAuthInitialCheck }) => {
-  useEffect(() => dispatchAuthInitialCheck(), [dispatchAuthInitialCheck]);
+  useEffect(() => {
+    dispatchAuthInitialCheck();
+  }, [dispatchAuthInitialCheck]);
 
   return (
     <div>
@@ -36,5 +37,4 @@ const AppConnect = connect(
 
 export default {
   component: AppConnect,
-  loadGeneratorData: fetchCurrentUserSaga,
 };

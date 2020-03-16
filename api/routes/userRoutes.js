@@ -1,40 +1,62 @@
-const mongoose = require('mongoose');
-const requireLogin = require('../middlewares/requireLogin');
+const { Router } = require('express');
+const requirePassport = require('../middlewares/requirePassport');
+const requireToken = require('../middlewares/requireToken');
+const router = Router();
 
-module.exports = app => {
-  app.get('/users', requireLogin, (req, res) => {
-    res.send(users);
-  });
+const User = require('../models/User').user;
+const Admin = require('../models/Admin').admin;
 
-  app.get('/users/xss', (req, res) => {
-    res.send(usersXss);
-  });
+router.get('/', requirePassport, async (req, res) => {
+  try {
+    const users = await User.find({});
 
-  app.get('/admins', requireLogin, (req, res) => {
-    res.send(admins);
-  });
-};
+    if (!users) {
+      return res.status(400).json({
+        message: `no users now`,
+      });
+    }
 
-const users = [
-  { id: 1, name: 'Leanne Graham' },
-  { id: 2, name: 'Ervin Howell' },
-  { id: 3, name: 'Clementine Bauch' },
-  { id: 4, name: 'Patricia Lebsack' },
-  { id: 5, name: 'Chelsey Dietrich' }
-];
+    const mapUsers = users.map(({ name, email }) => ({
+      name,
+      email,
+    }));
 
-const usersXss = [
+    res.send({ users: mapUsers });
+  } catch (e) {
+    res.status(500).json({ message: 'went wrong try again' });
+  }
+});
+
+router.get('/admins', requireToken, async (req, res) => {
+  try {
+    const admins = await Admin.find({});
+
+    if (!admins) {
+      return res.status(400).json({
+        message: `no users now`,
+      });
+    }
+
+    const mapAdmins = admins.map(({ name }) => ({
+      name,
+    }));
+
+    res.send({ admins: mapAdmins });
+  } catch (e) {
+    res.status(500).json({ message: 'went wrong try again' });
+  }
+});
+
+router.get('/userMock', (req, res) => {
+  res.send(usersMock);
+});
+
+module.exports = router;
+
+const usersMock = [
   { id: 1, name: '</script><script>alert(1234567890)</script>' },
   { id: 2, name: 'Ervin Howell' },
   { id: 3, name: 'Clementine Bauch' },
   { id: 4, name: 'Patricia Lebsack' },
-  { id: 5, name: 'Chelsey Dietrich' }
-];
-
-const admins = [
-  { id: 1, name: 'Kurtis Weissnat' },
-  { id: 2, name: 'Nicholas Runolfsdottir' },
-  { id: 3, name: 'Gelann Reichert' },
-  { id: 4, name: 'Moriah Stanton' },
-  { id: 5, name: 'Rey Padberg' }
+  { id: 5, name: 'Chelsey Dietrich' },
 ];

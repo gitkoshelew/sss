@@ -10,7 +10,8 @@
   "scripts": {
     "start": "forever --ignore sessions/ index.js",
     "server": "nodemon --ignore sessions/ index.js",
-    "dev": "npm run server"
+    "dev": "npm run server",
+    "api:install": "npm install"
   },
   "author": "",
   "license": "ISC",

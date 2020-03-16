@@ -113,11 +113,8 @@ export default connect(
     ...header,
     isUserLoged: value,
   }),
-
-  dispatch => ({
-    headerNavOpenHandler() {
-      dispatch(headerNavOpenAction());
-    },
+  {
+    dispatchNavOpenHandler: headerNavOpenAction,
     dispatchAuthFetchLogOut: authFetchLogOut,
-  })
+  }
 )(withRouter(Header));

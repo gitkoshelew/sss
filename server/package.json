@@ -14,11 +14,12 @@
     "build:server": "set NODE_ENV=production&& webpack --mode production --env.NODE_ENV=production --config webpack.server.js -p ",
     "run-server": "node ./build/server/bundle.js",
     "webpack-devserver": "set NODE_ENV=development&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors  --open --port 8040",
-    "start": "set NODE_ENV=development&&set STATIC_MODE=true&& webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors --open --port 8080",
+    "start": "cross-env NODE_ENV=development STATIC_MODE=true webpack-dev-server --mode development  --env.NODE_ENV=development --config webpack.client.js --output-pathinfo --debug  --devtool eval-source-map --colors --open --port 8080",
     "stop-server": "killall node",
     "start-demon": "npm-run-all --parallel dev-needreload:*",
     "start-isomorphic": "npm-run-all --serial dev:client dev:server --parallel run-server webpack-devserver",
-    "build": "npm-run-all --serial build:*"
+    "build": "npm-run-all --serial build:*",
+    "server-install": "npm install"
   },
   "author": "",
   "license": "ISC",
@@ -81,6 +82,7 @@
     "resolve-url-loader": "^3.1.1",
     "sass-loader": "^8.0.0",
     "serialize-javascript": "1.4.0",
+    "statuses": "^1.5.0",
     "style-loader": "^1.0.0",
     "swiper": "^5.3.0",
     "uglifyjs-webpack-plugin": "^2.2.0",
@@ -90,6 +92,7 @@
     "webpack-node-externals": "1.6.0"
   },
   "devDependencies": {
+    "cross-env": "^7.0.1",
     "eslint": "^6.1.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.7.0",
