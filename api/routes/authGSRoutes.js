@@ -1,6 +1,6 @@
 const passport = require('passport');
 const { Router } = require('express');
-const router = Router;
+const router = Router();
 
 router.get(
   '/',

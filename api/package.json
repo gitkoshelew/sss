@@ -11,7 +11,7 @@
     "start": "forever --ignore sessions/ index.js",
     "server": "nodemon --ignore sessions/ index.js",
     "dev": "npm run server",
-    "install": "npm install"
+    "api:install": "npm install"
   },
   "author": "",
   "license": "ISC",

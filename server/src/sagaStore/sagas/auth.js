@@ -1,8 +1,6 @@
 import { call, put, takeEvery, select } from 'redux-saga/effects';
 import { postAxiosApi } from '../../api';
 import {
-  CURRENT_USER_SUCCESS,
-  CURRENT_USER_FAIL,
   AUTH_FETCH_LOG_OUT,
   AUTH_FETCH_LOG_IN,
   AUTH_FAIL,
@@ -11,6 +9,8 @@ import {
   AUTH_REGISTER_FAIL,
   AUTH_INITIAL_CHECK,
   LOADER_MAIN_CHANGE,
+  AUTH_LOGOUT_SUCCESS,
+  AUTH_LOGOUT_FAIL,
 } from '../actions/constants';
 
 const storageName = 'userData';
@@ -25,11 +25,6 @@ export function* authCheck() {
   if (data && data.token) {
     yield put({
       type: AUTH_SUCCESS,
-      payload: true,
-    });
-
-    yield put({
-      type: CURRENT_USER_SUCCESS,
       payload: data,
     });
   }
@@ -47,8 +42,9 @@ export function* authRegister() {
 
   try {
     const form = yield select(state => state.auth.form);
-    const user = yield call(postAxiosApi('/auth/local/register', form), 'api');
+    const user = yield call(postAxiosApi('/auth/register', form), 'api');
 
+    console.log(user, 'registeruser');
     if (user.error) {
       yield put({
         type: AUTH_REGISTER_FAIL,
@@ -57,13 +53,10 @@ export function* authRegister() {
     } else {
       yield put({
         type: AUTH_SUCCESS,
-        payload: true,
-      });
-
-      yield put({
-        type: CURRENT_USER_SUCCESS,
         payload: user,
       });
+
+      localStorage.setItem(storageName, JSON.stringify(user));
     }
 
     yield put({
@@ -88,16 +81,11 @@ export function* authLogInSaga() {
 
 export function* authLogIn() {
   try {
-    const logForm = yield select(state => state.logForm);
-    const user = yield call(postAxiosApi('/auth/local/login', logForm), 'api');
-
+    const logForm = yield select(state => state.auth.form);
+    const user = yield call(postAxiosApi('/auth/login', logForm), 'api');
+    console.log(user, 'loginuser');
     yield put({
       type: AUTH_SUCCESS,
-      payload: true,
-    });
-
-    yield put({
-      type: CURRENT_USER_SUCCESS,
       payload: user,
     });
 
@@ -107,10 +95,6 @@ export function* authLogIn() {
       type: AUTH_FAIL,
       payload: error,
     });
-
-    yield put({
-      type: CURRENT_USER_FAIL,
-    });
   }
 }
 
@@ -119,23 +103,19 @@ export function* authLogOutSaga() {
 }
 
 export function* authLogOut() {
-  try {
-    yield call(postAxiosApi('/auth/local/logout', false), 'api');
+  yield put({
+    type: AUTH_LOGOUT_SUCCESS,
+    payload: null,
+  });
 
-    yield put({
-      type: AUTH_SUCCESS,
-      payload: false,
-    });
-    yield put({
-      type: CURRENT_USER_SUCCESS,
-      payload: false,
-    });
+  localStorage.removeItem(storageName);
+
+  try {
+    yield call(postAxiosApi('/auth/logout', false), 'api');
   } catch (error) {
     yield put({
-      type: AUTH_FAIL,
+      type: AUTH_LOGOUT_FAIL,
       payload: error,
     });
   }
-
-  localStorage.removeItem(storageName);
 }

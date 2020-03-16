@@ -57,10 +57,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('/auth', require('./routes/authRoutes'));
-require('/authLocal', require('./routes/authLocalRoutes'));
-require('/authGS', require('./routes/authGSRoutes'));
-require('/users', require('./routes/userRoutes'));
+app.use('/auth', require('./routes/authRoutes'));
+app.use('/authLocal', require('./routes/authLocalRoutes'));
+app.use('/authGS', require('./routes/authGSRoutes'));
+app.use('/users', require('./routes/userRoutes'));
 
 app.get('/', (req, res) => {
   let adminContent = `

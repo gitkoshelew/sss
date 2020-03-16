@@ -7,6 +7,8 @@ import {
   AUTH_SUCCESS,
   AUTH_FAIL,
   AUTH_INITIAL_CHECK,
+  AUTH_LOGOUT_SUCCESS,
+  AUTH_LOGOUT_FAIL,
 } from './constants';
 
 export const authFormChange = payload => {
@@ -35,6 +37,16 @@ export const authRegisterFail = payload => ({
 
 export const authSuccess = payload => ({
   type: AUTH_SUCCESS,
+  payload,
+});
+
+export const authLogoutFail = payload => ({
+  type: AUTH_LOGOUT_FAIL,
+  payload,
+});
+
+export const authLogoutSuccess = payload => ({
+  type: AUTH_LOGOUT_SUCCESS,
   payload,
 });
 

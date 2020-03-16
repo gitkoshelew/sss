@@ -6,8 +6,8 @@ const router = Router();
 const User = require('../models/User').user;
 const Admin = require('../models/Admin').admin;
 
-router.get('/', requirePassport, (req, res) => {
-  try{
+router.get('/', requirePassport, async (req, res) => {
+  try {
     const users = await User.find({});
 
     if (!users) {
@@ -16,19 +16,19 @@ router.get('/', requirePassport, (req, res) => {
       });
     }
 
-    const mapUsers = users.map(({name, email}) =>({
+    const mapUsers = users.map(({ name, email }) => ({
       name,
-      email
-    }))
+      email,
+    }));
 
     res.send({ users: mapUsers });
-  }catch(e){
+  } catch (e) {
     res.status(500).json({ message: 'went wrong try again' });
   }
 });
 
-router.get('/admins', requireToken, (req, res) => {
-  try{
+router.get('/admins', requireToken, async (req, res) => {
+  try {
     const admins = await Admin.find({});
 
     if (!admins) {
@@ -37,12 +37,12 @@ router.get('/admins', requireToken, (req, res) => {
       });
     }
 
-    const mapAdmins = admins.map(({name}) => ({
-      name
-    }))
+    const mapAdmins = admins.map(({ name }) => ({
+      name,
+    }));
 
     res.send({ admins: mapAdmins });
-  }catch(e){
+  } catch (e) {
     res.status(500).json({ message: 'went wrong try again' });
   }
 });

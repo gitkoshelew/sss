@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const bcrypt = require('bcryptjs');
+const { Router } = require('express');
 const { check, validationResult } = require('express-validator');
 const User = require('../models/User').user;
 const router = Router();
@@ -32,7 +33,17 @@ router.post(
       const user = new User({ email, password: hashedPassword, name });
 
       await user.save();
-      return res.status(201).json({ message: 'user created' });
+      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), { expiresIn: '1h' });
+
+      return res
+        .status(201)
+        .json({
+          message: 'user created',
+          token,
+          userId: user.id,
+          name: user.name,
+          email: user.email,
+        });
     } catch (e) {
       res.status(500).json({ message: 'went wrong try again' });
     }
@@ -77,7 +88,7 @@ router.post(
 
       const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), { expiresIn: '1h' });
 
-      res.json({ token, userId: user.id, name: user.name });
+      res.json({ token, userId: user.id, name: user.name, email: user.email });
     } catch (e) {
       res.status(500).json({ message: 'went wrong try again' });
     }

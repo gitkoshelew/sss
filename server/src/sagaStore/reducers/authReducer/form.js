@@ -1,6 +1,6 @@
 import { AUTH_FORM_CHANGE } from '../../actions/constants';
 
-const initialState = { email: '', password: '' };
+const initialState = { email: '', password: '', name: '' };
 
 export default (state = initialState, action) => {
   switch (action.type) {

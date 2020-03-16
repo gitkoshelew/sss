@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './style.module.scss';
 
 function Nav({ links, logStrategy, socLog, isUserLoged }) {
+  const logStrategyExitHandler = useCallback(
+    e => {
+      console.log('click');
+      e.preventDefault();
+      logStrategy.logout.handler();
+    },
+    [logStrategy.logout.handler]
+  );
+
   return (
     <nav className={`${styles.nav}`}>
       <ul className={`${styles.nav_list}`}>
@@ -16,13 +25,9 @@ function Nav({ links, logStrategy, socLog, isUserLoged }) {
         {logStrategy && (
           <li className={`${styles.nav_link}`}>
             {isUserLoged ? (
-              <button
-                type="button"
-                className={`${styles.nav_anchor}`}
-                onClick={logStrategy.login.handler}
-              >
+              <a className={`${styles.nav_anchor}`} onClick={logStrategyExitHandler}>
                 {logStrategy.logout.text}
-              </button>
+              </a>
             ) : (
               <Link to={logStrategy.login.href} className={`${styles.nav_anchor}`}>
                 {logStrategy.login.text}

@@ -7,6 +7,6 @@ const adminSchema = new Schema({
   password: { type: String, required: true },
 });
 
-const admin = model('userShema', adminSchema);
+const admin = model('adminShema', adminSchema);
 
 module.exports = { admin };
