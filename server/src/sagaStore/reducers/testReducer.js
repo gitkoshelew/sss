@@ -194,6 +194,9 @@ const testReducer = (state = initialState, action) => {
       };
     case TEST_END: {
       console.log(calculateResults(state.testItems));
+      return {
+        ...state,
+      };
       // return {
       //   ...state,
       //   result: state.testItems.reduce(
