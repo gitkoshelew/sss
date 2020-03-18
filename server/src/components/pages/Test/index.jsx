@@ -159,12 +159,14 @@ const TestConnect = connect(
       dispatch(testValidationAction({ index }));
     },
     endTestHandler() {
+      dispatch(testValidationAction());
       dispatch(testEndAction());
     },
     changeInputHandler(event) {
       dispatch(testInputAction(event));
     },
     timeOver() {
+      dispatch(testEndAction());
       dispatch(timeOverAction());
     },
   })
