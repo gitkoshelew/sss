@@ -39,12 +39,17 @@ const Test = ({
   timeIsOver,
   history,
   timeOver,
+  timer,
 }) => {
   useEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       timeOver();
-    }, 900000);
-  });
+    }, timer);
+
+    return function clear() {
+      clearTimeout(timeout);
+    };
+  }, [timer]);
 
   const endButtonHandler = () => {
     endTestHandler();
@@ -154,12 +159,14 @@ const TestConnect = connect(
       dispatch(testValidationAction({ index }));
     },
     endTestHandler() {
+      dispatch(testValidationAction());
       dispatch(testEndAction());
     },
     changeInputHandler(event) {
       dispatch(testInputAction(event));
     },
     timeOver() {
+      dispatch(testEndAction());
       dispatch(timeOverAction());
     },
   })

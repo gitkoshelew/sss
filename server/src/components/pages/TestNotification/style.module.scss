@@ -1,7 +1,7 @@
 @import '../../../@theme/index';
 
 .button_wrapper {
-  text-align: center;
+  @include isFlex($align: center, $justify: space-between);
   margin-top: 20px;
 }
 
