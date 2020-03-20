@@ -9,6 +9,7 @@ import {
 } from '../actions/constants';
 
 import checkList from '../../data/test.json';
+import calculateResults from './testResultCalculation';
 
 const testItems = checkList.map(test => {
   return {
@@ -26,94 +27,6 @@ const initialState = {
   result: null,
   timeIsOver: false,
   timer: 900000,
-};
-
-const calcPercents = (value, all) => Math.round((value / all) * 100);
-const createResultObj = () => ({
-  missedAnswersAmount: 0,
-  correctAnswerAmount: 0,
-  wrongAnswerAmount: 0,
-  allAnswers: 0,
-});
-const calcFinalResult = result => {
-  const keys = Object.keys(result);
-  return keys.reduce((acc, key) => {
-    const value = result[key];
-    if (key === 'all') {
-      Object.keys(value).forEach(answerKey => {
-        acc[answerKey] = value[answerKey];
-      });
-    } else {
-      Object.keys(value).forEach(answerKey => {
-        if (answerKey !== 'allAnswers') {
-          const answerWithoutAmount = answerKey.slice(1, -6);
-          const firstChar = answerKey.slice(0, 1).toUpperCase();
-          const rightKey = `${key}${firstChar}${answerWithoutAmount}`;
-          acc[`${rightKey}Percentage`] = calcPercents(value[answerKey], value.allAnswers);
-        }
-      });
-    }
-    return acc;
-  }, {});
-};
-
-const calculateResults = tests => {
-  const results = {
-    all: {
-      missedAnswersAmount: 0,
-      correctAnswerAmount: 0,
-      wrongAnswerAmount: 0,
-    },
-    cmn: createResultObj(),
-    als: createResultObj(),
-    ccn: createResultObj(),
-    ctn: createResultObj(),
-    rgy: createResultObj(),
-    lgc: createResultObj(),
-    spl: createResultObj(),
-  };
-  let levelGeneral;
-  tests.forEach(test => {
-    const { answers, knowledgeType } = test;
-    if (test.valid) {
-      results.all.correctAnswerAmount += 1;
-      results[knowledgeType].correctAnswerAmount += 1;
-    } else if (answers.some(answer => answer.checked)) {
-      results.all.wrongAnswerAmount += 1;
-      results[knowledgeType].wrongAnswerAmount += 1;
-    } else {
-      results.all.missedAnswersAmount += 1;
-      results[knowledgeType].missedAnswersAmount += 1;
-    }
-    results[knowledgeType].allAnswers += 1;
-  });
-  switch (true) {
-    case results.all.correctAnswerAmount <= 13: {
-      levelGeneral = 'low';
-      break;
-    }
-    case results.all.correctAnswerAmount <= 18: {
-      levelGeneral = 'belowAverage';
-      break;
-    }
-    case results.all.correctAnswerAmount <= 24: {
-      levelGeneral = 'average';
-      break;
-    }
-    case results.all.correctAnswerAmount <= 29: {
-      levelGeneral = 'aboveAverage';
-      break;
-    }
-    case results.all.correctAnswerAmount >= 30: {
-      levelGeneral = 'high';
-      break;
-    }
-  }
-  const finalResult = calcFinalResult(results);
-  return {
-    ...finalResult,
-    levelGeneral,
-  };
 };
 
 const testReducer = (state = initialState, action) => {
