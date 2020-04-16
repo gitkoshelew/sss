@@ -1,0 +1,64 @@
+@import '../../../@theme/index';
+
+.login-page {
+  background: url(../../../assets/images/Register.png) no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.title-login {
+  font-family: $fontMain;
+  text-align: center;
+  font-size: $fontIntro;
+}
+
+.login-form {
+  font-family: $sourcecodepro;
+  & input {
+    border: none;
+    color: $loginInput;
+    font-size: $fontLess;
+    line-height: 18px;
+    width: 100%;
+    background-color: $bgMain;
+    outline: none;
+  }
+  & input:last-child {
+    // background: url(../../../assets/images/eye_opened2.png);
+    background-repeat: no-repeat;
+    background-position: 4px;
+    outline: none;
+  }
+  &__input {
+    border-bottom: 1px solid #ffffff;
+    padding: 10px 0;
+    margin: auto;
+  }
+  &__description {
+    font-size: $fontSmallest;
+    line-height: 13px;
+    color: $lightColor;
+    text-align: justify;
+  }
+  &__button {
+    font-family: $notosans;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: $bgDarkButton;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: $fontLarger;
+    color: $lightColor;
+  }
+  &__google-veryfying a,
+  &__auth {
+    color: $bgDarkButton;
+    line-height: 18px;
+    font-size: $fontLess;
+    text-decoration: none;
+  }
+  & {
+    text-align: center;
+  }
+}

@@ -12,7 +12,10 @@ module.exports = (req, res, next) => {
       res.status(401).json({ message: 'not autorized' });
     }
 
-    const decoded = jwt.verify(token, config.get('jwtSecret'));
+    const decoded = jwt.verify(token, config.get('jwtSecret')); //расшифровка токена
+    // if (!decoded) {
+    //   res.status(401).json({ message: 'not autorized' });
+    // }
     req.user = decoded;
     next();
   } catch (e) {

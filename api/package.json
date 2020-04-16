@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "forever --ignore sessions/ index.js",
-    "server": "nodemon --ignore sessions/ index.js",
+    "nodemon": "nodemon --ignore sessions/ index.js",
     "dev": "npm run server",
     "api:install": "npm install"
   },
