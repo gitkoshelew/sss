@@ -61,6 +61,7 @@ app.use('/auth', require('./routes/authRoutes'));
 app.use('/authLocal', require('./routes/authLocalRoutes'));
 app.use('/authGS', require('./routes/authGSRoutes'));
 app.use('/users', require('./routes/userRoutes'));
+app.use('/blog', require('./routes/blog'));
 
 app.get('/', (req, res) => {
   let adminContent = `

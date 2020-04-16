@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import UsersListPage from './pages/UsersListPage';
 import NotFoundPage from './pages/NotFoundPage';
 import AdminsListPage from './pages/AdminsListPage';
-import AuthPage from './pages/AuthPage';
+import AuthPage from './pages/AuthPage/AuthPage';
 import About from './pages/About';
 import Contacts from './pages/Contacts';
 import ContactForm from './pages/ContactForm';
@@ -15,6 +15,7 @@ import Rings from './pages/Rings';
 import Test from './pages/Test';
 import TestIntro from './pages/TestIntro';
 import TestNotification from './pages/TestNotification';
+import Blog from './pages/Blog';
 
 export default [
   {
@@ -84,6 +85,11 @@ export default [
       {
         ...TestNotification,
         path: '/test_notification',
+        exact: true,
+      },
+      {
+        ...Blog,
+        path: '/blog',
         exact: true,
       },
       {
