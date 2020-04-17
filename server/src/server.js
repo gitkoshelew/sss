@@ -4,8 +4,9 @@ import { matchRoutes } from 'react-router-config';
 import proxy from 'express-http-proxy';
 import Routes from './components/Routes';
 import renderer from './helpers/renderer';
-import env from '../config/env';
 import createStore from './sagaStore/createStoreServer';
+const env = require('../../config/env');
+const PORT = env.portFrontend;
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(
   '/api',
   proxy(env.apiUrl, {
     proxyReqOptDecorator(opts) {
-      opts.headers['x-forwarded-host'] = 'localhost:3000';
+      opts.headers['x-forwarded-host'] = 'localhost:' + PORT;
       return opts;
     },
   })
@@ -39,7 +40,7 @@ app.get('*', (req, res) => {
   Promise.all(promises).then(() => {
     const context = {};
     const content = renderer(req, store, context);
-    console.log(context, req.url, 'context', content);
+    console.log(context, req.url, 'context');
     if (context.url) {
       return res.redirect(301, context.url);
     }
@@ -53,6 +54,6 @@ app.get('*', (req, res) => {
   store.close();
 });
 
-app.listen(3000, () => {
-  console.log('Listening on port 3000');
+app.listen(PORT, () => {
+  console.log('Listening on port' + PORT);
 });

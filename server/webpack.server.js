@@ -12,12 +12,11 @@ const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
 const isRebiuldMode = process.env.REBUILD_MODE === 'true';
 process.env.BABEL_ENV = process.env.NODE_ENV;
+const env = '../config/env';
 
-plugins = [
-  new CleanWebpackPlugin()
-];
+plugins = [new CleanWebpackPlugin()];
 
-if (isEnvProduction && !isRebiuldMode){
+if (isEnvProduction && !isRebiuldMode) {
   plugins.push(new Uglify());
 }
 // if (isRebiuldMode){
@@ -40,7 +39,7 @@ const config = {
   output: {
     filename: 'bundle.js',
     path: `${__dirname}/build/server`,
-    publicPath: isEnvProduction ? '.' : 'http://localhost:8040',
+    publicPath: isEnvProduction ? '.' : 'http://localhost:' + env.portWP,
   },
 
   externals: [webpackNodeExternals()],
@@ -51,18 +50,24 @@ const config = {
         oneOf: [
           {
             test: /\.(css|less|scss|sass|pcss)$/,
-            use: 
-              {
-                loader: path.resolve('./src/helpers/fake-loader'),
-              } 
+            use: {
+              loader: path.resolve('./src/helpers/fake-loader'),
+            },
           },
           {
-            test: /\.(png|jpe?g|gif|svg|ico)(\?.*)?$/,
+            test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
             loader: 'url-loader',
             options: {
               limit: isEnvDevelopment ? 3000 : 1000,
               name: addHash('/assets/media/[name].[ext]'),
-            }
+            },
+          },
+          {
+            test: /\.(ico)(\?.*)?$/,
+            loader: 'url-loader',
+            options: {
+              name: '/assets/media/[name].[ext]',
+            },
           },
           {
             loader: require.resolve('file-loader'),
@@ -71,11 +76,11 @@ const config = {
               name: addHash('/assets/media/[name].[ext]'),
             },
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   },
-  plugins
+  plugins,
 };
 
 module.exports = merge(baseConfig, config);

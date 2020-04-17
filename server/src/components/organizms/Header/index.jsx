@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import cn from 'classnames';
-import env from '../../../../config/env';
+import env from '../../../../../config/env';
 import styles from './style.module.scss';
 import Nav from '../../molecules/Nav';
 import Button from '../../atoms/Button';
