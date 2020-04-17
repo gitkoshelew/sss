@@ -3,7 +3,6 @@ import Swiper from 'react-id-swiper';
 import prev from '../../../assets/images/arrow-prev.svg';
 import next from '../../../assets/images/arrow-next.svg';
 import ProductCard from '../../molecules/ProductCard';
-import 'swiper/css/swiper.css';
 import styles from './style.module.scss';
 
 const CoursesSlider = ({ slides }) => {

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware, { END } from 'redux-saga';
 import axios from 'axios';
-import env from '../../config/env';
+import env from '../../../config/env';
 import reducers from './reducers';
 
 export default req => {

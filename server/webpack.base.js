@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 
-const paths = require('./config/paths');
+const paths = require('../config/paths');
 
 const isEnvDevelopment = process.env.NODE_ENV === 'development';
 const isEnvProduction = process.env.NODE_ENV === 'production';
@@ -15,19 +15,19 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env': {
       BROWSER: JSON.stringify(true),
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
-    }
-  })
+      NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
+    },
+  }),
 ];
 
 module.exports = {
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: ['.js', '.jsx'],
   },
   plugins,
   mode: process.env.NODE_ENV,
   watchOptions: {
-    ignored: ['build', 'node_modules']
+    ignored: ['build', 'node_modules'],
   },
   module: {
     rules: [
@@ -46,11 +46,11 @@ module.exports = {
                   {
                     loaderMap: {
                       svg: {
-                        ReactComponent: '@svgr/webpack?-svgo,+titleProp,+ref![path]'
-                      }
-                    }
-                  }
-                ]
+                        ReactComponent: '@svgr/webpack?-svgo,+titleProp,+ref![path]',
+                      },
+                    },
+                  },
+                ],
               ],
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/
@@ -58,8 +58,8 @@ module.exports = {
               cacheDirectory: true,
               // See #6846 for context on why cacheCompression is disabled
               cacheCompression: false,
-              compact: isEnvProduction
-            }
+              compact: isEnvProduction,
+            },
           },
           // Process any JS outside of the app with Babel.
           // Unlike the application JS, we only compile the standard ES features.
@@ -72,7 +72,7 @@ module.exports = {
               configFile: false,
               compact: false,
               presets: [
-                [require.resolve('babel-preset-react-app/dependencies'), { helpers: true }]
+                [require.resolve('babel-preset-react-app/dependencies'), { helpers: true }],
               ],
               cacheDirectory: true,
               // See #6846 for context on why cacheCompression is disabled
@@ -82,11 +82,11 @@ module.exports = {
               // because it was compiled. Thus, we don't want the browser
               // debugger to show the original code. Instead, the code
               // being evaluated would be much more helpful.
-              sourceMaps: false
-            }
-          }
-        ]
-      }
+              sourceMaps: false,
+            },
+          },
+        ],
+      },
 
       // {
       //   test: /\.js?$/,
@@ -101,6 +101,6 @@ module.exports = {
       //     ]
       //   }
       // }
-    ]
-  }
+    ],
+  },
 };

@@ -9,8 +9,10 @@ const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Uglify = require('uglifyjs-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-const paths = require('./config/paths');
+const paths = require('../config/paths');
+const env = require('../config/env');
 const { addHash } = require('./src/helpers/utils');
 const baseConfig = require('./webpack.base.js');
 
@@ -85,6 +87,14 @@ const plugins = [
       NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development'),
     },
   }),
+
+  new CopyWebpackPlugin([
+    // { from: '../manifest.json', to: `manifest.json` },
+    // { from: '../browserconfig.xml', to: `browserconfig.xml` },
+    // { from: 'assets/images/bg', to: `images` },
+    // { from: 'assets/images/img', to: `images` },
+    { from: './src/assets/images/favicons', to: `./` },
+  ]),
 ];
 
 if (isEnvProduction) {
@@ -124,7 +134,7 @@ if (isEnvDevelopment && isStaticMode) {
 const publicPathResolver = () => {
   if (isEnvProduction) return '/assets/';
   if (isStaticMode) return '/';
-  return 'http://localhost:8040/assets/';
+  return 'http://localhost:' + env.portWP + '/assets/';
 };
 
 const config = {
@@ -234,11 +244,18 @@ const config = {
             sideEffects: true,
           },
           {
-            test: /\.(png|jpe?g|gif|svg|bmp|ico)(\?.*)?$/,
+            test: /\.(png|jpe?g|gif|svg|bmp)(\?.*)?$/,
             loader: 'url-loader',
             options: {
               limit: isEnvDevelopment ? 3000 : 1000,
               name: addHash('media/[name].[ext]'),
+            },
+          },
+          {
+            test: /\.(ico)(\?.*)?$/,
+            loader: 'url-loader',
+            options: {
+              name: 'media/[name].[ext]',
             },
           },
           {
@@ -264,7 +281,7 @@ const config = {
       ? {}
       : {
           '*': {
-            target: 'http://localhost:3000',
+            target: 'http://localhost:' + env.portFrontend,
             changeOrigin: true,
             secure: false,
           },
@@ -276,6 +293,7 @@ const config = {
     // inline: true,
     liveReload: false,
     historyApiFallback: true,
+    port: env.portWP,
     watchOptions: {
       ignored: ignoredFiles(paths.appSrcFolder),
     },

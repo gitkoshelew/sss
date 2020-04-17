@@ -3,7 +3,7 @@ import createSagaMiddleware from 'redux-saga';
 import axios from 'axios';
 import reducers from './reducers';
 import sagas from './sagas';
-import env from '../../config/env';
+import env from '../../../config/env';
 
 export default () => {
   const axiosInstance = axios.create({
