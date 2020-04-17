@@ -1,5 +1,0 @@
-{
-  "port": 8000,
-  "mongoUri": "mongodb+srv://jskoshelew:Gbhfvblf11@cluster0-s1bvd.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "jskoshelew" 
-}

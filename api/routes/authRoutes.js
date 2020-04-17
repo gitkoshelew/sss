@@ -1,10 +1,10 @@
 const jwt = require('jsonwebtoken');
-const config = require('config');
 const bcrypt = require('bcryptjs');
 const { Router } = require('express');
 const { check, validationResult } = require('express-validator');
 const User = require('../models/User').user;
 const router = Router();
+const env = '../../config/env';
 
 router.post(
   `/register`,
@@ -33,17 +33,15 @@ router.post(
       const user = new User({ email, password: hashedPassword, name });
 
       await user.save();
-      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user.id }, env.jwtSecret, { expiresIn: '1h' });
 
-      return res
-        .status(201)
-        .json({
-          message: 'user created',
-          token,
-          userId: user.id,
-          name: user.name,
-          email: user.email,
-        });
+      return res.status(201).json({
+        message: 'user created',
+        token,
+        userId: user.id,
+        name: user.name,
+        email: user.email,
+      });
     } catch (e) {
       res.status(500).json({ message: 'went wrong try again' });
     }
@@ -53,9 +51,7 @@ router.post(
 router.post(
   `/login`,
   [
-    check('email', 'email incorrect')
-      .normalizeEmail()
-      .isEmail(),
+    check('email', 'email incorrect').normalizeEmail().isEmail(),
     check('password', 'enter password').exists(),
   ],
   async (req, res, next) => {
@@ -86,7 +82,7 @@ router.post(
         });
       }
 
-      const token = jwt.sign({ userId: user.id }, config.get('jwtSecret'), { expiresIn: '1h' });
+      const token = jwt.sign({ userId: user.id }, env.jwtSecret, { expiresIn: '1h' });
 
       res.json({ token, userId: user.id, name: user.name, email: user.email });
     } catch (e) {

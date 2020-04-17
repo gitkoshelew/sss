@@ -5,9 +5,8 @@ const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const passport = require('passport');
 const cors = require('cors');
-const keys = require('./config/keys');
-const env = require('./config/env');
-const config = require('config');
+const env = require('../config/env');
+const API_PORT = env.apiPort;
 
 require('./services/passport');
 
@@ -15,14 +14,14 @@ mongoose.Promise = global.Promise;
 
 async function start() {
   try {
-    await mongoose.connect(config.get('mongoUri'), {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    });
+    await mongoose.connect(env.mongoUri),
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+      };
 
-    const PORT = process.env.PORT || config.get('port') || 5000;
-    app.listen(PORT, () => console.log('server running on port' + PORT));
+    app.listen(API_PORT, () => console.log('server running on port' + API_PORT));
   } catch (e) {
     console.log('Server Error', e.message);
     process.exit(1);
@@ -34,12 +33,12 @@ const app = express();
 app.use(cors());
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
-// app.use(
-//   cookieSession({
-//     maxAge: 30 * 24 * 60 * 60 * 1000,
-//     keys: [keys.cookieKey]
-//   })
-// );
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [env.cookieKey],
+  })
+);
 app.use(
   session({
     secret: env.key,
