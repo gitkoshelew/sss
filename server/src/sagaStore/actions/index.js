@@ -39,3 +39,5 @@ export {
 } from './test';
 
 export { loaderMainChange, loaderSecondaryChange } from './loaders';
+
+export { blogFetch, blogFetchSingle } from './blog';

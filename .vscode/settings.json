@@ -1,24 +1,63 @@
 {
-  "eslint.lintTask.enable": true,
-  "editor.formatOnPaste": false,
+  "git.ignoreLimitWarning": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "explorer.decorations.badges": false,
+  "vetur.format.defaultFormatter.ts": "vscode-typescript",
+  "files.autoSave": "off",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorCustomizations": {
+    "editorIndentGuide.activeBackground": "#2f5f5f"
+  },
+  "editor.tabSize": 2,
+  "editor.fontSize": 14,
+  "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
+  "git.autofetch": true,
+  "gitlens.keymap": "alternate",
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressResultsExplorerNotice": true,
+    "suppressShowKeyBindingsNotice": true
+  },
+  "gitlens.historyExplorer.enabled": true,
+  "gitlens.gitExplorer.files.layout": "auto",
+  "files.eol": "\n",
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    "**/views/*.html": "html",
+    "**/templates/**/*.html": "django-html"
+  },
+  "emmet.includeLanguages": {
+    "django-html": "html"
+  },
+  "breadcrumbs.enabled": false,
+  "window.titleBarStyle": "custom",
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "workbench.sideBar.location": "left",
+  "editor.minimap.enabled": true,
+  "editor.renderControlCharacters": false,
+  "prettier.singleQuote": true,
+  "files.insertFinalNewline": true,
+  "editor.wordWrap": "on",
+  "files.watcherExclude": {
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/node_modules/*/**": true
+  },
   "editor.formatOnSave": true,
+  "prettier.useEditorConfig": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[html]": {
-    "editor.formatOnSave": false
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "[json]": {
-    "editor.formatOnSave": false
-  },
-  "eslint.autoFixOnSave": true,
-  "eslint.alwaysShowStatus": true,
-  "eslint.workingDirectories": ["."],
-  "eslint.options": {
-    "configFile": "./server/.eslintrc.json"
-  },
-  "eslint.nodePath": "./server/node_modules",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+  "html.suggest.html5": true,
+  "prettier.disableLanguages": []
 }

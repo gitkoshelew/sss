@@ -16,6 +16,7 @@ import Test from './pages/Test';
 import TestIntro from './pages/TestIntro';
 import TestNotification from './pages/TestNotification';
 import Blog from './pages/Blog';
+import SinglePost from './pages/SinglePost';
 
 export default [
   {
@@ -90,6 +91,11 @@ export default [
       {
         ...Blog,
         path: '/blog',
+        exact: true,
+      },
+      {
+        ...SinglePost,
+        path: '/blog/:id',
         exact: true,
       },
       {

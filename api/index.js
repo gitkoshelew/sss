@@ -24,7 +24,8 @@ async function start() {
     app.listen(API_PORT, () => console.log('server running on port' + API_PORT));
   } catch (e) {
     console.log('Server Error', e.message);
-    process.exit(1);
+
+    // process.exit(1);
   }
 }
 

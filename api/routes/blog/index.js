@@ -28,7 +28,24 @@ router.get('/', async (req, res) => {
     res.json({ blog: mapBlog, message: 'Статьи' });
   } catch (e) {
     console.log(e);
-    res.status(500).json({ message: 'went wrong try again' });
+    res.status(500).json({ error: 'went wrong try again' });
+  }
+});
+
+router.get('/:id', async (req, res) => {
+  try {
+    const singleArticle = articles.find((element, index) => {
+      if (element.id === req.params.id) {
+        return element;
+      }
+    });
+    if (!singleArticle) {
+      res.status(404).json({ error: 'Статья не найдена' });
+    }
+    res.json({ singleArticle, message: 'Одна запись' });
+  } catch (e) {
+    console.log(e);
+    res.status(500).json({ error: 'went wrong try again' });
   }
 });
 

@@ -32,12 +32,12 @@ const AuthPage = ({
   return (
     <section className="login-page">
       <div className="container">
+        <div className="login_header">
+          <h1 className="title-login">Создать аккаунт:</h1>
+        </div>
         <div className="row">
-          <div className="login_header col-12">
-            <h1 className="title-login">Создать аккаунт:</h1>
-          </div>
-          <form onSubmit={e => e.preventDefault} className="login-form col-6 mx-auto">
-            <div className="login-form__input col-6">
+          <form onSubmit={e => e.preventDefault} className="login-form col-4 mx-auto">
+            <div className="login-form__input">
               <input
                 type="text"
                 name="name"
@@ -47,7 +47,7 @@ const AuthPage = ({
               />
             </div>
 
-            <div className="login-form__input col-6">
+            <div className="login-form__input">
               <input
                 type="text"
                 name="email"
@@ -57,7 +57,7 @@ const AuthPage = ({
               />
             </div>
 
-            <div className="login-form__input col-6">
+            <div className="login-form__input">
               <input
                 type="password"
                 name="password"
@@ -67,7 +67,7 @@ const AuthPage = ({
               />
             </div>
 
-            <p className="login-form__description col-6 mx-auto px-0">
+            <p className="login-form__description">
               пароль должен быть не менее 8 символов, содержать цифры и латинские буквы
             </p>
 
