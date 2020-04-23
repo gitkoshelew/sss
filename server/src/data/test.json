@@ -268,7 +268,7 @@
         "id": "09",
         "isOpenQuestion": false,        
         "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
+        "haveSomeCorrectAnswers": true,
         "markup": "",
         "doesContainImage": false,
         "answers":     [

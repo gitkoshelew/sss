@@ -1,8 +1,8 @@
 const calcPercents = (value, all) => Math.round((value / all) * 100);
 
 const createResultObj = () => ({
-  correct_answer_amount: 0,
-  wrong_answer_amount: 0,
+  correct_answers_amount: 0,
+  wrong_answers_amount: 0,
   missed_answers_amount: 0,
   allAnswers: 0,
 });
@@ -23,6 +23,19 @@ const makeCamelCaseKey = phrase =>
       return firstCharToUpper(wordToChange);
     })
     .join('');
+
+const filterAnswers = (test, answerToFilter) => {
+  return test.answers
+    .filter(answer => answer[answerToFilter])
+    .map(answer => answer.text)
+    .join(', ');
+};
+
+const createGivenAnswerToPush = test => ({
+  questionNumber: test.id,
+  givenAnswer: test.givenAnswer || filterAnswers(test, 'checked'),
+  correctAnswer: filterAnswers(test, 'correct'),
+});
 
 const calcFinalResult = result => {
   const keys = Object.keys(result);
@@ -48,8 +61,8 @@ const calcFinalResult = result => {
 export default tests => {
   const results = {
     all: {
-      correctAnswerAmount: 0,
-      wrongAnswerAmount: 0,
+      correctAnswersAmount: 0,
+      wrongAnswersAmount: 0,
       missedAnswersAmount: 0,
     },
     cmn: createResultObj(),
@@ -60,22 +73,24 @@ export default tests => {
     lgc: createResultObj(),
     spl: createResultObj(),
   };
+  const givenAnswers = [];
   let levelGeneral;
-  const allCorrectAnswers = results.all.correctAnswerAmount;
   tests.forEach(test => {
     const { answers, knowledgeType } = test;
     if (test.valid) {
-      results.all.correctAnswerAmount += 1;
-      results[knowledgeType].correct_answer_amount += 1;
+      results.all.correctAnswersAmount += 1;
+      results[knowledgeType].correct_answers_amount += 1;
     } else if (answers.some(answer => answer.checked)) {
-      results.all.wrongAnswerAmount += 1;
-      results[knowledgeType].wrong_answer_amount += 1;
+      results.all.wrongAnswersAmount += 1;
+      results[knowledgeType].wrong_answers_amount += 1;
     } else {
       results.all.missedAnswersAmount += 1;
       results[knowledgeType].missed_answers_amount += 1;
     }
     results[knowledgeType].allAnswers += 1;
+    givenAnswers.push(createGivenAnswerToPush(test));
   });
+  const allCorrectAnswers = results.all.correctAnswersAmount;
   switch (true) {
     case allCorrectAnswers <= 13: {
       levelGeneral = 'low';
@@ -101,6 +116,7 @@ export default tests => {
   const finalResult = calcFinalResult(results);
   return {
     levelGeneral,
+    answers: givenAnswers,
     ...finalResult,
   };
 };
