@@ -1,1202 +1,1227 @@
-[    
-    {
-        "question": "Десятый месяц года – это:",
-        "id": "01",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "ноябрь",
-                "correct": false,
-                "id": "011"
-            },
-            {
-                "text": "май",
-                "correct": false,
-                "id": "012"
-            },
-            {
-                "text": "октябрь",
-                "correct": true,
-                "id": "013"
-            },
-            {
-                "text": "февраль",
-                "correct": false,
-                "id": "014"
-            }
-        ],
-        "knowledgeType": "cmn"
-    },
-    {
-        "question": "\"Суровый\" является противоположным по значению слову:",
-        "id": "02",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "резкий",
-                "correct": false,
-                "id": "021"
-            },
-            {
-                "text": "строгий",
-                "correct": false,
-                "id": "022"
-            },
-            {
-                "text": "жесткий",
-                "correct": false,
-                "id": "023"
-            },
-            {
-                "text": "мягкий",
-                "correct": true,
-                "id": "024"
-            },
-            {
-                "text": "неподатливый",
-                "correct": false,
-                "id": "025"
-            }
-        ],
-        "knowledgeType": "als"
-    },    
-    {
-        "question": "Какое из приведённых ниже слов отлично от других: ",
-        "id": "03",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": true,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "определенный",
-                "correct": false,
-                "id": "031"
-            },
-            {
-                "text": "сомнительный",
-                "correct": true,
-                "id": "032"
-            },
-            {
-                "text": "уверенный",
-                "correct": false,
-                "id": "033"
-            },
-            {
-                "text": "доверие",
-                "correct": true,
-                "id": "034"
-            },
-            {
-                "text": "верный",
-                "correct": false,
-                "id": "035"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Сокращение \"н.э.\" означает: \"нашей эры\" (новой эры)?",
-        "id": "04",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "да",
-                "correct": true,
-                "id": "041"
-            },
-            {
-                "text": "нет",
-                "correct": false,
-                "id": "042"
-            }
-        ],
-        "knowledgeType": "cmn"
-    },
-    {
-        "question": "Какое из следующих слов отлично от других: ",
-        "id": "05",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "петь",
-                "correct": false,
-                "id": "051"
-            },
-            {
-                "text": "звонить",
-                "correct": false,
-                "id": "052" 
-            },
-            {
-                "text": "болтать",
-                "correct": false,
-                "id": "053"
-            },
-            {
-                "text": "слушать",
-                "correct": true,
-                "id": "054"
-            },
-            {
-                "text": "говорить",
-                "correct": false,
-                "id": "055"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Слово \"безукоризненный\" является противоположным по своему значению слову: ",
-        "id": "06",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "незапятнанный",
-                "correct": false,
-                "id": "061"
-            },
-            {
-                "text": "неподкупный",
-                "correct": false,
-                "id": "062" 
-            },
-            {
-                "text": "непристойный",
-                "correct": true,
-                "id": "063"
-            },
-            {
-                "text": "невинный",
-                "correct": false,
-                "id": "064"
-            },
-            {
-                "text": "классический",
-                "correct": false,
-                "id": "065"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Какое из приведённых ниже слов относится к слову \"жевать\" как \"зрение\" и \"глаза\": ",
-        "id": "07",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "сладкий",
-                "correct": false,
-                "id": "071"
-            },
-            {
-                "text": "зубы",
-                "correct": true,
-                "id": "072" 
-            },
-            {
-                "text": "запах",
-                "correct": false,
-                "id": "073"
-            },
-            {
-                "text": "язык",
-                "correct": false,
-                "id": "074"
-            },
-            {
-                "text": "чистый",
-                "correct": false,
-                "id": "075"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Сколько из приведенных ниже пар слов являются полностью идентичными?",
-        "id": "08",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["Driht N.C.", "Driht N.C."], ["Fidler E.H.", "Fidler E.N."], ["Connor V.J.", "Conner V.J."], ["Hoesner O.W.", "Hoerner O.W."], ["Zolerquist P.E.", "Zolerquiest B.E."]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "1",
-                "correct": "1",
-                "id": "081"
-            }
-        ],
-        "knowledgeType": "ccn"
-    },
-    {
-        "question": "Слово \"Ясный\" является противоположным по смыслу слову: ",
-        "id": "09",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": true,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "очевидный",
-                "correct": false,
-                "id": "091"
-            },
-            {
-                "text": "явный",
-                "correct": true,
-                "id": "092" 
-            },
-            {
-                "text": "недвусмысленный",
-                "correct": false,
-                "id": "093"
-            },
-            {
-                "text": "тусклый",
-                "correct": true,
-                "id": "094"
-            },
-            {
-                "text": "отчетливый",
-                "correct": false,
-                "id": "095"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Бизнесмен купил несколько подержанных авто за 3500$, а продал их за 5500$, заработав при этом 50$ за авто. Сколько авто он продал?",
-        "id": "10",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "40",
-                "correct": "40",
-                "id": "101"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Слова \"стук\" и \"сток\" имеют: ",
-        "id": "11",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходное значение",
-                "correct": false,
-                "id": "111"
-            },
-            {
-                "text": "противоположное",
-                "correct": false,
-                "id": "112" 
-            },
-            {
-                "text": "ни сходное, ни противоположное",
-                "correct": true,
-                "id": "113"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Три апельсина стоят 45 р. Сколько рублей стоит 1,5 дюжины?",
-        "id": "12",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "270",
-                "correct": "270",
-                "id": "121"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Сколько из приведенных ниже пар чисел являются полностью идентичными?",
-        "id": "13",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["5196", "5196"], ["66986", "69686"], ["834426", "834436"], ["1354256", "1354256"], ["64497172", "64497172"], ["83238224", "83238234"]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "3",
-                "correct": "3",
-                "id": "131"
-            }
-        ],
-        "knowledgeType": "ccn"
-    },
-    {
-        "question": "\"Близкий\" является противоположным по смыслу слову: ",
-        "id": "14",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": true,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "дружеский",
-                "correct": false,
-                "id": "141"
-            },
-            {
-                "text": "приятельский",
-                "correct": true,
-                "id": "142" 
-            },
-            {
-                "text": "родной",
-                "correct": false,
-                "id": "143"
-            },
-            {
-                "text": "чужой",
-                "correct": true,
-                "id": "144"
-            },
-            {
-                "text": "иной",
-                "correct": false,
-                "id": "145"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Какое число является наименьшим?",
-        "id": "15",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "6",
-                "correct": false,
-                "id": "151"
-            },
-            {
-                "text": "0,7",
-                "correct": false,
-                "id": "152" 
-            },
-            {
-                "text": "9",
-                "correct": false,
-                "id": "153"
-            },
-            {
-                "text": "36",
-                "correct": false,
-                "id": "154"
-            },
-            {
-                "text": "0,31",
-                "correct": true,
-                "id": "155"
-            },
-            {
-                "text": "0,31",
-                "correct": false,
-                "id": "156"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Расставьте предлагаемые ниже слова в таком порядке, чтобы получилось правильное предложение. В качестве ответа запишите две последние буквы последнего слова.",
-        "id": "16",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["есть", "соль", "любовь", "жизни"]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "ни",
-                "correct": "ни",
-                "id": "161"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Какой из приведенных ниже пяти рисунков наиболее отличен от других?",
-        "id": "17",
-        "isOpenQuestion": true,
-        "doesContainTable": false,
-        "markup": "",
-        "doesContainImage": true,
-        "imagePath": "testquestion17",
-        "answers":     [
-            {
-                "text": "4",
-                "correct": "4",
-                "id": "171"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Два охотника поймали 36 зайцев. Первый поймал в 8 раз больше, чем второй. Сколько поймал второй?",
-        "id": "18",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "4",
-                "correct": "4",
-                "id": "181"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Слова \"восходить\" и \"возродить\" имеют: ",
-        "id": "19",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходное значение",
-                "correct": false,
-                "id": "191"
-            },
-            {
-                "text": "противоположное",
-                "correct": false,
-                "id": "192" 
-            },
-            {
-                "text": "ни сходное, ни противоположное",
-                "correct": true,
-                "id": "193"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Расставьте предлагаемые ниже слова в таком порядке, чтобы получилось утверждение. Если оно правильно, то ответ будет П, если неправильно - Н:",
-        "id": "20",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["мхом", "обороты", "камень", "набирает", "заросший"]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "Н",
-                "correct": "н",
-                "id": "201"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Две из приведенных ниже фраз имеют одинаковый смысл, найдите их. В ответе запишите две цифры слитно, например 17, если это фразы под номерами 1 и 7:",
-        "id": "21",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["1", "Держать нос по ветру."], ["2", "Трое докторов не лучше одного."], ["3", "Пустой мешок не стоит."], ["4", "Не все то золото, что блестит."], ["5", "У семи нянек дитя без глаза."]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "25",
-                "correct": "25",
-                "id": "211"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": " Какое число должно стоять вместо знака \"?\"",
-        "id": "22",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["73", "66", "59", "52", "45", "38", "?"]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "31",
-                "correct": "31",
-                "id": "221"
-            }
-        ],
-        "knowledgeType": "rgy"
-    },
-    {
-        "question": "Длительность дня и ночи в сентябре почти такая же, как и в:",
-        "id": "23",
-        "isOpenQuestion": false,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "июне",
-                "correct": false,
-                "id": "231"
-            },
-            {
-                "text": "мае",
-                "correct": false,
-                "id": "232"
-            },
-            {
-                "text": "марте",
-                "correct": true,
-                "id": "233"
-            },
-            {
-                "text": "ноябре",
-                "correct": false,
-                "id": "234"
-            }
-        ],
-        "knowledgeType": "cmn"
-    },
-    {
-        "question": "Предположим, что первые два утверждения верны. 1 - Все передовые люди - члены партии. 2 - Все передовые люди занимают крупные посты. 3 - Некоторые члены партии занимают крупные посты. Тогда заключительное будет:",
-        "id": "24",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "верно",
-                "correct": true,
-                "id": "241"
-            },
-            {
-                "text": "неверно",
-                "correct": false,
-                "id": "242" 
-            },
-            {
-                "text": "неопределенно",
-                "correct": false,
-                "id": "243"
-            }
-        ],
-        "knowledgeType": "lgc"
-    },
-    {
-        "question": "Поезд проходит 75 см за ¼ с. Если он будет ехать с той же скоростью, то сколько метров он пройдет за 5 с?",
-        "id": "25",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "15",
-                "correct": "15",
-                "id": "251"
-            }
-        ],
-        "knowledgeType": "ctn"        
-    },
-    {
-        "question": "Предположим, что первые два утверждения верны. 1 - Коле столько же лет, сколько Даше. 2 - Даша моложе Насти. 3 - Коля моложе Насти. Тогда заключительное будет:",
-        "id": "26",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "верно",
-                "correct": true,
-                "id": "261"
-            },
-            {
-                "text": "неверно",
-                "correct": false,
-                "id": "262" 
-            },
-            {
-                "text": "неопределенно",
-                "correct": false,
-                "id": "263"
-            }
-        ],
-        "knowledgeType": "lgc"
-    },
-    {
-        "question": "Пять полукилограммовых пачек сливочного масла стоят 2 доллара. Сколько килограмм масла можно купить за 80 центов?",
-        "id": "27",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "1",
-                "correct": "1",
-                "id": "271"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Слова \"расстилать\" и \"растянуть\": ",
-        "id": "28",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "схожи по смыслу",
-                "correct": true,
-                "id": "281"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "282" 
-            },
-            {
-                "text": "ни схожи, ни противоположны",
-                "correct": false,
-                "id": "283"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Разделите эту геометрическую фигуру прямой линии на две части так, чтобы, сложив их вместе, можно было получить квадрат. В ответе запишите два номера точек слитно, например 725, если это точки под номерами 7 и 25.",
-        "id": "29",
-        "isOpenQuestion": true,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": true,
-        "imagePath": "testquestion29",
-        "answers":     [
-            {
-                "text": "213",
-                "correct": "213",
-                "id": "291"
-            }
-        ],
-        "knowledgeType": "spl"
-    },
-    {
-        "question": "Предположим, что первые два утверждения верны. 1 - Саша поздоровался с Машей. 2 - Маша поздоровалась с Дашей. 3 - Саша не поздоровался с Дашей. Тогда заключительное будет:",
-        "id": "30",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "верно",
-                "correct": false,
-                "id": "301"
-            },
-            {
-                "text": "неверно",
-                "correct": false,
-                "id": "302" 
-            },
-            {
-                "text": "неопределенно",
-                "correct": true,
-                "id": "303"
-            }
-        ],
-        "knowledgeType": "lgc"
-    },
-    {
-        "question": "Автомобиль стоимостью 2400 $ был уценен во время сезонной распродажи на 33 ⅓%. Сколько стоил автомобиль во время распродажи?",
-        "id": "31",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "1600",
-                "correct": "1600",
-                "id": "311"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Три из пяти фигур нужно соединить таким образом, чтобы получилась равнобедренная трапеция. В ответе напишите слитно номера фигур в том порядке, в котором они должны быть соединены. Например, 947 из фигур под номерами 4, 7 и 9.",
-        "id": "32",
-        "isOpenQuestion": true,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": true,
-        "imagePath": "testquestion32",
-        "answers":     [
-            {
-                "text": "142",
-                "correct": "142",
-                "id": "321"
-            }
-        ],
-        "knowledgeType": "spl"
-    },
-    {
-        "question": "На платье требуется 3 ¼ м ткани. Сколько платьев можно сшить из 65 м?",
-        "id": "33",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "20",
-                "correct": "20",
-                "id": "331"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Прочитайте следующие два предложения: 1 - Трое докторов не лучше одного. 2 - Чем больше докторов, тем больше болезней. Их значения:",
-        "id": "34",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходны",
-                "correct": false,
-                "id": "341"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "342" 
-            },
-            {
-                "text": "ни сходны, ни противоположны",
-                "correct": true,
-                "id": "343"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "\"Увеличивать\" и \"расширять\". Эти слова: ",
-        "id": "35",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходны",
-                "correct": true,
-                "id": "351"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "352" 
-            },
-            {
-                "text": "ни сходны, ни противоположны",
-                "correct": false,
-                "id": "353"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "\"Швартоваться лучше двумя якорями\" и \"Не клади все яйца в одну корзину\". Эти две английские пословицы: ",
-        "id": "36",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходны",
-                "correct": true,
-                "id": "361"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "362" 
-            },
-            {
-                "text": "ни сходны, ни противоположны",
-                "correct": false,
-                "id": "363"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Бакалейщик купил ящик с ананасами за  3,6$. В ящике их было 12 дюжин. Он знает, что 2 дюжины испортятся еще до того, как он продаст все ананасы. По какой цене (в $) ему нужно продавать ананасы, чтобы получить прибыль в одну треть закупочной цены?",
-        "id": "37",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "0,48",
-                "correct": "0,48",
-                "id": "371"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "\"Претензия\" и \"претенциозный\". Эти слова: ",
-        "id": "38",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходны",
-                "correct": true,
-                "id": "381"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "382" 
-            },
-            {
-                "text": "ни сходны, ни противоположны",
-                "correct": false,
-                "id": "383"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Если бы полкило лука стоило 0,025$, то сколько килограмм можно было бы купить за 50 центов?",
-        "id": "39",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "10",
-                "correct": "10",
-                "id": "391"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Один из членов ряда не подходит к другим. Каким числом Вы бы его заменили? Если ответ не целое число, запишите его в виде десятичной дроби.",
-        "id": "40",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["1/4", "1/8", "1/8", "1/4", "1/8", "1/8", "1/4", "1/8", "1/6"]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "0,125",
-                "correct": "0,125",
-                "id": "401"
-            }
-        ],
-        "knowledgeType": "rgy"
-    },
-    {
-        "question": "\"Отражаемый\" и \"воображаемый\". Эти слова: ",
-        "id": "41",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходны",
-                "correct": false,
-                "id": "411"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "412" 
-            },
-            {
-                "text": "ни сходны, ни противоположны",
-                "correct": true,
-                "id": "413"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Сколько соток составляет участок длиною 70 м и шириною 50 м?",
-        "id": "42",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "35",
-                "correct": "35",
-                "id": "421"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "\"Хорошие вещи дешевы, плохие дороги\" и \"Хорошее качество обеспечивается простотой, плохое - сложностью\". Эти две фразы: ",
-        "id": "43",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходны",
-                "correct": true,
-                "id": "431"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "432" 
-            },
-            {
-                "text": "ни сходны, ни противоположны",
-                "correct": false,
-                "id": "433"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Солдат, стреляя в цель, поразил ее в 12,5% случаев. Сколько раз солдат должен выстрелить, чтобы поразить все 100 раз?",
-        "id": "44",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "800",
-                "correct": "800",
-                "id": "441"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Один из членов ряда не подходит к другим. Каким числом Вы бы его заменили? Если ответ не целое число, запишите его в виде десятичной дроби.",
-        "id": "45",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["1/4", "1/6", "1/8", "1/9", "1/12", "1/14"]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "0,1",
-                "correct": "0,1",
-                "id": "451"
-            }
-        ],
-        "knowledgeType": "rgy"
-    },
-    {
-        "question": "Три бизнес-партнера решили поделить прибыль поровну. Первый вложил в дело 4500 рублей, второй - 3500 рублей, третий - 2000 рублей. Если прибыль составит 2400 рублей, то насколько меньше прибыль получит первый по сравнению с тем, как если бы прибыль была разделена пропорционально вкладам? Ответ укажите в рублях.",
-        "id": "46",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "200",
-                "correct": "200",
-                "id": "461"
-            }
-        ],
-        "knowledgeType": "ctn"
-    },
-    {
-        "question": "Какие две из приведенных ниже пословиц имеют сходный смысл? В ответе запишите две цифры слитно, например 17, если это фразы под номерами 1 и 7: ",
-        "id": "47",
-        "isOpenQuestion": true,
-        "doesContainTable": true,
-        "haveSomeCorrectAnswers": false,
-        "markup": [["1", "Куй железо, пока горячо."], ["2", "Не все то золото, что блестит."], ["3", "Лес рубят, щепки летят."], ["4", "Один в поле не воин."], ["5", "Не по виду суди, а по делам гляди."]],
-        "doesContainImage": false,
-        "imagePath": "",
-        "answers":     [
-            {
-                "text": "25",
-                "correct": "25",
-                "id": "471"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "\"Лес рубят, щепки летят\" и \"Большое дело не бывает без потерь\". Эти две фразы: ",
-        "id": "48",
-        "isOpenQuestion": false,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "сходны",
-                "correct": true,
-                "id": "481"
-            },
-            {
-                "text": "противоположны",
-                "correct": false,
-                "id": "482" 
-            },
-            {
-                "text": "ни сходны, ни противоположны",
-                "correct": false,
-                "id": "483"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "Какая из этих фигур наиболее отлична от других? ",
-        "id": "49",
-        "isOpenQuestion": true,
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": true,
-        "imagePath": "testquestion49",
-        "answers":     [
-            {
-                "text": "3",
-                "correct": "3",
-                "id": "491"
-            }
-        ],
-        "knowledgeType": "als"
-    },
-    {
-        "question": "В печатающейся статье 24000 слов. редактор решил использовать шрифт двух размеров. При использовании шрифта большего размера на странице умещается 900 слов, меньшего - 1200. Статья должна занять 21 полную страницу в журнале. Сколько страниц должно быть напечатано меньшим шрифтом?",
-        "id": "50",
-        "isOpenQuestion": true,        
-        "doesContainTable": false,
-        "haveSomeCorrectAnswers": false,
-        "markup": "",
-        "doesContainImage": false,
-        "answers":     [
-            {
-                "text": "17",
-                "correct": "17",
-                "id": "501"
-            }
-        ],
-        "knowledgeType": "ctn"
-    }
+[
+  {
+    "question": "Десятый месяц года – это:",
+    "id": "01",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "ноябрь",
+        "correct": false,
+        "id": "011"
+      },
+      {
+        "text": "май",
+        "correct": false,
+        "id": "012"
+      },
+      {
+        "text": "октябрь",
+        "correct": true,
+        "id": "013"
+      },
+      {
+        "text": "февраль",
+        "correct": false,
+        "id": "014"
+      }
+    ],
+    "knowledgeType": "cmn"
+  },
+  {
+    "question": "\"Суровый\" является противоположным по значению слову:",
+    "id": "02",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "резкий",
+        "correct": false,
+        "id": "021"
+      },
+      {
+        "text": "строгий",
+        "correct": false,
+        "id": "022"
+      },
+      {
+        "text": "жесткий",
+        "correct": false,
+        "id": "023"
+      },
+      {
+        "text": "мягкий",
+        "correct": true,
+        "id": "024"
+      },
+      {
+        "text": "неподатливый",
+        "correct": false,
+        "id": "025"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Какое из приведённых ниже слов отлично от других: ",
+    "id": "03",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": true,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "определенный",
+        "correct": false,
+        "id": "031"
+      },
+      {
+        "text": "сомнительный",
+        "correct": true,
+        "id": "032"
+      },
+      {
+        "text": "уверенный",
+        "correct": false,
+        "id": "033"
+      },
+      {
+        "text": "доверие",
+        "correct": true,
+        "id": "034"
+      },
+      {
+        "text": "верный",
+        "correct": false,
+        "id": "035"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Сокращение \"н.э.\" означает: \"нашей эры\" (новой эры)?",
+    "id": "04",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "да",
+        "correct": true,
+        "id": "041"
+      },
+      {
+        "text": "нет",
+        "correct": false,
+        "id": "042"
+      }
+    ],
+    "knowledgeType": "cmn"
+  },
+  {
+    "question": "Какое из следующих слов отлично от других: ",
+    "id": "05",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "петь",
+        "correct": false,
+        "id": "051"
+      },
+      {
+        "text": "звонить",
+        "correct": false,
+        "id": "052"
+      },
+      {
+        "text": "болтать",
+        "correct": false,
+        "id": "053"
+      },
+      {
+        "text": "слушать",
+        "correct": true,
+        "id": "054"
+      },
+      {
+        "text": "говорить",
+        "correct": false,
+        "id": "055"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Слово \"безукоризненный\" является противоположным по своему значению слову: ",
+    "id": "06",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "незапятнанный",
+        "correct": false,
+        "id": "061"
+      },
+      {
+        "text": "неподкупный",
+        "correct": false,
+        "id": "062"
+      },
+      {
+        "text": "непристойный",
+        "correct": true,
+        "id": "063"
+      },
+      {
+        "text": "невинный",
+        "correct": false,
+        "id": "064"
+      },
+      {
+        "text": "классический",
+        "correct": false,
+        "id": "065"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Какое из приведённых ниже слов относится к слову \"жевать\" как \"зрение\" и \"глаза\": ",
+    "id": "07",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "сладкий",
+        "correct": false,
+        "id": "071"
+      },
+      {
+        "text": "зубы",
+        "correct": true,
+        "id": "072"
+      },
+      {
+        "text": "запах",
+        "correct": false,
+        "id": "073"
+      },
+      {
+        "text": "язык",
+        "correct": false,
+        "id": "074"
+      },
+      {
+        "text": "чистый",
+        "correct": false,
+        "id": "075"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Сколько из приведенных ниже пар слов являются полностью идентичными?",
+    "id": "08",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [
+      ["Driht N.C.", "Driht N.C."],
+      ["Fidler E.H.", "Fidler E.N."],
+      ["Connor V.J.", "Conner V.J."],
+      ["Hoesner O.W.", "Hoerner O.W."],
+      ["Zolerquist P.E.", "Zolerquiest B.E."]
+    ],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "1",
+        "correct": "1",
+        "id": "081"
+      }
+    ],
+    "knowledgeType": "ccn"
+  },
+  {
+    "question": "Слово \"Ясный\" является противоположным по смыслу слову: ",
+    "id": "09",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": true,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "очевидный",
+        "correct": false,
+        "id": "091"
+      },
+      {
+        "text": "явный",
+        "correct": false,
+        "id": "092"
+      },
+      {
+        "text": "недвусмысленный",
+        "correct": false,
+        "id": "093"
+      },
+      {
+        "text": "тусклый",
+        "correct": true,
+        "id": "094"
+      },
+      {
+        "text": "отчетливый",
+        "correct": false,
+        "id": "095"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Бизнесмен купил несколько подержанных авто за 3500$, а продал их за 5500$, заработав при этом 50$ за авто. Сколько авто он продал?",
+    "id": "10",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "40",
+        "correct": "40",
+        "id": "101"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Слова \"стук\" и \"сток\" имеют: ",
+    "id": "11",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходное значение",
+        "correct": false,
+        "id": "111"
+      },
+      {
+        "text": "противоположное",
+        "correct": false,
+        "id": "112"
+      },
+      {
+        "text": "ни сходное, ни противоположное",
+        "correct": true,
+        "id": "113"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Три апельсина стоят 45 р. Сколько рублей стоит 1,5 дюжины?",
+    "id": "12",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "270",
+        "correct": "270",
+        "id": "121"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Сколько из приведенных ниже пар чисел являются полностью идентичными?",
+    "id": "13",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [
+      ["5196", "5196"],
+      ["66986", "69686"],
+      ["834426", "834436"],
+      ["1354256", "1354256"],
+      ["64497172", "64497172"],
+      ["83238224", "83238234"]
+    ],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "3",
+        "correct": "3",
+        "id": "131"
+      }
+    ],
+    "knowledgeType": "ccn"
+  },
+  {
+    "question": "\"Близкий\" является противоположным по смыслу слову: ",
+    "id": "14",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": true,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "дружеский",
+        "correct": false,
+        "id": "141"
+      },
+      {
+        "text": "приятельский",
+        "correct": false,
+        "id": "142"
+      },
+      {
+        "text": "родной",
+        "correct": false,
+        "id": "143"
+      },
+      {
+        "text": "чужой",
+        "correct": true,
+        "id": "144"
+      },
+      {
+        "text": "иной",
+        "correct": false,
+        "id": "145"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Какое число является наименьшим?",
+    "id": "15",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "6",
+        "correct": false,
+        "id": "151"
+      },
+      {
+        "text": "0,7",
+        "correct": false,
+        "id": "152"
+      },
+      {
+        "text": "9",
+        "correct": false,
+        "id": "153"
+      },
+      {
+        "text": "36",
+        "correct": false,
+        "id": "154"
+      },
+      {
+        "text": "0,31",
+        "correct": true,
+        "id": "155"
+      },
+      {
+        "text": "5",
+        "correct": false,
+        "id": "156"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Расставьте предлагаемые ниже слова в таком порядке, чтобы получилось правильное предложение. В качестве ответа запишите две последние буквы последнего слова.",
+    "id": "16",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [["есть", "соль", "любовь", "жизни"]],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "ни",
+        "correct": "ни",
+        "id": "161"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Какой из приведенных ниже пяти рисунков наиболее отличен от других?",
+    "id": "17",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "markup": "",
+    "doesContainImage": true,
+    "imagePath": "testquestion17",
+    "answers": [
+      {
+        "text": "4",
+        "correct": "4",
+        "id": "171"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Два охотника поймали 36 зайцев. Первый поймал в 8 раз больше, чем второй. Сколько поймал второй?",
+    "id": "18",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "4",
+        "correct": "4",
+        "id": "181"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Слова \"восходить\" и \"возродить\" имеют: ",
+    "id": "19",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходное значение",
+        "correct": false,
+        "id": "191"
+      },
+      {
+        "text": "противоположное",
+        "correct": false,
+        "id": "192"
+      },
+      {
+        "text": "ни сходное, ни противоположное",
+        "correct": true,
+        "id": "193"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Расставьте предлагаемые ниже слова в таком порядке, чтобы получилось утверждение. Если оно правильно, то ответ будет П, если неправильно - Н:",
+    "id": "20",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [["мхом", "обороты", "камень", "набирает", "заросший"]],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "Н",
+        "correct": "Н",
+        "id": "201"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Две из приведенных ниже фраз имеют одинаковый смысл, найдите их. В ответе запишите две цифры слитно, например 17, если это фразы под номерами 1 и 7:",
+    "id": "21",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [
+      ["1", "Держать нос по ветру."],
+      ["2", "Трое докторов не лучше одного."],
+      ["3", "Пустой мешок не стоит."],
+      ["4", "Не все то золото, что блестит."],
+      ["5", "У семи нянек дитя без глаза."]
+    ],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "25",
+        "correct": "25",
+        "id": "211"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": " Какое число должно стоять вместо знака \"?\"",
+    "id": "22",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [["73", "66", "59", "52", "45", "38", "?"]],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "31",
+        "correct": "31",
+        "id": "221"
+      }
+    ],
+    "knowledgeType": "rgy"
+  },
+  {
+    "question": "Длительность дня и ночи в сентябре почти такая же, как и в:",
+    "id": "23",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "июне",
+        "correct": false,
+        "id": "231"
+      },
+      {
+        "text": "мае",
+        "correct": false,
+        "id": "232"
+      },
+      {
+        "text": "марте",
+        "correct": true,
+        "id": "233"
+      },
+      {
+        "text": "ноябре",
+        "correct": false,
+        "id": "234"
+      }
+    ],
+    "knowledgeType": "cmn"
+  },
+  {
+    "question": "Предположим, что первые два утверждения верны. 1 - Все передовые люди - члены партии. 2 - Все передовые люди занимают крупные посты. 3 - Некоторые члены партии занимают крупные посты. Тогда заключительное будет:",
+    "id": "24",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "верно",
+        "correct": true,
+        "id": "241"
+      },
+      {
+        "text": "неверно",
+        "correct": false,
+        "id": "242"
+      },
+      {
+        "text": "неопределенно",
+        "correct": false,
+        "id": "243"
+      }
+    ],
+    "knowledgeType": "lgc"
+  },
+  {
+    "question": "Поезд проходит 75 см за ¼ с. Если он будет ехать с той же скоростью, то сколько метров он пройдет за 5 с?",
+    "id": "25",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "15",
+        "correct": "15",
+        "id": "251"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Предположим, что первые два утверждения верны. 1 - Коле столько же лет, сколько Даше. 2 - Даша моложе Насти. 3 - Коля моложе Насти. Тогда заключительное будет:",
+    "id": "26",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "верно",
+        "correct": true,
+        "id": "261"
+      },
+      {
+        "text": "неверно",
+        "correct": false,
+        "id": "262"
+      },
+      {
+        "text": "неопределенно",
+        "correct": false,
+        "id": "263"
+      }
+    ],
+    "knowledgeType": "lgc"
+  },
+  {
+    "question": "Пять полукилограммовых пачек сливочного масла стоят 2 доллара. Сколько килограмм масла можно купить за 80 центов?",
+    "id": "27",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "1",
+        "correct": "1",
+        "id": "271"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Слова \"расстилать\" и \"растянуть\": ",
+    "id": "28",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "схожи по смыслу",
+        "correct": true,
+        "id": "281"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "282"
+      },
+      {
+        "text": "ни схожи, ни противоположны",
+        "correct": false,
+        "id": "283"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Разделите эту геометрическую фигуру прямой линии на две части так, чтобы, сложив их вместе, можно было получить квадрат. В ответе запишите два номера точек слитно, например 725, если это точки под номерами 7 и 25.",
+    "id": "29",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": true,
+    "imagePath": "testquestion29",
+    "answers": [
+      {
+        "text": "213",
+        "correct": "213",
+        "id": "291"
+      }
+    ],
+    "knowledgeType": "spl"
+  },
+  {
+    "question": "Предположим, что первые два утверждения верны. 1 - Саша поздоровался с Машей. 2 - Маша поздоровалась с Дашей. 3 - Саша не поздоровался с Дашей. Тогда заключительное будет:",
+    "id": "30",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "верно",
+        "correct": false,
+        "id": "301"
+      },
+      {
+        "text": "неверно",
+        "correct": false,
+        "id": "302"
+      },
+      {
+        "text": "неопределенно",
+        "correct": true,
+        "id": "303"
+      }
+    ],
+    "knowledgeType": "lgc"
+  },
+  {
+    "question": "Автомобиль стоимостью 2400 $ был уценен во время сезонной распродажи на 33 ⅓%. Сколько стоил автомобиль во время распродажи?",
+    "id": "31",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "1600",
+        "correct": "1600",
+        "id": "311"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Три из пяти фигур нужно соединить таким образом, чтобы получилась равнобедренная трапеция. В ответе напишите слитно номера фигур в том порядке, в котором они должны быть соединены. Например, 947 из фигур под номерами 4, 7 и 9.",
+    "id": "32",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": true,
+    "imagePath": "testquestion32",
+    "answers": [
+      {
+        "text": "142",
+        "correct": "142",
+        "id": "321"
+      }
+    ],
+    "knowledgeType": "spl"
+  },
+  {
+    "question": "На платье требуется 3 ¼ м ткани. Сколько платьев можно сшить из 65 м?",
+    "id": "33",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "20",
+        "correct": "20",
+        "id": "331"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Прочитайте следующие два предложения: 1 - Трое докторов не лучше одного. 2 - Чем больше докторов, тем больше болезней. Их значения:",
+    "id": "34",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходны",
+        "correct": false,
+        "id": "341"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "342"
+      },
+      {
+        "text": "ни сходны, ни противоположны",
+        "correct": true,
+        "id": "343"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "\"Увеличивать\" и \"расширять\". Эти слова: ",
+    "id": "35",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходны",
+        "correct": true,
+        "id": "351"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "352"
+      },
+      {
+        "text": "ни сходны, ни противоположны",
+        "correct": false,
+        "id": "353"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "\"Швартоваться лучше двумя якорями\" и \"Не клади все яйца в одну корзину\". Эти две английские пословицы: ",
+    "id": "36",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходны",
+        "correct": true,
+        "id": "361"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "362"
+      },
+      {
+        "text": "ни сходны, ни противоположны",
+        "correct": false,
+        "id": "363"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Бакалейщик купил ящик с ананасами за  3,6$. В ящике их было 12 дюжин. Он знает, что 2 дюжины испортятся еще до того, как он продаст все ананасы. По какой цене (в $) ему нужно продавать ананасы, чтобы получить прибыль в одну треть закупочной цены?",
+    "id": "37",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "0,48",
+        "correct": "0,48",
+        "id": "371"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "\"Претензия\" и \"претенциозный\". Эти слова: ",
+    "id": "38",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходны",
+        "correct": true,
+        "id": "381"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "382"
+      },
+      {
+        "text": "ни сходны, ни противоположны",
+        "correct": false,
+        "id": "383"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Если бы полкило лука стоило 0,025$, то сколько килограмм можно было бы купить за 50 центов?",
+    "id": "39",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "10",
+        "correct": "10",
+        "id": "391"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Один из членов ряда не подходит к другим. Каким числом Вы бы его заменили? Если ответ не целое число, запишите его в виде десятичной дроби.",
+    "id": "40",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [["1/4", "1/8", "1/8", "1/4", "1/8", "1/8", "1/4", "1/8", "1/6"]],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "0,125",
+        "correct": "0,125",
+        "id": "401"
+      }
+    ],
+    "knowledgeType": "rgy"
+  },
+  {
+    "question": "\"Отражаемый\" и \"воображаемый\". Эти слова: ",
+    "id": "41",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходны",
+        "correct": false,
+        "id": "411"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "412"
+      },
+      {
+        "text": "ни сходны, ни противоположны",
+        "correct": true,
+        "id": "413"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Сколько соток составляет участок длиною 70 м и шириною 50 м?",
+    "id": "42",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "35",
+        "correct": "35",
+        "id": "421"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "\"Хорошие вещи дешевы, плохие дороги\" и \"Хорошее качество обеспечивается простотой, плохое - сложностью\". Эти две фразы: ",
+    "id": "43",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходны",
+        "correct": true,
+        "id": "431"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "432"
+      },
+      {
+        "text": "ни сходны, ни противоположны",
+        "correct": false,
+        "id": "433"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Солдат, стреляя в цель, поразил ее в 12,5% случаев. Сколько раз солдат должен выстрелить, чтобы поразить все 100 раз?",
+    "id": "44",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "800",
+        "correct": "800",
+        "id": "441"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Один из членов ряда не подходит к другим. Каким числом Вы бы его заменили? Если ответ не целое число, запишите его в виде десятичной дроби.",
+    "id": "45",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [["1/4", "1/6", "1/8", "1/9", "1/12", "1/14"]],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "0,1",
+        "correct": "0,1",
+        "id": "451"
+      }
+    ],
+    "knowledgeType": "rgy"
+  },
+  {
+    "question": "Три бизнес-партнера решили поделить прибыль поровну. Первый вложил в дело 4500 рублей, второй - 3500 рублей, третий - 2000 рублей. Если прибыль составит 2400 рублей, то насколько меньше прибыль получит первый по сравнению с тем, как если бы прибыль была разделена пропорционально вкладам? Ответ укажите в рублях.",
+    "id": "46",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "280",
+        "correct": "280",
+        "id": "461"
+      }
+    ],
+    "knowledgeType": "ctn"
+  },
+  {
+    "question": "Какие две из приведенных ниже пословиц имеют сходный смысл? В ответе запишите две цифры слитно, например 17, если это фразы под номерами 1 и 7: ",
+    "id": "47",
+    "isOpenQuestion": true,
+    "doesContainTable": true,
+    "haveSomeCorrectAnswers": false,
+    "markup": [
+      ["1", "Куй железо, пока горячо."],
+      ["2", "Не все то золото, что блестит."],
+      ["3", "Лес рубят, щепки летят."],
+      ["4", "Один в поле не воин."],
+      ["5", "Не по виду суди, а по делам гляди."]
+    ],
+    "doesContainImage": false,
+    "imagePath": "",
+    "answers": [
+      {
+        "text": "25",
+        "correct": "25",
+        "id": "471"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "\"Лес рубят, щепки летят\" и \"Большое дело не бывает без потерь\". Эти две фразы: ",
+    "id": "48",
+    "isOpenQuestion": false,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "сходны",
+        "correct": true,
+        "id": "481"
+      },
+      {
+        "text": "противоположны",
+        "correct": false,
+        "id": "482"
+      },
+      {
+        "text": "ни сходны, ни противоположны",
+        "correct": false,
+        "id": "483"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "Какая из этих фигур наиболее отлична от других? ",
+    "id": "49",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": true,
+    "imagePath": "testquestion49",
+    "answers": [
+      {
+        "text": "3",
+        "correct": "3",
+        "id": "491"
+      }
+    ],
+    "knowledgeType": "als"
+  },
+  {
+    "question": "В печатающейся статье 24000 слов. редактор решил использовать шрифт двух размеров. При использовании шрифта большего размера на странице умещается 900 слов, меньшего - 1200. Статья должна занять 21 полную страницу в журнале. Сколько страниц должно быть напечатано меньшим шрифтом?",
+    "id": "50",
+    "isOpenQuestion": true,
+    "doesContainTable": false,
+    "haveSomeCorrectAnswers": false,
+    "markup": "",
+    "doesContainImage": false,
+    "answers": [
+      {
+        "text": "17",
+        "correct": "17",
+        "id": "501"
+      }
+    ],
+    "knowledgeType": "ctn"
+  }
 ]
