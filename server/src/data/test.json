@@ -270,11 +270,11 @@
     "knowledgeType": "ccn"
   },
   {
-    "question": "Слово \"Ясный\" является противоположным по смыслу слову: ",
+    "question": "Слово \"ясный\" является противоположным по смыслу слову: ",
     "id": "09",
     "isOpenQuestion": false,
     "doesContainTable": false,
-    "haveSomeCorrectAnswers": true,
+    "haveSomeCorrectAnswers": false,
     "markup": "",
     "doesContainImage": false,
     "answers": [
@@ -397,7 +397,7 @@
     "id": "14",
     "isOpenQuestion": false,
     "doesContainTable": false,
-    "haveSomeCorrectAnswers": true,
+    "haveSomeCorrectAnswers": false,
     "markup": "",
     "doesContainImage": false,
     "answers": [
