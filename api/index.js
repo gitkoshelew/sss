@@ -14,12 +14,14 @@ mongoose.Promise = global.Promise;
 
 async function start() {
   try {
-    await mongoose.connect(env.mongoUri),
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-      };
+    //здесь написать запрос к монго, и закинуть туда все записи при подключении сервера
+
+    // await mongoose.connect(env.mongoUri),
+    //   {
+    //     useNewUrlParser: true,
+    //     useUnifiedTopology: true,
+    //     useCreateIndex: true,
+    //   };
 
     app.listen(API_PORT, () => console.log('server running on port' + API_PORT));
   } catch (e) {

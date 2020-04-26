@@ -60,3 +60,24 @@ export const postAxiosApi = (url, data) => api => () =>
       console.log('Error', err.message);
       return { error: err.message };
     });
+
+export const putAxiosApi = (url, data) => api => () =>
+  api
+    .put(url, data)
+    .then(res => res.data)
+    .catch(err => {
+      if (err.response.data) {
+        console.log('Problem With Response ', err.response.data.message);
+        return { error: `Problem With Response ${err.response.data.message}` };
+      }
+      if (err.response.status) {
+        console.log('Problem With Response ', err.response.status);
+        return { error: `Problem With Response. Status: ${status[err.response.status]}` };
+      }
+      if (err.request) {
+        console.log('Problem With Request!');
+        return { error: 'Problem With Request!' };
+      }
+      console.log('Error', err.message);
+      return { error: err.message };
+    });
