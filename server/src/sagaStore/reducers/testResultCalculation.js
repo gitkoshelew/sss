@@ -35,6 +35,7 @@ const createGivenAnswerToPush = test => ({
   questionNumber: test.id,
   givenAnswer: test.givenAnswer || filterAnswers(test, 'checked'),
   correctAnswer: filterAnswers(test, 'correct'),
+  isCorrect: test.valid,
 });
 
 const calcFinalResult = result => {
