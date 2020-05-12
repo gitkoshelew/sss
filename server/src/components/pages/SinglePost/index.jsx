@@ -1,10 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import env from '../../../../../config/env';
 import {
   blogFetchSingle,
   blogSingleTextChange,
   blogSingleIsEditable,
+  blogPutSingle,
 } from '../../../sagaStore/actions';
 import styles from './style.scss';
 
@@ -12,6 +14,7 @@ const SinglePost = ({
   actionBlogFetchSingle,
   actionBlogSingleTextChange,
   actionBlogSingleIsEditable,
+  actionBlogPutSingle,
   blogSingleArticle,
   contentEditable,
   match: {
@@ -20,6 +23,7 @@ const SinglePost = ({
 }) => {
   // const {params} = match; = const params = match.params;
   // const {id} = params; = const id = params.id
+  const [articleDraft, setArticleDraft] = useState(false);
 
   const clickHandler = () => {
     if (contentEditable) {
@@ -28,9 +32,14 @@ const SinglePost = ({
     actionBlogSingleIsEditable();
   };
 
+  const putNewTextHandler = () => {
+    localStorage.removeItem('content');
+    actionBlogPutSingle(blogSingleArticle);
+  };
+
   const onchange = e => {
-    const newBlogArticle = { name: e.target.name, value: e.target.value };
-    actionBlogSingleTextChange(newBlogArticle);
+    const newBlogArticleValue = { [e.target.name]: e.target.value };
+    actionBlogSingleTextChange(newBlogArticleValue);
   };
 
   useEffect(() => {
@@ -38,10 +47,7 @@ const SinglePost = ({
 
     if (content && JSON.parse(content).id == id) {
       const article = JSON.parse(content);
-      const newText = { name: 'text', value: article.text };
-      const newTitle = { name: 'title', value: article.title };
-      actionBlogSingleTextChange(newText);
-      actionBlogSingleTextChange(newTitle);
+      actionBlogSingleTextChange(article);
       return;
     }
     actionBlogFetchSingle(id);
@@ -49,12 +55,21 @@ const SinglePost = ({
 
   return blogSingleArticle ? (
     <div className="single-page-blog col-10">
-      <a href="http://localhost:8041/blog" className="single-page-blog__breadcrumbs">
+      <Link to="/blog" className="single-page-blog__breadcrumbs">
         К списку статей
-      </a>
+      </Link>
       <button onClick={clickHandler} id="edit-single-post" className="single-page-blog__button">
-        {contentEditable ? 'Save changes' : 'Edit'}
+        {contentEditable ? 'Preview' : 'Edit'}
       </button>
+      <button
+        onClick={putNewTextHandler}
+        id="edit-single-post"
+        className={`${!contentEditable ? 'd-none' : ''}  single-page-blog__button`}
+      >
+        Save
+      </button>
+      {/* <button>{articleDraft ? 'Было' : 'Стало'}</button> */}
+
       <div className="single-page-blog__header col-12">
         <h1 className={`${contentEditable ? 'd-none' : ''}  single-page-blog__header__title`}>
           {blogSingleArticle.title}
@@ -62,7 +77,7 @@ const SinglePost = ({
         <input
           name="title"
           value={blogSingleArticle.title}
-          className={contentEditable ? '' : 'd-none'}
+          className={contentEditable ? 'single-page-blog__input-title' : 'd-none'}
           onChange={onchange}
         />
         <div className="single-page-blog__header__date">{blogSingleArticle.date}</div>
@@ -73,7 +88,7 @@ const SinglePost = ({
       <textarea
         name="text"
         value={blogSingleArticle.text}
-        className={contentEditable ? '' : 'd-none'}
+        className={contentEditable ? 'single-page-blog__textarea' : 'd-none'}
         onChange={onchange}
       />
     </div>
@@ -86,6 +101,9 @@ function mapStateToProps(state) {
   return {
     blogSingleArticle: state.blogSingle.data,
     contentEditable: state.blogSingle.editable,
+    newPost: state.newPost.data,
+    title: state.newPost.data.title,
+    text: state.newPost.data.text,
   };
 }
 
@@ -93,6 +111,7 @@ const actionCreators = {
   actionBlogFetchSingle: blogFetchSingle,
   actionBlogSingleTextChange: blogSingleTextChange,
   actionBlogSingleIsEditable: blogSingleIsEditable,
+  actionBlogPutSingle: blogPutSingle,
 };
 
 export default {

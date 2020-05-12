@@ -40,4 +40,16 @@ export {
 
 export { loaderMainChange, loaderSecondaryChange } from './loaders';
 
-export { blogFetch, blogFetchSingle, blogSingleIsEditable, blogSingleTextChange } from './blog';
+export {
+  blogFetch,
+  blogChangePostsLimit,
+  blogFetchSingle,
+  blogSingleIsEditable,
+  blogSingleTextChange,
+  blogPutSingle,
+  blogChangeOneSuccess,
+  newPostInutChange,
+  createNewPost,
+  createPostFailure,
+  createPostChangeStatus,
+} from './blog';

@@ -37,3 +37,44 @@
   text-decoration: none;
   font-weight: bold;
 }
+.pagination {
+  width: 50%;
+  margin: 1% auto;
+  display: flex;
+  justify-content: center;
+}
+.pagination a {
+  padding: 10px 15px;
+  margin: 5px;
+  background: $bgDarkButton;
+  color: $fgHeading;
+  text-decoration: none;
+}
+.addPostButton {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  padding: 10px 15px;
+  background-color: $bgDarkButton;
+}
+.addPostButton a {
+  text-decoration: none;
+  color: $fgHeading;
+  font-size: $fontLarge;
+  text-align: center;
+}
+.changePostCount {
+  display: flex;
+  width: 5vw;
+  height: 5vh;
+  align-items: center;
+  justify-content: center;
+  background: #b9295a;
+  color: $fgHeading;
+  font-weight: bold;
+}
+.postPerPageWrapper {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 0;
+}

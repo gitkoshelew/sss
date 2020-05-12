@@ -7,21 +7,30 @@ const passport = require('passport');
 const cors = require('cors');
 const env = require('../config/env');
 const API_PORT = env.apiPort;
+const Blog = require('./models/Blog');
+const articles = require('./routes/blog/mockarticles.json');
 
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
 
+// const postArticles = () => {
+//   articles.forEach(async (element, index) => {
+//     const article = new Blog(element);
+//     await article.save();
+//   });
+// };
+
 async function start() {
   try {
-    //здесь написать запрос к монго, и закинуть туда все записи при подключении сервера
+    await mongoose.connect(env.mongoUri),
+      {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+        useCreateIndex: true,
+      };
 
-    // await mongoose.connect(env.mongoUri),
-    //   {
-    //     useNewUrlParser: true,
-    //     useUnifiedTopology: true,
-    //     useCreateIndex: true,
-    //   };
+    // postArticles();
 
     app.listen(API_PORT, () => console.log('server running on port' + API_PORT));
   } catch (e) {
