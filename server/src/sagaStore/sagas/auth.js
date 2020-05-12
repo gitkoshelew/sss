@@ -42,7 +42,7 @@ export function* authRegister() {
 
   try {
     const form = yield select(state => state.auth.form);
-    const user = yield call(postAxiosApi('/auth/register', form), 'api');
+    const user = yield call(postAxiosApi('/auth/register', form), 'api', 'cookie');
 
     console.log(user, 'registeruser');
     if (user.error) {

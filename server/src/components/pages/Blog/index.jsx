@@ -1,18 +1,75 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { debounce } from 'debounce';
 import styles from './style.module.scss';
-import { blogFetch } from '../../../sagaStore/actions';
+import { blogFetch, blogChangePostsLimit } from '../../../sagaStore/actions';
 
-const Blog = ({ blogArticles, blogFetchAction }) => {
+const Blog = ({
+  blogArticles,
+  blogFetchAction,
+  blogChangePostsLimitAction,
+  match: {
+    params: { pageNumber },
+  },
+  history,
+  limit,
+  counter,
+  loader,
+}) => {
+  const [isPaginated, setIsPaginated] = useState(true);
   useEffect(() => {
-    blogFetchAction();
-  }, []);
+    blogFetchAction(pageNumber || 1);
+  }, [pageNumber, limit]);
+
+  const scrollHandler = function() {
+    if (!loader && document.body.offsetHeight - 100 < window.innerHeight + window.pageYOffset) {
+      blogFetchAction(1, true);
+    }
+  };
+
+  const changePostsLimit = useCallback(e => {
+    const newLimit = e.target.value;
+    console.log(newLimit);
+    if (newLimit == 0) {
+      setIsPaginated(false);
+      // window.addEventListener('scroll', scrollHandler);
+      window.onscroll = debounce(scrollHandler, 200);
+      return;
+    }
+    setIsPaginated(true);
+    window.removeEventListener('scroll', scrollHandler);
+    // window.onscroll.clear();
+    const difference = newLimit / limit;
+    const newPageNumber = pageNumber ? Math.round(pageNumber / difference) : 1;
+    blogChangePostsLimitAction(newLimit);
+    if (newPageNumber == 1) return;
+    history.push(`/blog/page=${newPageNumber}`);
+  });
+  const pageArray = Array(Math.ceil(counter / limit)).fill(null);
+  console.log(pageArray);
 
   return (
     <div className="container">
+      <div className={styles.addPostButton}>
+        <Link to="/blog/add-post">Сделать пост</Link>
+      </div>
       <div className="row">
         <div className="col-8">
+          <div className={styles.postPerPageWrapper}>
+            <select onChange={changePostsLimit}>
+              <option className={styles.changePostCount} value={4}>
+                по 4
+              </option>
+              <option className={styles.changePostCount} value={8}>
+                по 8
+              </option>
+              <option className={styles.changePostCount} value={0}>
+                для петушар
+              </option>
+            </select>
+          </div>
+
           {blogArticles
             ? blogArticles.map((element, index) => {
                 const firstPartOfText = element.text[0];
@@ -37,6 +94,16 @@ const Blog = ({ blogArticles, blogFetchAction }) => {
             : 'нет записей'}
         </div>
       </div>
+      {isPaginated && (
+        <div className={styles.pagination}>
+          {pageArray.map((element, index) => {
+            if (index === 0) {
+              return <Link to="/blog/">1</Link>;
+            }
+            return <Link to={`/blog/page=${index + 1}`}>{index + 1}</Link>;
+          })}
+        </div>
+      )}
     </div>
   );
 };
@@ -44,11 +111,15 @@ const Blog = ({ blogArticles, blogFetchAction }) => {
 function mapStateToProps(state) {
   return {
     blogArticles: state.blog.data,
+    counter: state.blog.count,
+    limit: state.blog.limit,
+    loader: state.loaders.loaderMain,
   };
 }
 
 const actionCreators = {
   blogFetchAction: blogFetch,
+  blogChangePostsLimitAction: blogChangePostsLimit,
 };
 
 export default {

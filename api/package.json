@@ -8,8 +8,8 @@
     "npm": "5.0.3"
   },
   "scripts": {
-    "start": "forever --ignore sessions/ index.js",
-    "nodemon": "nodemon --ignore sessions/ index.js",
+    "forever": "forever --ignore sessions/ index.js",
+    "start": "nodemon --ignore sessions/ index.js",
     "dev": "npm run server",
     "api:install": "npm install"
   },

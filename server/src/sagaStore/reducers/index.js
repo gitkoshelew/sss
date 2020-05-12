@@ -8,7 +8,7 @@ import reviewsReducer from './reviewsReducer';
 import ringsSliderReducer from './ringsSliderReducer';
 import testReducer from './testReducer';
 import loadersReducer from './loadersReducer';
-import { blog, blogSingle } from './blogReducer';
+import { blog, blogSingle, newPost } from './blogReducer';
 
 export default combineReducers({
   header: headerReducer,
@@ -22,4 +22,5 @@ export default combineReducers({
   loaders: loadersReducer,
   blog,
   blogSingle,
+  newPost,
 });

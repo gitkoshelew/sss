@@ -5,9 +5,11 @@ const blogSchema = new Schema({
   id: { type: String, required: true, unique: true },
   author: { type: String },
   title: { type: String, required: true },
-  text: [{ type: String }],
+  text: [{ type: String }] || [
+    { type: { type: String }, value: { type: String }, extraValue: { type: String } },
+  ],
   image: { type: String },
-  date: {type: Date}
+  date: { type: Date },
 });
 
 const blog = model('blogShema', blogSchema);
