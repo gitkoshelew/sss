@@ -7,10 +7,19 @@ const passport = require('passport');
 const cors = require('cors');
 const env = require('../config/env');
 const API_PORT = env.apiPort;
+const Blog = require('./models/Blog');
+const articles = require('./routes/blog/mockarticles.json');
 
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
+
+// const postArticles = () => {
+//   articles.forEach(async (element, index) => {
+//     const article = new Blog(element);
+//     await article.save();
+//   });
+// };
 
 async function start() {
   try {
@@ -20,6 +29,8 @@ async function start() {
         useUnifiedTopology: true,
         useCreateIndex: true,
       };
+
+    // postArticles();
 
     app.listen(API_PORT, () => console.log('server running on port' + API_PORT));
   } catch (e) {

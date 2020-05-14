@@ -17,6 +17,7 @@ import TestIntro from './pages/TestIntro';
 import TestNotification from './pages/TestNotification';
 import Blog from './pages/Blog';
 import SinglePost from './pages/SinglePost';
+import AddSinglePost from './pages/AddSinglePost';
 
 export default [
   {
@@ -94,10 +95,21 @@ export default [
         exact: true,
       },
       {
+        ...Blog,
+        path: '/blog/page=:pageNumber',
+        exact: false,
+      },
+      {
+        ...AddSinglePost,
+        path: '/blog/add-post',
+        exact: true,
+      },
+      {
         ...SinglePost,
         path: '/blog/:id',
         exact: true,
       },
+
       {
         ...NotFoundPage,
       },
