@@ -95,7 +95,7 @@ const testReducer = (state = initialState, action) => {
                   .join('');
                 return correct === changedAnswer.toLowerCase();
               }
-              return correct === checked;
+              return correct ? correct === checked : false;
             });
             return {
               ...test,
