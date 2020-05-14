@@ -87,7 +87,7 @@ const testReducer = (state = initialState, action) => {
         testItems: state.testItems.map((test, idx) => {
           if (idx === state.testNumber) {
             const { answers } = test;
-            const valid = answers.every(({ correct, checked }) => {
+            const valid = answers.some(({ correct, checked }) => {
               if (test.givenAnswer) {
                 const changedAnswer = test.givenAnswer
                   .split('')
