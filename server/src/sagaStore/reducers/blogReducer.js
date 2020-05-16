@@ -11,6 +11,10 @@ import {
   CREATE_POST_SUCCESS,
   CREATE_POST_FAIL,
   CREATE_POST_CHANGE_STATUS,
+  CREATE_POST_ADD_BLOCK,
+  CREATE_POST_SELECT_BLOCK,
+  CREATE_POST_DELETE_BLOCK,
+  CREATE_POST_CHANGE_BLOCK,
 } from '../actions/constants';
 
 const blogInitialState = { data: [], errors: [], count: 0, limit: 4 };
@@ -64,17 +68,44 @@ export const blogSingle = (state = blogSingleInitialState, action) => {
   }
 };
 
-const newPostInitialState = { data: { title: '', text: '', id: '' }, status: false, message: '' };
+const newPostInitialState = {
+  data: [
+    { type: 'title', value: '', id: '' },
+    { type: 'text', value: '' },
+    { type: 'image', value: '', alt: '', title: '' },
+    { type: 'h', value: '', level: 2 },
+    { type: 'link', value: '', href: '' },
+  ],
+  status: false,
+  select: false,
+  message: '',
+};
 
 export const newPost = (state = newPostInitialState, action) => {
   switch (action.type) {
+    case CREATE_POST_ADD_BLOCK:
+      return { ...state, select: !state.select };
+    case CREATE_POST_SELECT_BLOCK: {
+      let newBlock = null;
+      if (action.payload == 'text') newBlock = { type: 'text', value: '' };
+      else if (action.payload == 'h') newBlock = { type: 'h', value: '', level: 2 };
+      else if (action.payload == 'image')
+        newBlock = { type: 'image', value: '', alt: '', title: '' };
+      else newBlock = { type: 'link', value: '', href: '' };
+      return {
+        ...state,
+        data: [...state.data, newBlock],
+      };
+    }
     case NEW_POST_INPUT_CHANGE:
       return {
         ...state,
-        data: {
-          ...state.data,
-          [action.payload.name]: action.payload.value,
-        },
+        data: state.data.map((element, index) => {
+          if (index !== action.payload.index) {
+            return element;
+          }
+          return { ...element, [action.payload.name]: action.payload.value };
+        }),
       };
     case CREATE_POST_SUCCESS:
       return { ...state, status: true, message: 'Запись добавлена!' };

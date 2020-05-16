@@ -14,6 +14,10 @@ import {
   NEW_POST_INPUT_CHANGE,
   CREATE_POST_FAIL,
   CREATE_POST_CHANGE_STATUS,
+  CREATE_POST_ADD_BLOCK,
+  CREATE_POST_SELECT_BLOCK,
+  CREATE_POST_DELETE_BLOCK,
+  CREATE_POST_CHANGE_BLOCK,
 } from './constants';
 
 export const blogFetch = (payload, infinity) => ({
@@ -79,9 +83,9 @@ export const blogPutSingle = payload => ({
   payload,
 });
 
-export const newPostInutChange = payload => ({
+export const newPostInutChange = (name, value, index) => ({
   type: NEW_POST_INPUT_CHANGE,
-  payload,
+  payload: { name, value, index },
 });
 
 export const createNewPost = () => ({
@@ -95,4 +99,22 @@ export const createPostFailure = () => ({
 export const createPostChangeStatus = payload => ({
   type: CREATE_POST_CHANGE_STATUS,
   payload,
+});
+
+export const createPostAddBlock = () => ({
+  type: CREATE_POST_ADD_BLOCK,
+});
+
+export const createPostSelectBlock = payload => ({
+  type: CREATE_POST_SELECT_BLOCK,
+  payload,
+});
+
+export const createPostDeleteBlock = index => ({
+  type: CREATE_POST_DELETE_BLOCK,
+  payload: index,
+});
+export const createPostChangeBlock = (e, index) => ({
+  type: CREATE_POST_CHANGE_BLOCK,
+  payload: { e, index },
 });
