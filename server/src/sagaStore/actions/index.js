@@ -52,4 +52,8 @@ export {
   createNewPost,
   createPostFailure,
   createPostChangeStatus,
+  createPostSelectBlock,
+  createPostAddBlock,
+  createPostDeleteBlock,
+  createPostChangeBlock,
 } from './blog';
