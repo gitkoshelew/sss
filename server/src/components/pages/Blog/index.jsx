@@ -18,35 +18,53 @@ const Blog = ({
   loader,
 }) => {
   const [isPaginated, setIsPaginated] = useState(true);
+  const [pageArray, setPageArray] = useState([]);
+
   useEffect(() => {
     blogFetchAction(pageNumber || 1);
-  }, [pageNumber, limit]);
+  }, [pageNumber, isPaginated]);
 
-  const scrollHandler = function() {
-    if (!loader && document.body.offsetHeight - 100 < window.innerHeight + window.pageYOffset) {
-      blogFetchAction(1, true);
-    }
-  };
+  useEffect(() => {
+    const debounceFetchArticles = debounce(() => {
+      if (!loader && document.body.offsetHeight - 100 < window.innerHeight + window.pageYOffset) {
+        blogFetchAction(1, true);
+      }
+    }, 200);
 
-  const changePostsLimit = useCallback(e => {
-    const newLimit = e.target.value;
-    console.log(newLimit);
-    if (newLimit == 0) {
-      setIsPaginated(false);
-      // window.addEventListener('scroll', scrollHandler);
-      window.onscroll = debounce(scrollHandler, 200);
-      return;
+    if (!isPaginated) {
+      window.addEventListener('scroll', debounceFetchArticles);
     }
-    setIsPaginated(true);
-    window.removeEventListener('scroll', scrollHandler);
-    // window.onscroll.clear();
-    const difference = newLimit / limit;
-    const newPageNumber = pageNumber ? Math.round(pageNumber / difference) : 1;
-    blogChangePostsLimitAction(newLimit);
-    if (newPageNumber == 1) return;
-    history.push(`/blog/page=${newPageNumber}`);
-  });
-  const pageArray = Array(Math.ceil(counter / limit)).fill(null);
+    return () => window.removeEventListener('scroll', debounceFetchArticles);
+  }, [isPaginated]);
+
+  useEffect(() => {
+    setPageArray(Array(Math.ceil(counter / limit)).fill(null));
+  }, [counter, limit]);
+
+  const changePostsLimit = useCallback(
+    e => {
+      const newLimit = e.target.value;
+
+      if (newLimit == 0) {
+        setIsPaginated(false);
+        return;
+      }
+
+      if (!isPaginated) {
+        setIsPaginated(true);
+      }
+
+      const difference = newLimit / limit;
+      const newPageNumber = pageNumber ? Math.round(pageNumber / difference) : 1;
+      blogChangePostsLimitAction(newLimit);
+
+      if (newPageNumber == 1) return;
+
+      history.push(`/blog/page=${newPageNumber}`);
+    },
+    [setIsPaginated, limit, isPaginated]
+  );
+
   console.log(pageArray);
 
   return (
@@ -72,7 +90,7 @@ const Blog = ({
 
           {blogArticles
             ? blogArticles.map((element, index) => {
-                const firstPartOfText = element.text[0];
+                const firstPartOfText = element.text;
                 const preview = firstPartOfText.slice(0, 140);
                 return (
                   <div className={styles.singlePost}>
