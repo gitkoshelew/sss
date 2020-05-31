@@ -146,8 +146,15 @@ export function* createNewPost() {
   });
   try {
     const getNewPostData = yield select(state => state.newPost.data);
+    const [titleObj, ...rest] = getNewPostData;
 
-    const newPost = yield call(postAxiosApi('/blog/add-post', getNewPostData), 'api', 'cookie');
+    const body = {
+      title: titleObj.value,
+      id: titleObj.id,
+      content: rest,
+    };
+
+    const newPost = yield call(postAxiosApi('/blog/add-post', body), 'api', 'cookie');
 
     if (newPost.error) {
       yield put({

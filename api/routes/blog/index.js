@@ -61,7 +61,8 @@ router.get('/:id', async (req, res) => {
 
 router.post('/add-post', async (req, res) => {
   try {
-    const { title, text, author, id } = req.body;
+    console.log(req.body);
+    const { title, text, content, author, id } = req.body;
 
     const checkUrl = await Blog.findOne({ id: id });
 
@@ -73,6 +74,7 @@ router.post('/add-post', async (req, res) => {
     const newArticle = new Blog({
       title,
       text,
+      content,
       author: author || 'dkosheleu',
       date: new Date(),
       id,

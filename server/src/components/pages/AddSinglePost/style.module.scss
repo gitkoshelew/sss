@@ -1,0 +1,124 @@
+@import '../../../@theme/index';
+
+.add_post_page {
+  width: 90%;
+  margin: auto;
+  font-family: $notosans;
+
+  &_title {
+    color: $fgHeading;
+  }
+  &_form {
+    color: $bgDarkButton;
+  }
+  input {
+    margin: 10px auto;
+    width: 100%;
+    padding: 10px;
+  }
+  &_success {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.61);
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    opacity: 1;
+    transition: 3.5s ease-out;
+    & > div {
+      position: absolute;
+      color: #ffffff;
+      font-size: 40px;
+      background: #2ce69b;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 20px;
+      & > div {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    &_hidden {
+      opacity: 0;
+    }
+  }
+}
+.add_new_block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid #0c58a7;
+  padding: 10px;
+  &_item {
+    margin: 0 1%;
+    background: none;
+    border: 1px solid white;
+    padding: 10px 15px;
+    color: white;
+    &:hover {
+      background: white;
+      color: #0c58a7;
+    }
+  }
+  &_select {
+    width: 100%;
+    padding: 10px 15px;
+  }
+}
+
+.create_post_button {
+  background: white;
+  color: #2ce69b;
+  padding: 10px 15px;
+  margin: 20px auto;
+}
+
+.add_item {
+  background: #0c58a7;
+  border-radius: $borderRadiusCard;
+  padding: 10px;
+  margin: 20px auto;
+  color: white;
+  font-size: 20px;
+  position: relative;
+}
+.inputField {
+  background-color: white;
+  color: black;
+  height: 40vh;
+}
+.changeBlock {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item_delete {
+  height: 30px;
+  width: 30px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.id_block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+}
+.id_site {
+  width: 18%;
+  text-align: right;
+}
+input.id_input_field {
+  width: 80%;
+}

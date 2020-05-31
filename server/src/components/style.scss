@@ -1,5 +1,8 @@
 @import '../@theme/index';
 @import '~swiper/css/swiper.css';
+@import '~react-quill/dist/quill.snow.css';
+@import '~react-quill/dist/quill.bubble.css';
+@import '~react-quill/dist/quill.core.css';
 
 body {
   background-color: $bgMain;
