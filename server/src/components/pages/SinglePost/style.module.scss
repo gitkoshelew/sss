@@ -1,11 +1,11 @@
 @import '../../../@theme/index';
 
-.single-page-blog {
+.single_page_blog {
   color: #ffffff;
   margin: 10% auto;
   padding: 0 2%;
 
-  &__breadcrumbs {
+  &_breadcrumbs {
     font-family: $notosans;
     font-weight: 700;
     color: $bgDarkButton;
@@ -13,7 +13,7 @@
     text-decoration: none;
   }
 
-  &__header {
+  &_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -25,16 +25,15 @@
       font-size: $h2Tablet;
     }
   }
-  &__text {
+  &_content {
     font-family: $sourcecodepro;
     font-size: $font;
     line-height: 20px;
-  }
-
-  &__content {
     margin-top: 1.5%;
-    font-family: $sourcecodepro;
     font-weight: 400;
+    ul {
+      list-style-type: square;
+    }
   }
   &__button {
     margin-left: 50px;
@@ -47,7 +46,7 @@
     border-radius: 5px;
     font-family: $notosans;
   }
-  &__textarea {
+  &_textarea {
     margin: 2% auto;
     width: 100%;
     height: 40vh;
@@ -55,7 +54,7 @@
     font-size: $fontLarger;
     padding: 10px;
   }
-  &__input-title {
+  &_input-title {
     width: 70%;
     padding: 20px;
     font-size: $fontLarger;

@@ -69,13 +69,7 @@ export const blogSingle = (state = blogSingleInitialState, action) => {
 };
 
 const newPostInitialState = {
-  data: [
-    { type: 'title', value: '', id: '' },
-    { type: 'text', value: '' },
-    { type: 'image', value: '', alt: '', title: '' },
-    { type: 'h', value: '', level: 2 },
-    { type: 'link', value: '', href: '' },
-  ],
+  data: [{ type: 'title', value: '', id: '', status: false }],
   status: false,
   select: false,
   message: '',
@@ -87,16 +81,31 @@ export const newPost = (state = newPostInitialState, action) => {
       return { ...state, select: !state.select };
     case CREATE_POST_SELECT_BLOCK: {
       let newBlock = null;
-      if (action.payload == 'text') newBlock = { type: 'text', value: '' };
-      else if (action.payload == 'h') newBlock = { type: 'h', value: '', level: 2 };
-      else if (action.payload == 'image')
-        newBlock = { type: 'image', value: '', alt: '', title: '' };
-      else newBlock = { type: 'link', value: '', href: '' };
+      if (action.payload == 'text') newBlock = { type: 'text', value: '', status: true };
+      else if (action.payload == 'h') newBlock = { type: 'h', value: '', level: 2, status: true };
+      else newBlock = { type: 'image', value: '', alt: '', title: '', status: true };
+
       return {
         ...state,
         data: [...state.data, newBlock],
       };
     }
+    case CREATE_POST_CHANGE_BLOCK:
+      return {
+        ...state,
+        data: state.data.map((element, index) => {
+          if (index !== action.payload.index) return element;
+          const previousValue = element.type == 'image' ? '' : element.value;
+          let newBlock = null;
+          if (action.payload.value == 'text')
+            newBlock = { type: 'text', value: previousValue, status: true };
+          else if (action.payload.value == 'h')
+            newBlock = { type: 'h', value: previousValue, level: 2, status: true };
+          else newBlock = { type: 'image', value: '', alt: '', title: '', status: true };
+
+          return newBlock;
+        }),
+      };
     case NEW_POST_INPUT_CHANGE:
       return {
         ...state,
@@ -105,6 +114,14 @@ export const newPost = (state = newPostInitialState, action) => {
             return element;
           }
           return { ...element, [action.payload.name]: action.payload.value };
+        }),
+      };
+    case CREATE_POST_DELETE_BLOCK:
+      console.log(action.payload);
+      return {
+        ...state,
+        data: state.data.filter((element, index) => {
+          return index !== action.payload;
         }),
       };
     case CREATE_POST_SUCCESS:

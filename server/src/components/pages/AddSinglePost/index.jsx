@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import ReactQuill from 'react-quill';
 import { connect } from 'react-redux';
 import {
   newPostInutChange,
@@ -9,7 +10,32 @@ import {
   createPostDeleteBlock,
   createPostChangeBlock,
 } from '../../../sagaStore/actions';
-import styles from './style.scss';
+import styles from './style.module.scss';
+import cancel from '../../../assets/images/close.png';
+
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ list: 'ordered' }, { list: 'bullet' }, { indent: '-1' }, { indent: '+1' }],
+    ['link', 'image'],
+    ['clean'],
+  ],
+};
+
+const formats = [
+  'header',
+  'bold',
+  'italic',
+  'underline',
+  'strike',
+  'blockquote',
+  'list',
+  'bullet',
+  'indent',
+  'link',
+  'image',
+];
 
 const AddSinglePost = ({
   actionNewPostInutChange,
@@ -74,12 +100,12 @@ const AddSinglePost = ({
       ц: 'c',
       ч: 'ch',
       ш: 'sh',
-      щ: 'sh',
+      щ: 'sch',
       ъ: space,
       ы: 'y',
       ь: space,
       э: 'e',
-      ю: 'yu',
+      ю: 'u',
       я: 'ya',
     };
 
@@ -97,25 +123,23 @@ const AddSinglePost = ({
     return link;
   };
 
-  const getNewPostData = (e, index) => {
-    if (e.target.name == 'id' && e.target.value !== '') {
-      const lowerCaseOldUrl = e.target.value.toLowerCase();
+  const changeInputHandler = (name, value, index) => {
+    if (name == 'id' && value !== '') {
+      const lowerCaseOldUrl = value.toLowerCase();
       const newUrl = translit(lowerCaseOldUrl);
-      actionNewPostInutChange(e.target.name, newUrl, index);
+      actionNewPostInutChange(name, newUrl, index);
     } else {
-      actionNewPostInutChange(e.target.name, e.target.value, index);
+      actionNewPostInutChange(name, value, index);
     }
   };
+
   const sendNewPost = () => {
     actionCreateNewPost();
   };
 
   const translateTitleHandler = () => {
-    const englishTitle = translit(title.trim().toLowerCase());
-    actionNewPostInutChange({
-      name: 'id',
-      value: englishTitle,
-    });
+    const englishTitle = translit(content[0].value.trim().toLowerCase());
+    actionNewPostInutChange('id', englishTitle, 0);
   };
 
   const confirmModalHandler = () => {
@@ -134,44 +158,57 @@ const AddSinglePost = ({
   };
 
   const selectOnCreateHandler = e => {
+    if (!e.target.value) return;
     actionCreatePostSelectBlock(e.target.value);
   };
 
   const selectOnDeleteHandler = index => {
+    console.log('delete hui');
     actionCreatePostDeleteBlock(index);
   };
+
+  const textSelectHanlder = e => {
+    console.log(e);
+
+    // let text = '';
+    // if (window.getSelection) {
+    //   text = window.getSelection();
+    // }
+    // console.log(text);
+    // } else if (document.getSelection) {
+    //   txt = document.getSelection();
+    // } else if (document.selection) {
+    //   txt = document.selection.createRange().text;
+    // }
+    // console.log(txt);
+  };
+
   return (
-    <div className="wrap">
-      <div className="add-post-page col-10 ma">
-        <h1 className="add-post-page__title">Создать пост</h1>
-        <div className="add-post-page__form">
-          <div className="add-content" onClick={addBlockButton}>
-            {select ? 'Закрыть' : 'Добавить'}
-          </div>
-          {select && (
-            <select onChange={selectOnCreateHandler}>
-              <option value="h">Заголовок</option>
-              <option value="text">Текст</option>
-              <option value="image">Картинку</option>
-              <option value="link">Ссылку</option>
-            </select>
-          )}
-          <div className="add-post-page__text">
+    <div className={styles.add_post}>
+      <div className={`${styles.add_post_page} col-10 ma`}>
+        <h1 className={styles.add_post_page_title}>Создать пост</h1>
+        <div className={styles.add_post_page_form}>
+          <div className={styles.add_post_page_text}>
             {content.map((element, index) => {
               if (element.type == 'title') {
                 return (
                   <div className={styles.add_item}>
-                    <input
-                      type="text"
-                      name="id"
-                      onChange={e => getNewPostData(e, index)}
-                      value={element.id}
-                      placeholder="URL записи"
-                    />
+                    <div className={styles.id_block}>
+                      <div className={styles.id_site}>http://localhost/</div>
+                      <input
+                        className={styles.id_input_field}
+                        type="text"
+                        name="id"
+                        onChange={e => changeInputHandler(e.target.name, e.target.value, index)}
+                        value={element.id}
+                        placeholder="ID записи"
+                      />
+                    </div>
+
                     <input
                       type="text"
                       name="value"
-                      onChange={e => getNewPostData(e, index)}
+                      onChange={e => changeInputHandler(e.target.name, e.target.value, index)}
                       onBlur={translateTitleHandler}
                       value={element.title}
                       placeholder="Введите название записи"
@@ -189,14 +226,14 @@ const AddSinglePost = ({
                       name="value"
                       value={element.value}
                       placeholder="Текст Заголовка"
-                      onChange={e => getNewPostData(e, index)}
+                      onChange={e => changeInputHandler(e.target.name, e.target.value, index)}
                     />
                     <label>
                       <h2>Выберите уровень заголовка</h2>
                       <select
                         name="level"
                         value={element.level}
-                        onChange={e => getNewPostData(e, index)}
+                        onChange={e => changeInputHandler(e.target.name, e.target.value, index)}
                       >
                         <option value={2}>2</option>
                         <option value={3}>3</option>
@@ -205,13 +242,19 @@ const AddSinglePost = ({
                         <option value={6}>6</option>
                       </select>
                     </label>
-                    <select onChange={e => selectOnChangeHandler(e, index)}>
-                      <option value="h">Заголовок</option>
-                      <option value="text">Текст</option>
-                      <option value="image">Картинку</option>
-                      <option value="link">Ссылку</option>
-                    </select>
-                    <button className={styles.item_delete}>X</button>
+                    <div className={styles.changeBlock}>
+                      <select onChange={e => selectOnChangeHandler(e, index)}>
+                        <option value="h">Заголовок</option>
+                        <option value="text">Текст</option>
+                        <option value="image">Картинку</option>
+                      </select>
+
+                      <img
+                        src={cancel}
+                        className={styles.item_delete}
+                        onClick={() => selectOnDeleteHandler(index)}
+                      />
+                    </div>
                   </div>
                 );
               }
@@ -220,96 +263,137 @@ const AddSinglePost = ({
                 return (
                   <div className={styles.add_item}>
                     <h2>Текст</h2>
-                    <textarea
-                      name="text"
-                      onChange={e => getNewPostData(e, index)}
+
+                    <ReactQuill
+                      className={styles.inputField}
+                      modules={modules}
+                      formats={formats}
                       value={element.value}
-                      placeholder="Введите текст"
+                      onChange={value => changeInputHandler('value', value, index)}
                     />
-                    <select onChange={e => selectOnChangeHandler(e, index)}>
-                      <option value="h">Заголовок</option>
-                      <option value="text">Текст</option>
-                      <option value="image">Картинку</option>
-                      <option value="link">Ссылку</option>
-                    </select>
-                    <button className={styles.item_delete}>X</button>
+
+                    <div className={styles.changeBlock}>
+                      <select onChange={e => selectOnChangeHandler(e, index)}>
+                        <option value="h">Заголовок</option>
+                        <option value="text">Текст</option>
+                        <option value="image">Картинку</option>
+                      </select>
+                      <img
+                        src={cancel}
+                        className={styles.item_delete}
+                        onClick={() => selectOnDeleteHandler(index)}
+                      />
+                    </div>
                   </div>
                 );
               }
               if (element.type == 'image') {
                 return (
                   <div className={styles.add_item}>
-                    <h2>Картинка</h2>
-                    <label className={styles.add_image_button}>
-                      Добавить изображение
-                      <input
-                        style={{ visibility: 'hidden' }}
-                        type="file"
-                        name="value"
+                    <h2>Изображение</h2>
+                    {
+                      <ReactQuill
+                        modules={{ toolbar: [['image']] }}
+                        formats={['image']}
                         value={element.value}
-                        accept=".jpg, .jpeg, .png, .webp"
-                        onChange={e => getNewPostData(e, index)}
+                        onChange={value => changeInputHandler('value', value, index)}
                       />
-                    </label>
+                    }
                     <input
                       type="text"
                       name="title"
                       value={element.title}
                       placeholder="Добавить title"
-                      onChange={e => getNewPostData(e, index)}
+                      onChange={e => changeInputHandler(e.target.name, e.target.value, index)}
                     />
                     <input
                       type="text"
                       name="alt"
                       value={element.alt}
                       placeholder="Добавить ALT картинки"
-                      onChange={e => getNewPostData(e, index)}
+                      onChange={e => changeInputHandler(e.target.name, e.target.value, index)}
                     />
-                    <img src={element.value} title={element.title} alt={element.alt} />
-                    <select onChange={e => selectOnChangeHandler(e, index)}>
-                      <option value="h">Заголовок</option>
-                      <option value="text">Текст</option>
-                      <option value="image">Картинку</option>
-                      <option value="link">Ссылку</option>
-                    </select>
-                    <button className={styles.item_delete}>X</button>
+                    <div className={styles.changeBlock}>
+                      <select onChange={e => selectOnChangeHandler(e, index)}>
+                        <option value="h">Заголовок</option>
+                        <option value="text">Текст</option>
+                        <option value="image">Картинку</option>
+                      </select>
+                      <img
+                        src={cancel}
+                        className={styles.item_delete}
+                        onClick={() => selectOnDeleteHandler(index)}
+                      />
+                    </div>
                   </div>
                 );
               }
 
               return (
                 <div className={styles.add_item}>
-                  <h2>Ссылка</h2>
-                  <input
-                    type="text"
-                    name="value"
+                  <h2>Текст</h2>
+
+                  <ReactQuill
+                    className={styles.inputField}
+                    modules={modules}
+                    formats={formats}
                     value={element.value}
-                    placeholder="Добавить текст ссылки"
-                    onChange={e => getNewPostData(e, index)}
+                    onChange={value => changeInputHandler('value', value, index)}
                   />
-                  <input
-                    type="text"
-                    name="href"
-                    value={element.href}
-                    placeholder="Добавить ссылку"
-                    onChange={e => getNewPostData(e, index)}
-                  />
-                  <select onChange={e => selectOnChangeHandler(e, index)}>
-                    <option value="h">Заголовок</option>
-                    <option value="text">Текст</option>
-                    <option value="image">Картинку</option>
-                    <option value="link">Ссылку</option>
-                  </select>
-                  <button className={styles.item_delete}>X</button>
+
+                  <div className={styles.changeBlock}>
+                    <select onChange={e => selectOnChangeHandler(e, index)}>
+                      <option value="h">Заголовок</option>
+                      <option value="text">Текст</option>
+                      <option value="image">Картинку</option>
+                    </select>
+                    <img
+                      src={cancel}
+                      className={styles.item_delete}
+                      onClick={() => selectOnDeleteHandler(index)}
+                    />
+                  </div>
                 </div>
               );
             })}
           </div>
-          <button onClick={sendNewPost}>Создать</button>
+
+          <div className={styles.add_new_block} onClick={addBlockButton}>
+            <span className={styles.plus}>+</span>
+            <button className={styles.add_new_block_item} onClick={selectOnCreateHandler} value="h">
+              Заголовок
+            </button>
+            <button
+              className={styles.add_new_block_item}
+              onClick={selectOnCreateHandler}
+              value="text"
+            >
+              Текст
+            </button>
+            <button
+              className={styles.add_new_block_item}
+              onClick={selectOnCreateHandler}
+              value="image"
+            >
+              Изображение
+            </button>
+          </div>
+
+          <button
+            className={styles.add_new_block_item}
+            className={styles.create_post_button}
+            onClick={sendNewPost}
+          >
+            Создать
+          </button>
         </div>
       </div>
       {status && (
-        <div className={`add-post-page__post-success ${modalHidden ? ' hidden' : ''}`}>
+        <div
+          className={`${styles.add_post_page_success} ${
+            modalHidden ? `${styles.add_post_page_success_hidden}` : ''
+          }`}
+        >
           <div>
             <div>{message}</div>
             <div>

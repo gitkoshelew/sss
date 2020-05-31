@@ -5,9 +5,16 @@ const blogSchema = new Schema({
   id: { type: String, required: true, unique: true },
   author: { type: String },
   title: { type: String, required: true },
-  text: [{ type: String }] || [
-    { type: { type: String }, value: { type: String }, extraValue: { type: String } },
+  content: [
+    {
+      type: { type: String, required: true },
+      value: { type: String },
+      alt: { type: String },
+      title: { type: String },
+      level: { type: Number || String },
+    },
   ],
+  text: [String],
   image: { type: String },
   date: { type: Date },
 });

@@ -90,8 +90,13 @@ const Blog = ({
 
           {blogArticles
             ? blogArticles.map((element, index) => {
-                const firstPartOfText = element.text;
-                const preview = firstPartOfText.slice(0, 140);
+                let preview = '';
+                const firstPartOfText = element.text[0];
+                if (!firstPartOfText) {
+                  preview = '...';
+                } else {
+                  preview = firstPartOfText.slice(0, 140);
+                }
                 return (
                   <div className={styles.singlePost}>
                     <div className={styles.singlePostHeader}>
@@ -100,7 +105,7 @@ const Blog = ({
                       </Link>
                       <div className={styles.singlePostDate}>{element.date}</div>
                     </div>
-                    <div className={styles.singlePostText}>{preview}...</div>
+                    <div className={styles.singlePostText}>{preview}</div>
                     <div className={styles.singlePostContinueReading}>
                       <Link to={`/blog/${element.id}`} className={styles.link}>
                         Читать далее &gt;

@@ -114,7 +114,7 @@ export const createPostDeleteBlock = index => ({
   type: CREATE_POST_DELETE_BLOCK,
   payload: index,
 });
-export const createPostChangeBlock = (e, index) => ({
+export const createPostChangeBlock = (value, index) => ({
   type: CREATE_POST_CHANGE_BLOCK,
-  payload: { e, index },
+  payload: { value, index },
 });
