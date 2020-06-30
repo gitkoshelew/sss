@@ -134,7 +134,7 @@ if (isEnvDevelopment && isStaticMode) {
 const publicPathResolver = () => {
   if (isEnvProduction) return '/assets/';
   if (isStaticMode) return '/';
-  return 'http://localhost:' + env.portWP + '/assets/';
+  return 'http://localhost:' + env.WEBPACK_PORT + '/assets/';
 };
 
 const config = {
@@ -281,7 +281,7 @@ const config = {
       ? {}
       : {
           '*': {
-            target: 'http://localhost:' + env.portFrontend,
+            target: 'http://localhost:' + env.CLIENT_PORT,
             changeOrigin: true,
             secure: false,
           },
@@ -293,7 +293,7 @@ const config = {
     // inline: true,
     liveReload: false,
     historyApiFallback: true,
-    port: env.portWP,
+    port: env.WEBPACK_PORT,
     watchOptions: {
       ignored: ignoredFiles(paths.appSrcFolder),
     },

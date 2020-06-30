@@ -12,6 +12,7 @@ router.get('/', requirePassport, async (req, res) => {
 
     if (!users) {
       return res.status(400).json({
+        error: 'get users error',
         message: `no users now`,
       });
     }
@@ -23,7 +24,10 @@ router.get('/', requirePassport, async (req, res) => {
 
     res.send({ users: mapUsers });
   } catch (e) {
-    res.status(500).json({ message: 'went wrong try again' });
+    res.status(500).json({
+      error: 'get users server error',
+      message: 'went wrong try again',
+    });
   }
 });
 
@@ -33,7 +37,8 @@ router.get('/admins', requireToken, async (req, res) => {
 
     if (!admins) {
       return res.status(400).json({
-        message: `no users now`,
+        error: 'get admins error',
+        message: `no admins now`,
       });
     }
 
@@ -43,20 +48,11 @@ router.get('/admins', requireToken, async (req, res) => {
 
     res.send({ admins: mapAdmins });
   } catch (e) {
-    res.status(500).json({ message: 'went wrong try again' });
+    res.status(500).json({
+      error: 'get admins server error',
+      message: 'went wrong try again',
+    });
   }
 });
 
-router.get('/userMock', (req, res) => {
-  res.send(usersMock);
-});
-
 module.exports = router;
-
-const usersMock = [
-  { id: 1, name: '</script><script>alert(1234567890)</script>' },
-  { id: 2, name: 'Ervin Howell' },
-  { id: 3, name: 'Clementine Bauch' },
-  { id: 4, name: 'Patricia Lebsack' },
-  { id: 5, name: 'Chelsey Dietrich' },
-];

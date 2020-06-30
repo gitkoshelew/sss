@@ -39,7 +39,7 @@ const config = {
   output: {
     filename: 'bundle.js',
     path: `${__dirname}/build/server`,
-    publicPath: isEnvProduction ? '.' : 'http://localhost:' + env.portWP,
+    publicPath: isEnvProduction ? '.' : 'http://localhost:' + env.WEBPACK_PORT,
   },
 
   externals: [webpackNodeExternals()],

@@ -24,20 +24,7 @@ export const getAxiosApi = url => api => () =>
     .get(url)
     .then(res => res.data)
     .catch(err => {
-      if (err.response.data) {
-        console.log('Problem With Response ', err.response.data.message);
-        return { error: `Problem With Response ${err.response.data.message}` };
-      }
-      if (err.response.status) {
-        console.log('Problem With Response ', err.response.status);
-        return { error: `Problem With Response. Status: ${status[err.response.status]}` };
-      }
-      if (err.request) {
-        console.log('Problem With Request!');
-        return { error: 'Problem With Request!' };
-      }
-      console.log('Error', err.message);
-      return { error: err.message };
+      errorHandler(err);
     });
 
 export const postAxiosApi = (url, data) => api => () =>
@@ -45,20 +32,7 @@ export const postAxiosApi = (url, data) => api => () =>
     .post(url, data)
     .then(res => res.data)
     .catch(err => {
-      if (err.response.data) {
-        console.log('Problem With Response ', err.response.data.message);
-        return { error: `Problem With Response ${err.response.data.message}` };
-      }
-      if (err.response.status) {
-        console.log('Problem With Response ', err.response.status);
-        return { error: `Problem With Response. Status: ${status[err.response.status]}` };
-      }
-      if (err.request) {
-        console.log('Problem With Request!');
-        return { error: 'Problem With Request!' };
-      }
-      console.log('Error', err.message);
-      return { error: err.message };
+      errorHandler(err);
     });
 
 export const putAxiosApi = (url, data) => api => () =>
@@ -66,18 +40,22 @@ export const putAxiosApi = (url, data) => api => () =>
     .put(url, data)
     .then(res => res.data)
     .catch(err => {
-      if (err.response.data) {
-        console.log('Problem With Response ', err.response.data.message);
-        return { error: `Problem With Response ${err.response.data.message}` };
-      }
-      if (err.response.status) {
-        console.log('Problem With Response ', err.response.status);
-        return { error: `Problem With Response. Status: ${status[err.response.status]}` };
-      }
-      if (err.request) {
-        console.log('Problem With Request!');
-        return { error: 'Problem With Request!' };
-      }
-      console.log('Error', err.message);
-      return { error: err.message };
+      errorHandler(err);
     });
+
+const errorHandler = err => {
+  if (err.response.data) {
+    console.log('Problem With Response ', err.response.data.message);
+    return { error: `Problem With Response ${err.response.data.message}` };
+  }
+  if (err.response.status) {
+    console.log('Problem With Response ', err.response.status);
+    return { error: `Problem With Response. Status: ${status[err.response.status]}` };
+  }
+  if (err.request) {
+    console.log('Problem With Request!');
+    return { error: 'Problem With Request!' };
+  }
+  console.log('Error', err.message);
+  return { error: err.message };
+};

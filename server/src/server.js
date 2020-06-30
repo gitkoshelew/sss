@@ -6,7 +6,7 @@ import Routes from './components/Routes';
 import renderer from './helpers/renderer';
 import createStore from './sagaStore/createStoreServer';
 const env = require('../../config/env');
-const PORT = env.portFrontend;
+const PORT = env.CLIENT_PORT;
 
 const app = express();
 
