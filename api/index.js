@@ -1,14 +1,18 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cookieSession = require('cookie-session');
+const path = require('path');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 const passport = require('passport');
+const morgan = require('morgan');
 const cors = require('cors');
-const env = require('../config/env');
-const API_PORT = env.apiPort;
+const { API_PORT, mongoUri, cookieKey, key, CLIENT_PORT } = require('../config/env');
+require('dotenv').config({ path: path.resolve(__dirname, '../config/.env') });
 const Blog = require('./models/Blog');
 const articles = require('./routes/blog/mockarticles.json');
+
+console.log('++++', path.resolve(__dirname, '../config/.env'));
 
 require('./services/passport');
 
@@ -23,16 +27,20 @@ mongoose.Promise = global.Promise;
 
 async function start() {
   try {
-    await mongoose.connect(env.mongoUri),
+    await mongoose.connect(mongoUri),
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
       };
 
     // postArticles();
 
-    app.listen(API_PORT, () => console.log('server running on port' + API_PORT));
+    const PORT = process.env.PORT || API_PORT;
+
+    app.listen(PORT, () => console.log('server running on port' + PORT));
   } catch (e) {
     console.log('Server Error', e.message);
 
@@ -42,18 +50,19 @@ async function start() {
 
 const app = express();
 
-app.use(cors());
+app.use(morgan('dev'));
+app.use(cors({ origin: CLIENT_PORT }));
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(
   cookieSession({
     maxAge: 30 * 24 * 60 * 60 * 1000,
-    keys: [env.cookieKey],
+    keys: [cookieKey],
   })
 );
 app.use(
   session({
-    secret: env.key,
+    secret: key,
     store: new FileStore(),
     cookie: {
       path: '/',
@@ -68,6 +77,7 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use('/authAws', require('./routes/authAwsSesRouter'));
 app.use('/auth', require('./routes/authRoutes'));
 app.use('/authLocal', require('./routes/authLocalRoutes'));
 app.use('/authGS', require('./routes/authGSRoutes'));
